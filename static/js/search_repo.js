@@ -29,7 +29,7 @@ $(document).ready(function() {
     let current_data = {};
     let current_index = 0;
     let items = [];
-    let csrftoken = getCookie('csrftoken');;
+    let csrftoken = getCookie('csrftoken');
 
     // Calling methods on dynamic jquery elements, change current index
     result.on('click', 'a.save_link', function(event) {
@@ -75,6 +75,7 @@ $(document).ready(function() {
     order_by_value.change(function(event){
         order_by_value_text = event.target.value;
     });
+
 
     $("button.my-btn").click(function(event) {
         event.preventDefault();

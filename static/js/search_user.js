@@ -15,6 +15,16 @@ $(document).ready(function() {
         event.preventDefault();
         result.hide(400);
 
+        if(input_text == '') {
+            result.html(
+                `<div class="error-container">
+                    <p>Please Type in a Username to search!</p>
+                 </div>`);
+            result.fadeIn(500, 'swing', () => {
+                result.fadeOut(1500);
+            });
+            return false;
+        }
         $.ajax({
             type: 'GET',
             url: `https://api.github.com/users/${input_text}`,

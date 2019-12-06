@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a302803-6d49-4948-acd9-51eec0faea44" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github/api/serializers.py" afterPath="$PROJECT_DIR$/github/api/serializers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/search_repo.js" afterPath="$PROJECT_DIR$/static/js/search_repo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/search_user.js" afterPath="$PROJECT_DIR$/static/js/search_user.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,85 +22,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/github/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="48" lean-forward="false" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/accounts/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="8" column="91" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/github/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/accounts/api/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-33">
-              <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_repo.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/search_repo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25">
-              <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-              <folding>
-                <marker date="1575659159226" expanded="true" signature="3725:5228" ph="..." />
-                <marker date="1575659159226" expanded="true" signature="3789:3935" ph="..." />
-                <marker date="1575659159226" expanded="true" signature="3990:4596" ph="..." />
-                <marker date="1575659159226" expanded="true" signature="4040:4563" ph="..." />
-                <marker date="1575659159226" expanded="true" signature="4651:5197" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/github/api/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/github/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+            <state relative-caret-position="225">
+              <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -108,33 +34,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_repo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/github/search_repo.html">
+      <file leaf-file-name="search_user.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/search_user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="53" lean-forward="false" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/accounts/api/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="50" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/github/api/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+            <state relative-caret-position="350">
+              <caret line="26" column="9" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="26" selection-end-column="9" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <marker date="1575661098862" expanded="true" signature="521:609" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1041:2549" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1091:1254" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1305:2161" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1358:1651" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1413:1616" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1482:1512" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="1512:1574" ph="..." />
+                <marker date="1575661098862" expanded="true" signature="2211:2522" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_user.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/github/search_user.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="29" column="114" lean-forward="false" selection-start-line="29" selection-start-column="114" selection-end-line="29" selection-end-column="114" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_repo.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/search_repo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+              <folding>
+                <marker date="1575661374919" expanded="true" signature="3721:5224" ph="..." />
+                <marker date="1575661374919" expanded="true" signature="3785:3931" ph="..." />
+                <marker date="1575661374919" expanded="true" signature="3986:4592" ph="..." />
+                <marker date="1575661374919" expanded="true" signature="4036:4559" ph="..." />
+                <marker date="1575661374919" expanded="true" signature="4647:5193" ph="..." />
               </folding>
             </state>
           </provider>
@@ -173,7 +113,6 @@
         <option value="$PROJECT_DIR$/static/css/main.css" />
         <option value="$PROJECT_DIR$/templates/github/search_topic.html" />
         <option value="$PROJECT_DIR$/templates/github/search_user.html" />
-        <option value="$PROJECT_DIR$/static/js/search_user.js" />
         <option value="$PROJECT_DIR$/django_github/urls.py" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/accounts/models.py" />
@@ -190,11 +129,12 @@
         <option value="$PROJECT_DIR$/static/js/login.js" />
         <option value="$PROJECT_DIR$/github/admin.py" />
         <option value="$PROJECT_DIR$/github/urls.py" />
-        <option value="$PROJECT_DIR$/github/api/views.py" />
         <option value="$PROJECT_DIR$/github/api/urls.py" />
         <option value="$PROJECT_DIR$/github/models.py" />
         <option value="$PROJECT_DIR$/github/api/serializers.py" />
         <option value="$PROJECT_DIR$/templates/github/search_repo.html" />
+        <option value="$PROJECT_DIR$/github/api/views.py" />
+        <option value="$PROJECT_DIR$/static/js/search_user.js" />
         <option value="$PROJECT_DIR$/static/js/search_repo.js" />
       </list>
     </option>
@@ -718,7 +658,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/static/js/search_user.js</url>
-          <line>18</line>
+          <line>28</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -870,31 +810,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-683">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/search_user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <marker date="1575628064355" expanded="true" signature="709:2217" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="759:922" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="973:1829" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="1026:1319" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="1081:1284" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="1150:1180" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="1180:1242" ph="..." />
-            <marker date="1575628064355" expanded="true" signature="1879:2190" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/github/search_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="29" column="114" lean-forward="false" selection-start-line="29" selection-start-column="114" selection-end-line="29" selection-end-column="114" />
           <folding />
         </state>
       </provider>
@@ -1071,34 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="8" column="91" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/github/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/api/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/accounts/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1107,32 +994,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/github/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/github/api/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/github/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="48" lean-forward="false" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1142,7 +1009,7 @@
         <state relative-caret-position="342">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1155,16 +1022,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/github/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="8" column="91" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/github/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="48" lean-forward="false" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#28#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/github/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/github/search_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="29" column="114" lean-forward="false" selection-start-line="29" selection-start-column="114" selection-end-line="29" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/search_user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="26" column="9" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="26" selection-end-column="9" />
+          <folding>
+            <marker date="1575661098862" expanded="true" signature="521:609" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1041:2549" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1091:1254" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1305:2161" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1358:1651" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1413:1616" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1482:1512" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="1512:1574" ph="..." />
+            <marker date="1575661098862" expanded="true" signature="2211:2522" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/search_repo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        <state relative-caret-position="118">
+          <caret line="77" column="4" lean-forward="false" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
           <folding>
-            <marker date="1575659159226" expanded="true" signature="3725:5228" ph="..." />
-            <marker date="1575659159226" expanded="true" signature="3789:3935" ph="..." />
-            <marker date="1575659159226" expanded="true" signature="3990:4596" ph="..." />
-            <marker date="1575659159226" expanded="true" signature="4040:4563" ph="..." />
-            <marker date="1575659159226" expanded="true" signature="4651:5197" ph="..." />
+            <marker date="1575661374919" expanded="true" signature="3721:5224" ph="..." />
+            <marker date="1575661374919" expanded="true" signature="3785:3931" ph="..." />
+            <marker date="1575661374919" expanded="true" signature="3986:4592" ph="..." />
+            <marker date="1575661374919" expanded="true" signature="4036:4559" ph="..." />
+            <marker date="1575661374919" expanded="true" signature="4647:5193" ph="..." />
           </folding>
         </state>
       </provider>
