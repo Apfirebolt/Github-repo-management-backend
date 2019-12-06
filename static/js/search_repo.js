@@ -10,6 +10,17 @@ $(document).ready(function() {
     let input_text = '';
     let sort_by_value_text = 'stars';
     let order_by_value_text = 'asc';
+    let current_data = {};
+    let current_index = 0;
+    let items = [];
+
+    // Calling methods on dynamic jquery elements, change current index
+    result.on('click', 'a.save_link', function(event) {
+        current_index = event.target.getAttribute('data-store-id');
+        // console.log('Item at current index : ', items[current_index]);
+
+
+    });
 
     search_text.focusout(function(event){
         input_text = event.target.value;
@@ -32,7 +43,7 @@ $(document).ready(function() {
             url: `https://api.github.com/search/repositories?q=${input_text}&sort=${sort_by_value_text}&order=${order_by_value_text}`,
             success: function(response) {
                 // Clear the current html
-                console.log('Url : ', this.url);
+                items = response.items;
                 result.html('');
 
                 for(let i=0; i<response.items.length; i++)
@@ -55,7 +66,7 @@ $(document).ready(function() {
                             <a href="#" class="card-footer-item">${response.items[i].stargazers_count} Stars</a>
                             <a href="#" class="card-footer-item">${response.items[i].watchers_count} Watchers</a>
                             <a href="#" class="card-footer-item">Score is ${response.items[i].score}</a>
-                            <a href="#" class="card-footer-item">Save</a>
+                            <a class="card-footer-item save_link" data-store-id=${i} >Save</a>
                             <a href="#" class="card-footer-item">Mark Favorite</a>
                           </footer>
                         </div>
