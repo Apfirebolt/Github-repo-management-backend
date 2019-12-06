@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}
+    Repo Page - Search Repo
+{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <link rel="stylesheet" href={% static 'css/main.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/search_repo.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <form action="">
+
+    <div class="field">
+      <label for="repo_name">Enter Repo Name to Search</label>
+      <div class="control">
+        <input class="input is-primary" name="repo_name" id="repo_name" type="text" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="field">
+            <label for="sort_by">Sort Repositories By</label>
+            <div class="control">
+                <div class="select is-primary">
+                  <select id="sort_by" name="sort_by">
+                    <option value="stars" selected>Stars</option>
+                    <option value="forks">Forks</option>
+                    <option value="help-wanted-issues">Issues</option>
+                    <option value="updated">Updated</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="order_by">Order Repositories</label>
+            <div class="control">
+                <div class="select is-primary">
+                  <select name="order_by" id="order_by">
+                    <option value="asc" selected>Ascending</option>
+                    <option value="desc">Descending</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns is-centered">
+        <button type="submit" value="Search Repo!" class="button my-btn">Find Repository!</button>
+    </div>
+    </form>
+
+    <div class="repo-container">
+
+    </div>
+{% endblock %}

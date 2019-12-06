@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}
+    Repo Page - Search User
+{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <link rel="stylesheet" href={% static 'css/main.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/search_user.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <form action="">
+
+    <div class="field">
+      <label for="username">Enter Username to Search</label>
+      <div class="control">
+        <input class="input is-primary" name="username" id="username" type="text" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+        <button class="my-btn button">Search User!</button>
+    </div>
+    </form>
+
+    <div class="profile-container">
+        <p class="subtitle has-text-white">Please Type In a Username to search on <span class="title has-text-info">GITHUB</span>..</p>
+    </div>
+{% endblock %}

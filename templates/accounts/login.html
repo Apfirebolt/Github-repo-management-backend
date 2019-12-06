@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - Login Page{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+{% endblock %}
+
+{% block content %}
+    <form action=""> {% csrf_token %}
+
+    <div class="field">
+      <label for="username">Enter Your Username</label>
+      <div class="control">
+        <input class="input is-primary" type="text" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="username">Enter Your Password</label>
+      <div class="control">
+        <input class="input is-primary" type="password" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+        <input type="submit" value="Login Now!" class="button" />
+    </div>
+    </form>
+{% endblock %}
+
+

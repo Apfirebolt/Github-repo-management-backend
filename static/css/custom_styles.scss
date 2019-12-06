@@ -1,0 +1,79 @@
+.main-container {
+    background: url('../images/back.jpg');
+    min-height: 100vh;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.navbar-item {
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-container {
+    width: 60%;
+    margin: auto;
+}
+
+.card-header {
+    padding: 1rem;
+}
+
+.card-content {
+    color: #1d72aa;
+}
+
+.card {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+}
+
+.profile-container {
+  text-align: center;
+  width: 50%;
+  margin: 2rem auto;
+  padding: 1rem auto;
+
+  .card-content {
+    p {
+      margin: 0.8rem auto;
+      color: #34a85c;
+      font-size: 1rem;
+    }
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      color: #3ec46d;
+      font-family: "Lucida Console", sans-serif;
+      font-size: 1.2rem;
+    }
+  }
+  img {
+    height: 300px;
+    width: 50%;
+    margin: 1rem auto;
+  }
+}
+
+.repo-container {
+  width: 70%;
+  margin: 1rem auto;
+
+  .card {
+    .card-header {
+      display: flex;
+      justify-content: center;
+      color: #00b89c !important;
+      font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    }
+  }
+
+}
+

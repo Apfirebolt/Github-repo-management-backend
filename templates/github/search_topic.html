@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}
+    Repo Page - Search Topics
+{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <link rel="stylesheet" href={% static 'css/main.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/search_topic.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <form action=""> {% csrf_token %}
+
+    <div class="field">
+      <label for="topic_name">Enter Topic to Search</label>
+      <div class="control">
+        <input class="input is-primary" name="topic_name" id="topic_name" type="text" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+        <button type="submit" value="Search Topic!" class="button my-btn">Search Topic!</button>
+    </div>
+    </form>
+
+    <div class="result-container">
+
+    </div>
+{% endblock %}
