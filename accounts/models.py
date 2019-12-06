@@ -9,3 +9,6 @@ class UserModel(AbstractUser):
 
     class Meta:
         ordering = ['-id']
+
+    def __str__(self):
+        return str(self.username)

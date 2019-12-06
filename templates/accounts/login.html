@@ -4,29 +4,36 @@
 {% block title %}Django Github - Login Page{% endblock %}
 {% block custom_styles %}
     <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/login.js' %}></script>
 {% endblock %}
 
 {% block content %}
-    <form action=""> {% csrf_token %}
+    <p class="title has-text-info">{{ request.user }}</p>
+    <form method="post" id="login_form"> {% csrf_token %}
 
     <div class="field">
       <label for="username">Enter Your Username</label>
       <div class="control">
-        <input class="input is-primary" type="text" placeholder="Primary input">
+        <input class="input is-primary" name="username" id="username" type="text" placeholder="Primary input">
       </div>
     </div>
 
     <div class="field">
       <label for="username">Enter Your Password</label>
       <div class="control">
-        <input class="input is-primary" type="password" placeholder="Primary input">
+        <input class="input is-primary" name="password" id="password" type="password" placeholder="Primary input">
       </div>
     </div>
 
     <div class="columns is-centered">
-        <input type="submit" value="Login Now!" class="button" />
+        <input type="submit" value="Login Now!" class="button" id="submit-btn" />
     </div>
     </form>
+
+    <div class="error-container">
+
+    </div>
 {% endblock %}
 
 

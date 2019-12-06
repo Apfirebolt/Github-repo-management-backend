@@ -66,12 +66,21 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+          {% if request.user.is_authenticated %}
+            <p class="subtitle">Hello, {{ request.user }}</p>
+          {% endif %}
           <a class="button is-primary" href={% url 'accounts:register' %}>
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light" href={% url 'accounts:login' %}>
-            Log in
-          </a>
+          {% if request.user.is_authenticated %}
+              <a class="button is-dark" href={% url 'accounts:logout' %}>
+                Log Out
+              </a>
+          {% else %}
+              <a class="button is-light" href={% url 'accounts:login' %}>
+                Log In
+              </a>
+          {% endif %}
         </div>
       </div>
     </div>

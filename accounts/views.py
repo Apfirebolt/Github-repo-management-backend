@@ -11,6 +11,16 @@ class RegisterForm(FormView):
     template_name = 'accounts/register.html'
     success_url = '/'
 
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        password = form.cleaned_data['password']
+        user.set_password(password)
+        user.save()
+        return HttpResponseRedirect(reverse('home'))
+
+    def form_invalid(self, form):
+        pass
+
 
 def accounts_login(request):
   if request.method == 'POST':
@@ -24,6 +34,7 @@ def accounts_login(request):
       return HttpResponseRedirect(reverse('home'))
 
     else:
+      print('User not found')
       return HttpResponseRedirect(reverse('accounts:login'))
 
   else:

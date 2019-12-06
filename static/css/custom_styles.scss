@@ -74,6 +74,32 @@
       font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
     }
   }
+}
 
+/* Styling the navbar */
+.navbar {
+  .navbar-item {
+    .buttons .subtitle {
+      margin-top: 0.5rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+/* Styling error containers */
+.error-container {
+    margin: 1.5rem auto;
+    width: 70%;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 7px #fff;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    font-family: fantasy;
+    letter-spacing: 1px;
+    word-spacing: 0.3rem;
+    font-size: 2.2rem;
 }
 

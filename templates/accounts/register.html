@@ -3,10 +3,12 @@
 {% load static %}
 {% block custom_styles %}
     <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/register.js' %}></script>
 {% endblock %}
 
 {% block content %}
-    <form action=""> {% csrf_token %}
+    <form method="post" action="" id="register_form"> {% csrf_token %}
         {% for field in form.visible_fields %}
           <div class="field">
             <label for="{{ field.id_for_label }}">{{ field.label }}
@@ -19,9 +21,13 @@
           </div>
     {% endfor %}
     <div class="columns is-centered">
-        <input type="submit" value="Register Now!" class="button" />
+        <input type="submit" value="Register Now!" class="button" id="submit-btn" />
     </div>
     </form>
+
+    <div class="error-container">
+
+    </div>
 {% endblock %}
 
 

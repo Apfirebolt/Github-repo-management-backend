@@ -3,5 +3,5 @@
  */
 
 $(document).ready(function() {
-    console.log("Jquery is reasdy to run!");
+    console.log('something from jquery..now updated..');
 });

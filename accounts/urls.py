@@ -8,5 +8,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='accounts/dashboard.html'), name='dashboard'),
     path('api/', include(('accounts.api.urls', 'accounts.api'), namespace='accounts-api')),
     path('register/', views.RegisterForm.as_view(), name='register'),
-    path('login/', views.accounts_login, name='login')
+    path('login/', views.accounts_login, name='login'),
+    path('logout', auth_views.LogoutView.as_view(), name='logout'),
 ]
