@@ -13,7 +13,3 @@ class RepoSerializer(serializers.ModelSerializer):
           'owner': {'read_only': True},
         }
 
-
-
-    # def create(self, validated_data):
-    #     pass
