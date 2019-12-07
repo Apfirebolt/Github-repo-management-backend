@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tango Github - List Saved Users</title>
+    {% block custom_styles %}
+        <script src={% static 'js/jquery.js' %}></script>
+    {% endblock %}
+</head>
+<body>
+
+{% block content %}
+    <div class="all_profile_container">
+        {% for each_profile in saved_profiles %}
+        <div class="card">
+          <div class="card-image">
+              <img alt="Image not available" src={{ each_profile.user_image_url }} />
+          </div>
+          <div class="card-content">
+              <div class="card-header">
+                <p class="is-size-4 has-text-success">{{ each_profile.user_name }}</p>
+                <a href={{ each_profile.user_url }}>Github Profile Url</a>
+              </div>
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+</body>
+</html>

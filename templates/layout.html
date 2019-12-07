@@ -32,7 +32,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" href={% url 'accounts:dashboard' %}>
         Home
       </a>
 
@@ -54,6 +54,9 @@
           </a>
           <a class="navbar-item" href={% url 'github:search-topic' %}>
             Search Topics
+          </a>
+          <a class="navbar-item" href={% url 'github:list-user' %}>
+            Favourite Users
           </a>
           <hr class="navbar-divider">
           <a class="navbar-item">

@@ -126,4 +126,24 @@
   font-family: "Nunito", sans-serif;
   font-size: 2rem; }
 
+/* Styling Container which contains all saved profiles */
+.all_profile_container .card {
+  margin: 2rem auto;
+  padding: 0.5rem;
+  width: 50%; }
+  .all_profile_container .card .card-image {
+    display: flex;
+    justify-content: center;
+    padding: 1rem auto; }
+    .all_profile_container .card .card-image img {
+      border-radius: 2%; }
+  .all_profile_container .card .card-header {
+    display: flex;
+    justify-content: space-around; }
+    .all_profile_container .card .card-header a {
+      padding-top: 0.5rem; }
+  .all_profile_container .card .content {
+    padding-top: 1rem;
+    font-size: 1.3rem; }
+
 /*# sourceMappingURL=main.css.map */
