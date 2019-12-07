@@ -4,4 +4,6 @@
 
 $(document).ready(function() {
     console.log('something from jquery..now updated..');
+
+    $('')
 });

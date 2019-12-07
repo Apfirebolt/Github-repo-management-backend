@@ -15,6 +15,13 @@
 
 {% block content %}
     <div class="all_topic_container">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="has-text-white"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
         <table class="table">
             <caption class="is-size-3">Saved Topics from <span class="has-text-success">Github</span></caption>
             <thead>

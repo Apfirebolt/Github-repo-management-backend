@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.http import HttpResponse
 from github.models import RepoUserModel, RepoTopicModel
 from django.views.generic import ListView
@@ -34,4 +35,5 @@ class RepoTopicListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = RepoTopicModel.objects.filter(owner=self.request.user)
+        messages.add_message(self.request, messages.INFO, 'Hello world.')
         return queryset
