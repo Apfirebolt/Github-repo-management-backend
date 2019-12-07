@@ -37,7 +37,19 @@
             <p>Score : {{ each_repo.repo_score }}</p>
 
             <div class="footer">
-                <button class="button has-background-success favourite-btn" data-store-id={{ each_repo.id }}>Favourite</button>
+                {% if each_repo.is_favorited %}
+                <button class="button has-background-warning unfavourite-btn" value={{ each_repo.is_favorited }}
+                        data-store-id={{ each_repo.id }}>
+                Remove from Favourites
+                </button>
+                {% else %}
+                <button class="button has-background-success favourite-btn" value={{ each_repo.is_favorited }}
+                        data-store-id={{ each_repo.id }}>
+                Add To Favourites
+                </button>
+                {% endif %}
+                </button>
+
                 <button class="button has-background-danger delete-btn" data-store-id={{ each_repo.id }}>Delete</button>
             </div>
         </div>

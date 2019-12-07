@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from rest_framework.authentication import BaseAuthentication, SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from . serializers import RepoSerializer
+from . serializers import RepoSerializer, RepoStarSerializer
 from github.models import RepoModel
 
 
@@ -34,6 +34,11 @@ class RepoUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 class RepoDeleteView(generics.DestroyAPIView):
     serializer_class = RepoSerializer
+    queryset = RepoModel.objects.all()
+
+
+class RepoStarView(generics.UpdateAPIView):
+    serializer_class = RepoStarSerializer
     queryset = RepoModel.objects.all()
 
 

@@ -22,14 +22,73 @@ $(document).ready(() => {
 
     let delete_btn = $('.delete-btn');
     let favourite_btn = $('.favourite-btn');
+    let unfavourite_btn = $('.unfavourite-btn');
     let current_index = 0;
     let result = $('#info-container');
     let csrftoken = getCookie('csrftoken');
 
     favourite_btn.click((event) => {
-        console.log('Favourite button clicked..');
         current_index = event.target.getAttribute('data-store-id');
-        console.log('Current index is : ', current_index);
+
+        $.ajax({
+            type: 'PATCH',
+            url: `http://localhost:8000/hub/api/star/${current_index}`,
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            data: {
+              "is_favorited": true
+            },
+            success: function(response) {
+                // Clear the current html
+                result.html('');
+                result.append(`
+                          <p class="title has-white-text is-centered">Repo was successfully Starred!</p>`
+                )
+                result.fadeIn(1200, () => {
+                    setTimeout(() => {
+                        result.fadeOut(1200)
+                    }, 2000);
+                });
+            },
+            error: function(error) {
+                console.log('Some error occurred!');
+                result.html('<p class="title has-text-white"> Some Error Occurred, cannot load data from the server </p>');
+            }
+        });
+    });
+
+    unfavourite_btn.click((event) => {
+        // http://localhost:8000/hub/api/star
+
+        current_index = event.target.getAttribute('data-store-id');
+
+        $.ajax({
+            type: 'PATCH',
+            url: `http://localhost:8000/hub/api/star/${current_index}`,
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            data: {
+              "is_favorited": false
+            },
+            success: function(response) {
+                // Clear the current html
+                result.html('');
+                result.append(`
+                          <p class="title has-white-text is-centered">Repo was successfully removed from favourites!</p>`
+                )
+                result.fadeIn(1200, () => {
+                    setTimeout(() => {
+                        result.fadeOut(1200)
+                    }, 2000);
+                });
+            },
+            error: function(error) {
+                console.log('Some error occurred!');
+                result.html('<p class="title has-text-white"> Some Error Occurred, cannot load data from the server </p>');
+            }
+        });
     });
 
     delete_btn.click((event) => {
@@ -46,8 +105,8 @@ $(document).ready(() => {
                 // Clear the current html
                 result.html('');
                 result.append(`
-                        <p class="title has-text-white">Repo was successfully deleted!</p>
-                    `)
+                          <p class="title has-white-text is-centered">Repo was successfully deleted!</p>`
+                )
                 result.fadeIn(1200, () => {
                     setTimeout(() => {
                         result.fadeOut(1200)
@@ -55,6 +114,7 @@ $(document).ready(() => {
                 });
             },
             error: function(error) {
+                console.log('Some error occurred!');
                 result.html('<p class="title has-text-white"> Some Error Occurred, cannot load data from the server </p>');
             }
         });
