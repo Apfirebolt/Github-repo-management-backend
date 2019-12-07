@@ -210,3 +210,54 @@ $lato: 'Lato', sans-serif;
   }
 }
 
+.all_topic_container {
+  table {
+    width: 80%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    font-family: $lato;
+    border-collapse: separate;
+    border-spacing: 20px 0;
+
+    caption {
+      color: mintcream;
+      background-color: darkblue;
+      padding: 0.5rem;
+      font-family: $kanit;
+    }
+
+    thead tr th {
+      color: #00c4a7;
+    }
+
+    thead tr th:nth-of-type(3) {
+      text-align: center !important;
+    }
+
+    td {
+      padding: 1rem 0;
+      button {
+        font-family: $oxygen;
+        float: right;
+
+        &:hover {
+          background-color: #fff6d1 !important;
+          color: #242424 !important;
+          transition: all 0.5s ease-out;
+        }
+      }
+
+    }
+
+    td:nth-of-type(1) {
+      width: 20%;
+    }
+    td:nth-of-type(2) {
+      width: 60%;
+    }
+    td:nth-of-type(3) {
+      width: 20%;
+      text-align: center;
+    }
+  }
+}

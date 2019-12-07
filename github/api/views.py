@@ -6,8 +6,8 @@ from django.dispatch import receiver
 from rest_framework.authentication import BaseAuthentication, SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from . serializers import RepoSerializer, RepoStarSerializer, RepoUserModelSerializer
-from github.models import RepoModel, RepoUserModel
+from . serializers import RepoSerializer, RepoStarSerializer, RepoUserModelSerializer, RepoTopicModelSerializer
+from github.models import RepoModel, RepoUserModel, RepoTopicModel
 
 
 class RepoCreateView(generics.CreateAPIView):
@@ -53,3 +53,16 @@ class RepoUserModelCreate(generics.CreateAPIView):
 class RepoUserListView(generics.ListAPIView):
     serializer_class = RepoUserModelSerializer
     queryset = RepoUserModel.objects.all()
+
+
+class RepoTopicCreateView(generics.CreateAPIView):
+    serializer_class = RepoTopicModelSerializer
+
+    def perform_create(self, serializer):
+        serializer.validated_data['owner'] = self.request.user;
+        serializer.save()
+
+
+class RepoTopicListView(generics.ListAPIView):
+    serializer_class = RepoTopicModelSerializer
+    queryset = RepoTopicModel.objects.all()

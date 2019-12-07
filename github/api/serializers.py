@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from github.models import RepoModel, RepoUserModel
+from github.models import RepoModel, RepoUserModel, RepoTopicModel
 from rest_framework.validators import UniqueValidator
 
 
@@ -31,3 +31,12 @@ class RepoUserModelSerializer(serializers.ModelSerializer):
         extra_kwargs = {
           'owner': {'read_only': True},
         }
+
+
+class RepoTopicModelSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = RepoTopicModel
+    fields = ('owner', 'topic_name', 'topic_score', 'topic_description',)
+    extra_kwargs = {
+      'owner': {'read_only': True},
+    }

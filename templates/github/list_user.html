@@ -4,7 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tango Github - List Saved Users</title>
+    {% block title %}
+        Github - List Saved Users
+    {% endblock %}
     {% block custom_styles %}
         <script src={% static 'js/jquery.js' %}></script>
     {% endblock %}

@@ -29,3 +29,12 @@ class RepoUserModel(models.Model):
     def __str__(self):
         return str(self.owner) + ' - ' + str(self.user_name)
 
+
+class RepoTopicModel(models.Model):
+    owner = models.ForeignKey(AUTH_USER_MODEL, related_name='repo_topic_owner', on_delete=models.CASCADE)
+    topic_name = models.CharField(max_length=200)
+    topic_score = models.IntegerField()
+    topic_description = models.CharField(max_length=500, default=None)
+
+    def __str__(self):
+        return str(self.owner) + ' - ' + str(self.topic_name)

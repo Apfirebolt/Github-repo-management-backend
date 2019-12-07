@@ -55,10 +55,14 @@
           <a class="navbar-item" href={% url 'github:search-topic' %}>
             Search Topics
           </a>
-          <a class="navbar-item" href={% url 'github:list-user' %}>
-            Favourite Users
-          </a>
+
           <hr class="navbar-divider">
+            <a class="navbar-item" href={% url 'github:list-user' %}>
+                Favourite Users
+            </a>
+            <a class="navbar-item" href={% url 'github:saved-topics' %}>
+                Favourite Topics
+            </a>
           <a class="navbar-item">
             Change Account Settings
           </a>

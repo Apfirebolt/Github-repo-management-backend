@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        Github - List Stored Topics
+    {% endblock %}
+    {% block custom_styles %}
+        <script src={% static 'js/jquery.js' %}></script>
+    {% endblock %}
+</head>
+<body>
+
+{% block content %}
+    <div class="all_topic_container">
+        <table class="table">
+            <caption class="is-size-3">Saved Topics from <span class="has-text-success">Github</span></caption>
+            <thead>
+                <tr>
+                    <th>Topic Name</th>
+                    <th>Topic Description</th>
+                    <th>Topic Score</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for each_topic in saved_topics %}
+                <tr>
+                    <td>{{ each_topic.topic_name }}</td>
+                    <td>{{ each_topic.topic_description }}</td>
+                    <td>{{ each_topic.topic_score }}
+                        <button class="button has-text-white has-background-primary">Search Repo</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+</body>
+</html>

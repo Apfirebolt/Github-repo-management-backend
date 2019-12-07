@@ -3,13 +3,59 @@
  */
 
 $(document).ready(function() {
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
     let result = $('.result-container');
     let search_text = $('#topic_name');
     let input_text = '';
     let btn = $('.my-btn');
+    let topic_results = [];
+    let current_index = 0;
+    let current_data = {};
+    let csrftoken = getCookie('csrftoken');
 
     search_text.focusout(function(event){
         input_text = event.target.value;
+    });
+
+    result.on('click', '.save-topic', function(event) {
+        event.preventDefault();
+        current_index = event.target.getAttribute('data-store-id');
+
+        current_data.topic_name = topic_results[current_index].name;
+        current_data.topic_score = Math.ceil(topic_results[current_index].score);
+        current_data.topic_description = topic_results[current_index].description ?
+            topic_results[current_index].description : 'No Topic Description Provided' ;
+
+
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:8000/hub/api/topic',
+          data: current_data,
+          headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function(response) {
+              console.log('So this was success', response);
+          },
+          error: function(error) {
+              console.log('The request failed : ', error);
+          },
+        });
     });
 
     btn.click(function(event) {
@@ -25,7 +71,7 @@ $(document).ready(function() {
             success: function(response) {
                 // Clear the current html
                 result.html('');
-
+                topic_results = response.items;
                 for(let i=0; i<response.items.length; i++)
                 {
                     result.append(`
@@ -42,9 +88,9 @@ $(document).ready(function() {
                             </div>
                           </div>
                           <footer class="card-footer">
-                            <a href="#" class="card-footer-item">Score is ${response.items[i].score}</a>
-                            <a href="#" class="card-footer-item">Save</a>
-                            <a href="#" class="card-footer-item">Mark Favorite</a>
+                            <a class="card-footer-item">Score is ${response.items[i].score}</a>
+                            <a class="card-footer-item save-topic" data-store-id=${i}>Save</a>
+                            <a class="card-footer-item">Mark Favorite</a>
                           </footer>
                         </div>
                     `)
