@@ -121,6 +121,9 @@
   text-align: center;
   padding: 1rem;
   border-radius: 1rem;
-  display: none; }
+  display: none;
+  color: mintcream;
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem; }
 
 /*# sourceMappingURL=main.css.map */

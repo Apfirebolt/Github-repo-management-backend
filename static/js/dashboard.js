@@ -43,7 +43,7 @@ $(document).ready(() => {
                 // Clear the current html
                 result.html('');
                 result.append(`
-                          <p class="title has-white-text is-centered">Repo was successfully Starred!</p>`
+                          <p>Repo was successfully Starred!</p>`
                 )
                 result.fadeIn(1200, () => {
                     setTimeout(() => {
@@ -53,14 +53,12 @@ $(document).ready(() => {
             },
             error: function(error) {
                 console.log('Some error occurred!');
-                result.html('<p class="title has-text-white"> Some Error Occurred, cannot load data from the server </p>');
+                result.html('<p> Some Error Occurred, cannot load data from the server </p>');
             }
         });
     });
 
     unfavourite_btn.click((event) => {
-        // http://localhost:8000/hub/api/star
-
         current_index = event.target.getAttribute('data-store-id');
 
         $.ajax({

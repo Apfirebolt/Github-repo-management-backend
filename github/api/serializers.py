@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from github.models import RepoModel
+from github.models import RepoModel, RepoUserModel
 from rest_framework.validators import UniqueValidator
 
 
@@ -22,3 +22,12 @@ class RepoStarSerializer(serializers.ModelSerializer):
         model = RepoModel
         fields = ('is_favorited',)
 
+
+class RepoUserModelSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = RepoUserModel
+        fields = ('owner','user_name', 'user_url', 'user_image_url',)
+        extra_kwargs = {
+          'owner': {'read_only': True},
+        }

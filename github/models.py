@@ -19,3 +19,13 @@ class RepoModel(models.Model):
     def __str__(self):
         return str(self.owner) + ' - ' + str(self.repo_name)
 
+
+class RepoUserModel(models.Model):
+    owner = models.ForeignKey(AUTH_USER_MODEL, related_name='repo_user_owner', on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
+    user_url = models.URLField()
+    user_image_url = models.URLField()
+
+    def __str__(self):
+        return str(self.owner) + ' - ' + str(self.user_name)
+
