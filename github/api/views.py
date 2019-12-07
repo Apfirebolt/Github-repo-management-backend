@@ -26,3 +26,15 @@ class RepoListView(generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     filter_fields = ('repo_language', 'repo_stars', 'repo_description',)
 
+
+class RepoUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = RepoSerializer
+    queryset = RepoModel.objects.all()
+
+
+class RepoDeleteView(generics.DestroyAPIView):
+    serializer_class = RepoSerializer
+    queryset = RepoModel.objects.all()
+
+
+

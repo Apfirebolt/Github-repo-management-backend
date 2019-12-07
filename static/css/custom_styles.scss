@@ -1,3 +1,28 @@
+/*
+  Importing Google Fonts
+
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  font-family: 'Kanit', sans-serif;
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Kanit|Lato|Nunito|Open+Sans|Oxygen&display=swap');
+
+/* Declaration of SASS variables and fonts */
+
+$light_color: #ffff80;
+$light_green: #9fff80;
+
+$kanit: 'Kanit', sans-serif;
+$open_sans: 'Open Sans', sans-serif;
+$nunito: 'Nunito', sans-serif;
+$oxygen: 'Oxygen', sans-serif;
+$lato: 'Lato', sans-serif;
+
+
 .main-container {
     background: url('../images/back.jpg');
     min-height: 100vh;
@@ -102,4 +127,52 @@
     word-spacing: 0.3rem;
     font-size: 2.2rem;
 }
+
+.single-repo-container {
+  width: 60%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #FFF;
+
+  .repo-header {
+    margin-bottom: 1rem;
+    background-color: darken(#FFF, 12%);
+    padding: 1rem;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 1rem;
+
+    button {
+      margin: 1rem;
+      color: #fff8de;
+      min-width: 120px;
+      font-family: $kanit;
+      transition: all 0.5s ease-out;
+
+      &:hover {
+        color:lightcyan;
+      }
+    }
+  }
+}
+
+#info-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 1.5rem;
+  background-color: #00c4a7;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: none;
+}
+
 

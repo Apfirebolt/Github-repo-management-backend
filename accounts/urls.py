@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='accounts/dashboard.html'), name='dashboard'),
+    path('', views.RepoList.as_view(), name='dashboard'),
     path('api/', include(('accounts.api.urls', 'accounts.api'), namespace='accounts-api')),
     path('register/', views.RegisterForm.as_view(), name='register'),
     path('login/', views.accounts_login, name='login'),

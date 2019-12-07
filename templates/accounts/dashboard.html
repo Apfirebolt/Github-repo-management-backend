@@ -1,14 +1,47 @@
-{% include 'layout.html' %}
+{% extends 'layout.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Tango Github - Dashboard</title>
+    {% block custom_styles %}
+        <script src={% static 'js/jquery.js' %}></script>
+        <script src={% static 'js/dashboard.js' %}></script>
+    {% endblock %}
 </head>
 <body>
-
+<!-- http://localhost:8000/hub/api/delete/1 -->
 {% block content %}
-<h1 class="primary">Dashboard Page</h1>
+    <div id="info-container">
+        <p class="title has-text-white">This is the message container</p>
+    </div>
+
+    {% for each_repo in my_saved_repos %}
+        <div class="single-repo-container">
+            <div class="repo-header has-text-centered">
+                <p class="title">
+                    {{ each_repo.repo_name }}
+                    <span class="subtitle has-text-grey">(By {{ each_repo.repo_creator }})</span>
+                    <span class="has-text-danger subtitle">{{ each_repo.repo_created_on }}</span>
+                </p>
+            </div>
+
+            <p class="is-size-3">Stars : {{ each_repo.repo_stars }}</p>
+            <a href={{ each_repo.repo_url }} class="is-size-4">{{ each_repo.repo_url }}</a>
+            <p class="is-size-4">Watchers : {{ each_repo.repo_watchers }}</p>
+            <p class="is-size-4">Description : {{ each_repo.repo_description }}</p>
+            <p class="is-size-4">Language : {{ each_repo.repo_language }}</p>
+            <p>Forked {{ each_repo.repo_forked }} times</p>
+
+            <p>Score : {{ each_repo.repo_score }}</p>
+
+            <div class="footer">
+                <button class="button has-background-success favourite-btn" data-store-id={{ each_repo.id }}>Favourite</button>
+                <button class="button has-background-danger delete-btn" data-store-id={{ each_repo.id }}>Delete</button>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
 
 </body>

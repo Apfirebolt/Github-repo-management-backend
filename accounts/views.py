@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from . forms import UserModelForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from github.models import RepoModel
 
 
 class RegisterForm(FormView):
@@ -39,6 +41,19 @@ def accounts_login(request):
 
   else:
     return render(request, 'accounts/login.html', {})
+
+
+class RepoList(LoginRequiredMixin, ListView):
+    model = RepoModel
+    template_name = 'accounts/dashboard.html'
+    context_object_name = 'my_saved_repos'
+
+    def get_queryset(self):
+        queryset = RepoModel.objects.filter(owner=self.request.user)
+        return queryset
+
+
+
 
 
 
