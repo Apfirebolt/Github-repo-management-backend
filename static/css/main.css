@@ -188,7 +188,8 @@
   color: #242400;
   font-family: "Nunito", sans-serif, sans-serif;
   border-radius: 1.2rem;
-  box-shadow: 2px 2px 2px #FFF; }
+  box-shadow: 2px 2px 2px #FFF;
+  display: none; }
   .create-blog-container .field {
     display: flex;
     justify-content: space-between;
@@ -250,7 +251,8 @@
 
 .blog-post-list-container {
   position: relative;
-  margin: auto; }
+  margin: auto;
+  display: none; }
   .blog-post-list-container .each-post {
     background-color: #FFF;
     color: powderblue;
@@ -314,5 +316,10 @@
   padding: 2rem;
   display: none;
   z-index: 100; }
+  .global-modal p {
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase; }
 
 /*# sourceMappingURL=main.css.map */

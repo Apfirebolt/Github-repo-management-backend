@@ -276,6 +276,7 @@ $lato: 'Lato', sans-serif;
     font-family: $nunito, sans-serif;
     border-radius: 1.2rem;
     box-shadow: 2px 2px 2px #FFF;
+    display: none;
 
     .field {
       display: flex;
@@ -371,6 +372,7 @@ $lato: 'Lato', sans-serif;
 .blog-post-list-container {
   position: relative;
   margin: auto;
+  display: none;
 
   .each-post {
     background-color: #FFF;
@@ -460,4 +462,11 @@ $lato: 'Lato', sans-serif;
   padding: 2rem;
   display: none;
   z-index: 100;
+
+  p {
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
 }

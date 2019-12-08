@@ -3,6 +3,11 @@
  */
 
 $(document).ready(function() {
+    let container = $('.blog-post-list-container');
+    let create_blog_container = $('.create-blog-container');
+
+    container.fadeIn(1200);
+    create_blog_container.fadeIn(1200);
 
     // Function to extract CSRF token
     function getCookie(name) {
@@ -20,6 +25,8 @@ $(document).ready(function() {
         }
         return cookieValue;
     }
+
+
 
     let delete_blog = $('.delete-blog');
     let delete_blog_post = $('.delete-blog-post');
