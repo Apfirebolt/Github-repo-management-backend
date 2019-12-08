@@ -278,6 +278,12 @@ $lato: 'Lato', sans-serif;
     box-shadow: 2px 2px 2px #FFF;
     display: none;
 
+    h2 {
+      text-align: center;
+      margin-right: 1rem;
+      font-size: 1.8rem;
+    }
+
     .field {
       display: flex;
       justify-content: space-between;
@@ -425,7 +431,7 @@ $lato: 'Lato', sans-serif;
       display: flex;
       justify-content: center;
 
-      button {
+      .button {
         margin: 0.5rem;
         min-width: 100px;
         display: flex;

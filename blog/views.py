@@ -71,7 +71,7 @@ class UpdateBlogPost(UpdateView):
         form.save()
         messages.success(self.request, '%s, You have successfully Inserted an entry in your blog.'
                          % (self.request.user.username))
-        return HttpResponseRedirect(reverse('blog:list-blog'))
+        return HttpResponseRedirect(reverse('blog:list'))
 
 
 class ListBlogPost(ListView):

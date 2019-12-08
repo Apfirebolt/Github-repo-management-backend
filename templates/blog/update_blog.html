@@ -9,6 +9,7 @@
 
 {% block content %}
     <div class="create-blog-container">
+        <h2>UPDATE BLOG CATEGORY <i class="fa fa-edit"></i></h2>
         <form method="post" action="" id="register_form"> {% csrf_token %}
         {% for field in form.visible_fields %}
           <div class="field">
@@ -22,7 +23,7 @@
           </div>
         {% endfor %}
         <div class="columns is-centered">
-            <input type="submit" value="Update Blog Category!" class="button" id="submit-btn" />
+            <input type="submit" value="UPDATE BLOG CATEGORY!" class="button" id="submit-btn" />
             <i class="fa fa-blog"></i>
         </div>
         </form>

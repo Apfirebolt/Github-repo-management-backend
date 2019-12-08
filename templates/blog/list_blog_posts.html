@@ -29,7 +29,7 @@
                 {% endif %}
             </div>
             <div class="blog-footer">
-                <button class="button"><i class="fa fa-edit"></i>Edit</button>
+                <a class="button" href={% url 'blog:update-post' pk=each_blog.pk %}><i class="fa fa-edit"></i>Edit</a>
                 <button class="button delete-blog-post" data-store-id={{ each_blog.pk }}><i class="fa fa-trash"></i>Delete</button>
                 <button class="button"><i class="fa fa-share"></i>Share</button>
             </div>
