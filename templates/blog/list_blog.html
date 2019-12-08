@@ -4,10 +4,10 @@
 {% block title %}Django Github - Blog List Page{% endblock %}
 {% block custom_styles %}
     <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/blog.js' %}></script>
 {% endblock %}
 
 {% block content %}
-    {{ all_blogs }}
     <div class="blog-list-container">
 
         <table class="table">
@@ -24,8 +24,11 @@
                 <tr>
                     <td>{{ each_blog.title }}</td>
                     <td>{{ each_blog.category }}</td>
-                    <td>
+                    <td class="action-column">
+                        <i class="fa fa-trash delete-blog" data-store-id={{ each_blog.pk }}></i>
+                        <a href="{% url 'blog:update-blog' pk=each_blog.pk %}"><i class="fa fa-edit"></i></a>
                         <a class="button" href="{% url 'blog:create-post' blog=each_blog.slug %}">Add Post</a>
+                        <a class="button" href="{% url 'blog:list-post' %}">View Posts</a>
                     </td>
                 </tr>
             {% endfor %}

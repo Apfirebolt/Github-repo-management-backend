@@ -55,14 +55,11 @@ class UpdateBlog(LoginRequiredMixin, UpdateView):
 
         blog_obj.save()
         messages.success(self.request, '%s, You have successfully updated your blog.' % (self.request.user.username))
-        return HttpResponseRedirect(reverse('blog:list-blog'))
+        return HttpResponseRedirect(reverse('blog:list'))
 
     def form_invalid(self, form):
         print(form.errors)
 
-
-class DeleteBlog(DeleteView):
-    pass
 
 
 class UpdateBlogPost(UpdateView):
@@ -78,7 +75,13 @@ class UpdateBlogPost(UpdateView):
 
 
 class ListBlogPost(ListView):
-    pass
+    model = BlogPost
+    template_name = 'blog/list_blog_posts.html'
+    context_object_name = 'all_blog_posts'
+
+    def get_queryset(self):
+        queryset = BlogPost.objects.filter(blog__owner=self.request.user)
+        return queryset
 
 
 class CreateBlogPost(CreateView):

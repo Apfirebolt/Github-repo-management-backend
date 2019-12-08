@@ -6,7 +6,7 @@ class RepoModel(models.Model):
     owner = models.ForeignKey(AUTH_USER_MODEL, related_name='repo_owner', on_delete=models.CASCADE)
     repo_creator = models.CharField(max_length=100)
     repo_language = models.CharField(max_length=50)
-    repo_name = models.CharField(max_length=200)
+    repo_name = models.CharField(max_length=200, unique=True)
     repo_description = models.CharField(max_length=500)
     repo_url = models.URLField()
     repo_stars = models.IntegerField()
@@ -22,7 +22,7 @@ class RepoModel(models.Model):
 
 class RepoUserModel(models.Model):
     owner = models.ForeignKey(AUTH_USER_MODEL, related_name='repo_user_owner', on_delete=models.CASCADE)
-    user_name = models.CharField(max_length=100)
+    user_name = models.CharField(max_length=100, unique=True)
     user_url = models.URLField()
     user_image_url = models.URLField()
 
@@ -32,7 +32,7 @@ class RepoUserModel(models.Model):
 
 class RepoTopicModel(models.Model):
     owner = models.ForeignKey(AUTH_USER_MODEL, related_name='repo_topic_owner', on_delete=models.CASCADE)
-    topic_name = models.CharField(max_length=200)
+    topic_name = models.CharField(max_length=200, unique=True)
     topic_score = models.IntegerField()
     topic_description = models.CharField(max_length=500, default=None)
 

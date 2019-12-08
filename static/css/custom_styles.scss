@@ -17,6 +17,7 @@ $light_color: #ffff80;
 $light_green: #9fff80;
 $light_blue: powderblue;
 $custom_black: #242400;
+$dark_red: #98250C;
 
 $kanit: 'Kanit', sans-serif;
 $open_sans: 'Open Sans', sans-serif;
@@ -273,7 +274,6 @@ $lato: 'Lato', sans-serif;
     width: 70%;
     color: $custom_black;
     font-family: $nunito, sans-serif;
-    display: none;
     border-radius: 1.2rem;
     box-shadow: 2px 2px 2px #FFF;
 
@@ -321,6 +321,31 @@ $lato: 'Lato', sans-serif;
       font-family: $kanit;
     }
 
+    tbody {
+      .action-column {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          margin-right: 0.8rem;
+          font-size: 1.5rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        i.fa-trash {
+          height: 28px !important;
+        }
+      }
+
+      a {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+
     thead tr th {
       color: indianred;
       text-align: center !important;
@@ -341,4 +366,98 @@ $lato: 'Lato', sans-serif;
 
     }
   }
+}
+
+.blog-post-list-container {
+  position: relative;
+  margin: auto;
+
+  .each-post {
+    background-color: #FFF;
+    color: $light_blue;
+    font-family: $nunito, sans-serif;
+    width: 70%;
+    margin: 1.5rem auto;
+    position: relative;
+    padding: 2rem;
+    transition: all 1s ease-out;
+
+    .subtitle {
+      width: 50%;
+      border-bottom: 2px solid $light_blue;
+      padding-bottom: 0.5rem;
+    }
+
+    .blog-body {
+      display: flex;
+      justify-content: space-between;
+
+      .add-image {
+        p {
+          margin-bottom: 0.5rem;
+        }
+      }
+      p {
+        margin-top: 1rem;
+        color: #242424;
+        font-weight: 400;
+      }
+
+      img {
+        border-radius: 50%;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+        border-radius: 40%;
+        transition: all 0.5s ease-in-out;
+        }
+      }
+
+    }
+    p {
+      white-space: pre-line;
+      max-width: 55%;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: center;
+
+      button {
+        margin: 0.5rem;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s linear;
+
+        &:hover {
+          background-color: mintcream !important;
+          transition: all 0.4s linear;
+        }
+
+        i {
+          margin-right: 0.5rem;
+          color: $dark_red;
+        }
+      }
+    }
+  }
+}
+
+.global-modal {
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background-color: #cc0f35;
+  border-radius: 1rem;
+  color: #fff6d1 !important;
+  margin: auto;
+  padding: 2rem;
+  display: none;
+  z-index: 100;
 }

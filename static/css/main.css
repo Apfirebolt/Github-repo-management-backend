@@ -187,7 +187,6 @@
   width: 70%;
   color: #242400;
   font-family: "Nunito", sans-serif, sans-serif;
-  display: none;
   border-radius: 1.2rem;
   box-shadow: 2px 2px 2px #FFF; }
   .create-blog-container .field {
@@ -221,6 +220,20 @@
     background-color: darkblue;
     padding: 0.5rem;
     font-family: "Kanit", sans-serif; }
+  .blog-list-container table tbody .action-column {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .blog-list-container table tbody .action-column i {
+      margin-right: 0.8rem;
+      font-size: 1.5rem; }
+      .blog-list-container table tbody .action-column i:hover {
+        cursor: pointer; }
+    .blog-list-container table tbody .action-column i.fa-trash {
+      height: 28px !important; }
+  .blog-list-container table tbody a {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem; }
   .blog-list-container table thead tr th {
     color: indianred;
     text-align: center !important;
@@ -234,5 +247,72 @@
         background-color: powderblue !important;
         color: #242424 !important;
         transition: all 0.5s ease-out; }
+
+.blog-post-list-container {
+  position: relative;
+  margin: auto; }
+  .blog-post-list-container .each-post {
+    background-color: #FFF;
+    color: powderblue;
+    font-family: "Nunito", sans-serif, sans-serif;
+    width: 70%;
+    margin: 1.5rem auto;
+    position: relative;
+    padding: 2rem;
+    transition: all 1s ease-out; }
+    .blog-post-list-container .each-post .subtitle {
+      width: 50%;
+      border-bottom: 2px solid powderblue;
+      padding-bottom: 0.5rem; }
+    .blog-post-list-container .each-post .blog-body {
+      display: flex;
+      justify-content: space-between; }
+      .blog-post-list-container .each-post .blog-body .add-image p {
+        margin-bottom: 0.5rem; }
+      .blog-post-list-container .each-post .blog-body p {
+        margin-top: 1rem;
+        color: #242424;
+        font-weight: 400; }
+      .blog-post-list-container .each-post .blog-body img {
+        border-radius: 50%;
+        transition: all 0.5s ease-in-out; }
+        .blog-post-list-container .each-post .blog-body img:hover {
+          border-radius: 40%;
+          transition: all 0.5s ease-in-out; }
+    .blog-post-list-container .each-post p {
+      white-space: pre-line;
+      max-width: 55%; }
+    .blog-post-list-container .each-post .blog-footer {
+      display: flex;
+      justify-content: center; }
+      .blog-post-list-container .each-post .blog-footer button {
+        margin: 0.5rem;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s linear; }
+        .blog-post-list-container .each-post .blog-footer button:hover {
+          background-color: mintcream !important;
+          transition: all 0.4s linear; }
+        .blog-post-list-container .each-post .blog-footer button i {
+          margin-right: 0.5rem;
+          color: #98250C; }
+
+.global-modal {
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background-color: #cc0f35;
+  border-radius: 1rem;
+  color: #fff6d1 !important;
+  margin: auto;
+  padding: 2rem;
+  display: none;
+  z-index: 100; }
 
 /*# sourceMappingURL=main.css.map */

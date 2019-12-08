@@ -32,10 +32,16 @@ $(document).ready(function() {
     let csrftoken = getCookie('csrftoken');
 
     // Calling methods on dynamic jquery elements, change current index
+    result.on('click', '.fav-link', function(event) {
+        console.log('Favourite link button clicked');
+
+    });
     result.on('click', 'a.save_link', function(event) {
         current_index = event.target.getAttribute('data-store-id');
         // console.log('Item at current index : ', items[current_index]);
 
+        $("body").scrollTop(0);
+        console.log('Scrolling to top..');
         current_data.repo_name = items[current_index].name;
         current_data.repo_creator = items[current_index].owner.login;
         current_data.repo_language = items[current_index].language ? items[current_index].language : 'Language not specified';
@@ -55,7 +61,14 @@ $(document).ready(function() {
                 'X-CSRFToken': csrftoken
           },
           success: function(response) {
-              console.log('So this was success', response);
+
+              let container = $('.global-modal');
+              container.html(`<p class="is-size-3 has-text-centered">${current_data.repo_name} was added to your favourite repositories.</p>`);
+              container.fadeIn(1000, () => {
+                  container.fadeOut(2000, () => {
+                      container.html('');
+                  });
+              })
           },
           error: function(error) {
               console.log('The request failed : ', error);
@@ -109,7 +122,7 @@ $(document).ready(function() {
                             <a href="#" class="card-footer-item">${response.items[i].watchers_count} Watchers</a>
                             <a href="#" class="card-footer-item">Score is ${response.items[i].score}</a>
                             <a class="card-footer-item save_link" data-store-id=${i} >Save</a>
-                            <a href="#" class="card-footer-item">Mark Favorite</a>
+                            <a href="#" class="card-footer-item fav-link">Mark Favorite</a>
                           </footer>
                         </div>
                     `)

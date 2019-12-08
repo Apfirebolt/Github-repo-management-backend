@@ -34,6 +34,15 @@ class BlogCategoryAPIView(generics.ListAPIView):
         return context
 
     def get_queryset(self):
-        print('Something related to API master')
         return BlogCategory.objects.all()
+
+
+class BlogCategoryDelete(generics.DestroyAPIView):
+    serializer_class = BlogCategorySerializer
+    queryset = BlogCategory.objects.all()
+
+
+class BlogPostDelete(generics.DestroyAPIView):
+    serializer_class = BlogPostSerializer
+    queryset = BlogPost.objects.all()
 

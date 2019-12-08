@@ -4,14 +4,28 @@
 {% block title %}Django Github - Update Blog{% endblock %}
 {% block custom_styles %}
     <script src={% static 'js/jquery.js' %}></script>
+
 {% endblock %}
 
 {% block content %}
-    
-    <p class="title has-text-white">Update Blog Page</p>
+    <div class="create-blog-container">
+        <form method="post" action="" id="register_form"> {% csrf_token %}
+        {% for field in form.visible_fields %}
+          <div class="field">
+            <label for="{{ field.id_for_label }}">{{ field.label }}
 
-    <div class="error-container">
-
+            </label>
+            {{ field|add_class:'input' }}
+            {% for error in field.errors %}
+              <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+        <div class="columns is-centered">
+            <input type="submit" value="Update Blog Category!" class="button" id="submit-btn" />
+            <i class="fa fa-blog"></i>
+        </div>
+        </form>
     </div>
 {% endblock %}
 
