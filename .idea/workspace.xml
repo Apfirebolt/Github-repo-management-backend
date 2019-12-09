@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a302803-6d49-4948-acd9-51eec0faea44" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/topic.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/.sass-cache/390fdff4a03f712056937810ff5d41c7f33a3182/custom_styles.scssc" afterPath="$PROJECT_DIR$/static/css/.sass-cache/390fdff4a03f712056937810ff5d41c7f33a3182/custom_styles.scssc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/forms.py" afterPath="$PROJECT_DIR$/accounts/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/views.py" afterPath="$PROJECT_DIR$/accounts/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/views.py" afterPath="$PROJECT_DIR$/blog/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_github/settings.py" afterPath="$PROJECT_DIR$/django_github/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_github/urls.py" afterPath="$PROJECT_DIR$/django_github/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github/api/serializers.py" afterPath="$PROJECT_DIR$/github/api/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github/api/urls.py" afterPath="$PROJECT_DIR$/github/api/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/github/api/views.py" afterPath="$PROJECT_DIR$/github/api/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/custom_styles.scss" afterPath="$PROJECT_DIR$/static/css/custom_styles.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/main.css" afterPath="$PROJECT_DIR$/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/main.css.map" afterPath="$PROJECT_DIR$/static/css/main.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/github/list_topics.html" afterPath="$PROJECT_DIR$/templates/github/list_topics.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,21 +21,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="custom_styles.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/custom_styles.scss">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="226" column="20" lean-forward="false" selection-start-line="226" selection-start-column="20" selection-end-line="226" selection-end-column="20" />
+            <state relative-caret-position="-1575">
+              <caret line="24" column="54" lean-forward="false" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/test.js">
+      <file leaf-file-name="custom_styles.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/custom_styles.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="18" lean-forward="false" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+            <state relative-caret-position="373">
+              <caret line="226" column="20" lean-forward="false" selection-start-line="226" selection-start-column="20" selection-end-line="226" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -103,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/search_repo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="303">
-              <caret line="108" column="69" lean-forward="true" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+              <caret line="108" column="69" lean-forward="false" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
               <folding>
                 <marker date="1575786639219" expanded="true" signature="4220:5732" ph="..." />
                 <marker date="1575786639219" expanded="true" signature="4284:4430" ph="..." />
@@ -119,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -129,17 +113,17 @@
         <entry file="file://$PROJECT_DIR$/static/js/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="369">
-              <caret line="58" column="7" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="58" selection-end-column="7" />
+              <caret line="58" column="7" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="58" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topic.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="topic.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/topic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="48" column="7" lean-forward="true" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+            <state relative-caret-position="150">
+              <caret line="48" column="7" lean-forward="false" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -418,6 +402,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -854,6 +852,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,16 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="24" column="54" lean-forward="false" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/accounts/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="875">
@@ -1156,7 +1145,7 @@
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1172,7 +1161,7 @@
     <entry file="file://$PROJECT_DIR$/static/js/search_repo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
-          <caret line="108" column="69" lean-forward="true" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+          <caret line="108" column="69" lean-forward="false" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
           <folding>
             <marker date="1575786639219" expanded="true" signature="4220:5732" ph="..." />
             <marker date="1575786639219" expanded="true" signature="4284:4430" ph="..." />
@@ -1194,15 +1183,23 @@
     <entry file="file://$PROJECT_DIR$/static/js/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
-          <caret line="58" column="7" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="58" selection-end-column="7" />
+          <caret line="58" column="7" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="58" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/topic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="48" column="7" lean-forward="true" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+        <state relative-caret-position="150">
+          <caret line="48" column="7" lean-forward="false" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1575">
+          <caret line="24" column="54" lean-forward="false" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
           <folding />
         </state>
       </provider>
