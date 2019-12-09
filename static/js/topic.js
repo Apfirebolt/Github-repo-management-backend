@@ -55,4 +55,13 @@ $(document).ready(function() {
         console.log('Current index and stored value ', current_index, description);
 
     });
+
+    // Search Topic Functionality
+    let search_btn = $('.search-btn');
+    search_btn.click((event) => {
+        let current_repo = event.target.getAttribute('data-target');
+        console.log('Search button clicked ', current_repo);
+        window.localStorage.setItem('search_key', current_repo);
+        window.location.href = 'http://localhost:8000/hub/search_repo';
+    })
 });

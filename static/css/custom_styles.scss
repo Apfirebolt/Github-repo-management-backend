@@ -501,3 +501,22 @@ $lato: 'Lato', sans-serif;
     text-transform: uppercase;
   }
 }
+
+/* Styling Login Form */
+#login_form {
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #0C3398;
+  color: $custom_black;
+
+  i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    color: mintcream !important;
+  }
+}
+
+#register_form {
+  @extend #login_form;
+}

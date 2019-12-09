@@ -99,11 +99,6 @@ class CreateBlogPost(CreateView):
                          % (self.request.user.username))
         return HttpResponseRedirect(reverse('blog:list'))
 
-    def get_context_data(self, **kwargs):
-        ctx = super(CreateBlogPost, self).get_context_data(**kwargs)
-        ctx['related_blog'] = BlogCategory.objects.get(slug=self.kwargs['blog'])
-        return ctx
-
 
 class DetailBlog(DetailView):
     model = BlogCategory

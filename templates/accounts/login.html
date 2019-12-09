@@ -13,21 +13,21 @@
     <form method="post" id="login_form"> {% csrf_token %}
 
     <div class="field">
-      <label for="username">Enter Your Username</label>
+      <i class="fa fa-user"></i><label for="username">Enter Your Username</label>
       <div class="control">
         <input class="input is-primary" name="username" id="username" type="text" placeholder="Primary input">
       </div>
     </div>
 
     <div class="field">
-      <label for="username">Enter Your Password</label>
+      <i class="fa fa-key"></i><label for="username">Enter Your Password</label>
       <div class="control">
         <input class="input is-primary" name="password" id="password" type="password" placeholder="Primary input">
       </div>
     </div>
 
     <div class="columns is-centered">
-        <input type="submit" value="Login Now!" class="button" id="submit-btn" />
+        <input type="submit" value="LOGIN" class="button" id="submit-btn" />
     </div>
     </form>
 

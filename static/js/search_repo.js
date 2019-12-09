@@ -31,11 +31,21 @@ $(document).ready(function() {
     let items = [];
     let csrftoken = getCookie('csrftoken');
 
-    // Calling methods on dynamic jquery elements, change current index
-    result.on('click', '.fav-link', function(event) {
-        console.log('Favourite link button clicked');
+    // Checking if the request came from Topics Page
+    function load_input() {
+        let loaded_item = window.localStorage.getItem('search_key');
+        if(loaded_item)
+        {
+            search_text.val(loaded_item);
+            input_text = loaded_item;
+            setTimeout(() => {
+                ajaxRequest();
+            }, 1000);
+        }
+    }
 
-    });
+    load_input();
+
     result.on('click', 'a.save_link', function(event) {
         current_index = event.target.getAttribute('data-store-id');
         // console.log('Item at current index : ', items[current_index]);
@@ -89,10 +99,7 @@ $(document).ready(function() {
         order_by_value_text = event.target.value;
     });
 
-
-    $("button.my-btn").click(function(event) {
-        event.preventDefault();
-        result.hide(400);
+    function ajaxRequest() {
         $.ajax({
             type: 'GET',
             url: `https://api.github.com/search/repositories?q=${input_text}&sort=${sort_by_value_text}&order=${order_by_value_text}`,
@@ -126,12 +133,22 @@ $(document).ready(function() {
                           </footer>
                         </div>
                     `)
+                    window.localStorage.removeItem('search_key');
                 }
             },
             error: function(error) {
                 result.html('<p class="title has-text-white"> Some Error Occurred, cannot load data from the server </p>');
             }
         });
+    }
+
+    $("button.my-btn").click(function(event) {
+        event.preventDefault();
+        let loaded_item = window.localStorage.getItem('search_key');
+        if(loaded_item)
+            input_text = loaded_item;
+        result.hide(400);
+        ajaxRequest();
         result.fadeIn(1500);
     });
 });
