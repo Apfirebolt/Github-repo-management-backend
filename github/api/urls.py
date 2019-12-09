@@ -10,4 +10,5 @@ urlpatterns = [
     path('user_list', views.RepoUserListView.as_view(), name='user-list'),
     path('topic', views.RepoTopicCreateView.as_view(), name='topic-create'),
     path('topic_list', views.RepoTopicListView.as_view(), name='topic-list'),
+    path('edit_description/<int:pk>', views.RepoTopicDescriptionEdit.as_view(), name='edit-description'),
 ]

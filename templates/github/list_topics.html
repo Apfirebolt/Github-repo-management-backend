@@ -9,6 +9,7 @@
     {% endblock %}
     {% block custom_styles %}
         <script src={% static 'js/jquery.js' %}></script>
+        <script src={% static 'js/topic.js' %}></script>
     {% endblock %}
 </head>
 <body>
@@ -22,6 +23,14 @@
             {% endfor %}
         </ul>
     {% endif %}
+
+        <div class="edit-modal">
+            <div>
+                <label for="edit_description">Edit Topic Description</label>
+                <textarea class="textarea" placeholder="e.g. Hello world" name="edit_description" id="edit_description"></textarea>
+                <button class="button" id="submit-btn">Submit</button>
+            </div>
+        </div>
         <table class="table">
             <caption class="is-size-3">Saved Topics from <span class="has-text-success">Github</span></caption>
             <thead>
@@ -35,7 +44,7 @@
             {% for each_topic in saved_topics %}
                 <tr>
                     <td>{{ each_topic.topic_name }}</td>
-                    <td>{{ each_topic.topic_description }}</td>
+                    <td>{{ each_topic.topic_description }} <i class="fa fa-edit" data-store-id={{ each_topic.pk }}></i></td>
                     <td>{{ each_topic.topic_score }}
                         <button class="button has-text-white has-background-primary">Search Repo</button>
                     </td>

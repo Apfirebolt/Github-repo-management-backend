@@ -22,7 +22,7 @@ class CreateBlog(LoginRequiredMixin, CreateView):
 
         blog_obj.save()
         messages.success(self.request, '%s, You have successfully created your blog.' % (self.request.user.username))
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('blog:list'))
 
     def form_invalid(self, form):
         print(form.errors)
@@ -59,7 +59,6 @@ class UpdateBlog(LoginRequiredMixin, UpdateView):
 
     def form_invalid(self, form):
         print(form.errors)
-
 
 
 class UpdateBlogPost(UpdateView):

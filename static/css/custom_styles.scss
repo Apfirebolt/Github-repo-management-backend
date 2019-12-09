@@ -214,6 +214,23 @@ $lato: 'Lato', sans-serif;
 }
 
 .all_topic_container {
+  .edit-modal {
+    display: none;
+    padding: 2rem;
+    background-color: #d1fff8;
+    width: 80%;
+    margin: auto;
+
+    #submit-btn {
+      margin-top: 1rem;
+      font-family: $lato, sans-serif;
+      font-size: 1.1rem;
+    }
+    label {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+  }
   table {
     width: 80%;
     margin: 1.5rem auto;
@@ -250,6 +267,16 @@ $lato: 'Lato', sans-serif;
         }
       }
 
+      i.fa {
+        margin-left: 1rem;
+        font-size: 1.2rem;
+        color: indianred;
+        margin-top: 0.5rem;
+
+        &:hover {
+          cursor: pointer
+        }
+      }
     }
 
     td:nth-of-type(1) {
@@ -458,8 +485,6 @@ $lato: 'Lato', sans-serif;
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
-  bottom: 0;
   width: 40%;
   background-color: #cc0f35;
   border-radius: 1rem;

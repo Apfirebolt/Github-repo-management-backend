@@ -18,10 +18,11 @@ class RegisterForm(FormView):
         password = form.cleaned_data['password']
         user.set_password(password)
         user.save()
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('accounts:login'))
 
     def form_invalid(self, form):
-        pass
+        print('Form is invalid!', form.errors)
+        return HttpResponseRedirect(reverse('home'))
 
 
 def accounts_login(request):

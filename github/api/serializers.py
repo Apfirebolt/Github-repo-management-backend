@@ -34,9 +34,17 @@ class RepoUserModelSerializer(serializers.ModelSerializer):
 
 
 class RepoTopicModelSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = RepoTopicModel
-    fields = ('owner', 'topic_name', 'topic_score', 'topic_description',)
-    extra_kwargs = {
-      'owner': {'read_only': True},
-    }
+
+    class Meta:
+        model = RepoTopicModel
+        fields = ('owner', 'topic_name', 'topic_score', 'topic_description',)
+        extra_kwargs = {
+          'owner': {'read_only': True},
+        }
+
+
+class RepoTopicDescriptionEdit(serializers.ModelSerializer):
+
+    class Meta:
+        model = RepoTopicModel
+        fields = ('topic_description',)

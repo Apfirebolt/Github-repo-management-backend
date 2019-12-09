@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_filters',
     'debug_toolbar',
+    'django_cleanup',
     'accounts',
     'github',
     'blog'

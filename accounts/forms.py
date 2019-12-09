@@ -19,11 +19,21 @@ class UserModelForm(forms.ModelForm):
                                widget=forms.TextInput(
                                  attrs={'placeholder': 'Enter your last name!', 'class': 'form-control'}
                                ))
-    password = forms.PasswordInput()
-    confirm_password = forms.PasswordInput()
+    password = forms.CharField(label='Password',
+                               widget=forms.PasswordInput
+                               )
+    confirm_password = forms.CharField(label='Confirm Password',
+                                           widget=forms.PasswordInput
+                                           )
 
     class Meta:
         model = UserModel
         fields = ['username', 'email', 'first_name', 'last_name', 'password']
+
+    def clean_confirm_password(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['confirm_password']:
+            raise forms.ValidationError('Password do not match!')
+        return cd['confirm_password']
 
 
