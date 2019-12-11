@@ -20,14 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('test', TemplateView.as_view(template_name='test.html'), name='test'),
     path('admin/', admin.site.urls),
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('hub/', include(('github.urls', 'github'), namespace='github')),
-    path('blog/', include(('blog.urls', 'blog'), namespace='blog'))
+    path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
+    path('forum/', include(('forum.urls', 'forum'), namespace='forum'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

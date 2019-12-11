@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django_cleanup',
     'accounts',
     'github',
-    'blog'
+    'blog',
+    'forum'
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,5 @@ CORS_ORIGIN_WHITELIST = 'http://localhost:3000',
 
 LOGIN_REDIRECT_URL = '/accounts'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
