@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - Test Page 3{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/test.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <p class="is-size-4 has-text-white">Test Page 3</p>
+{% endblock %}

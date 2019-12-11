@@ -27,7 +27,13 @@ urlpatterns = [
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('hub/', include(('github.urls', 'github'), namespace='github')),
     path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
-    path('forum/', include(('forum.urls', 'forum'), namespace='forum'))
+    path('forum/', include(('forum.urls', 'forum'), namespace='forum')),
+
+    path('1', TemplateView.as_view(template_name='test/test1.html'), name='t1'),
+    path('2', TemplateView.as_view(template_name='test/test2.html'), name='t2'),
+    path('3', TemplateView.as_view(template_name='test/test3.html'), name='t3'),
+    path('4', TemplateView.as_view(template_name='test/test4.html'), name='t4'),
+    path('5', TemplateView.as_view(template_name='test/test5.html'), name='t5'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
