@@ -11,8 +11,21 @@
     {% endblock %}
 </head>
 <body>
-<!-- http://localhost:8000/hub/api/delete/1 -->
+
 {% block content %}
+
+    <div class="dashboard-container">
+        <div class="profile-details">
+        <div>
+            <p class="user-name">
+                {{ user_data.username }}
+            </p>
+            <p>{{ user_data.about_me }}</p>
+            <p>{{ user_data.email }}</p>
+        </div>
+
+        <img src={{ user_data.profile_image.url }} height="200" width="200">
+    </div>
     {% for each_repo in my_saved_repos %}
         <div class="single-repo-container">
             <div class="repo-header">
@@ -52,6 +65,7 @@
             </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
 
 </body>

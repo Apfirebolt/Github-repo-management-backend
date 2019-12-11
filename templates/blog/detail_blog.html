@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - Blog Detail Page{% endblock %}
+{% block custom_styles %}
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/blog.js' %}></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="blog-post-list-container">
+        {% for each_blog in all_posts %}
+        <div class="each-post">
+            <p class="is-size-4 subtitle">{{ each_blog.title }} ({{ each_blog.blog.title }})</p>
+            <div class="blog-body">
+                <p>{{ each_blog.body }}</p>
+
+                {% if each_blog.blog_image %}
+                    <a href="{{ each_post.blog_image.url }}">
+                        <img alt="Image not available" height="300" width="400" src="{{ each_blog.blog_image.url }}"
+                         >
+                    </a>
+                {% else %}
+                    <div class="add-image">
+                        <p>No Image</p>
+                        <button class="button has-text-primary">Add Image</button>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="blog-footer">
+                <a class="button" href={% url 'blog:update-post' pk=each_blog.pk %}><i class="fa fa-edit"></i>Edit</a>
+                <button class="button delete-blog-post" data-store-id={{ each_blog.pk }}><i class="fa fa-trash"></i>Delete</button>
+                <button class="button"><i class="fa fa-share"></i>Share</button>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+

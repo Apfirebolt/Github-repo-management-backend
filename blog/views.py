@@ -104,6 +104,11 @@ class DetailBlog(DetailView):
     model = BlogCategory
     template_name = 'blog/detail_blog.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(DetailBlog, self).get_context_data()
+        context['all_posts'] = BlogCategory.objects.get(slug=self.kwargs['slug']).blogpost_set.all()
+        return context
+
 
 def test_view(request):
     return render(request, 'blog/test.html', {'amit': [1, 4, 10, 13, 75]})

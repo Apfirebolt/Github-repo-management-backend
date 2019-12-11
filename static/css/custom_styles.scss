@@ -538,3 +538,27 @@ $lato: 'Lato', sans-serif;
   @extend #login_form;
 }
 
+.dashboard-container {
+    display: none;
+
+    .profile-details {
+      width: 70%;
+      display: flex;
+      justify-content: space-around;
+      margin: 1.5rem auto;
+      padding: 1rem;
+      color: #d1fff8;
+      font-size: 1.2rem;
+
+    .user-name {
+      font-family: $lato;
+      font-size: 2.5rem;
+      color: #FFF;
+      text-align: center;
+    }
+
+    p {
+      margin: 1.2rem auto;
+    }
+  }
+}

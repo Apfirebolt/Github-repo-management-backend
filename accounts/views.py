@@ -81,6 +81,11 @@ class RepoList(LoginRequiredMixin, ListView):
         queryset = RepoModel.objects.filter(owner=self.request.user)
         return queryset
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(RepoList, self).get_context_data(**kwargs)
+        context['user_data'] = UserModel.objects.get(pk=self.request.user.id)
+        return context
+
 
 def handler404(request, *args, **argv):
     """ A custom view to handle 404 error pages in Django """

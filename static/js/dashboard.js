@@ -20,12 +20,15 @@ $(document).ready(() => {
         return cookieValue;
     }
 
+    let dashboard = $('.dashboard-container');
     let delete_btn = $('.delete-btn');
     let favourite_btn = $('.favourite-btn');
     let unfavourite_btn = $('.unfavourite-btn');
     let current_index = 0;
     let result = $('#info-container');
     let csrftoken = getCookie('csrftoken');
+
+    dashboard.fadeIn(1200);
 
     favourite_btn.click((event) => {
         current_index = event.target.getAttribute('data-store-id');

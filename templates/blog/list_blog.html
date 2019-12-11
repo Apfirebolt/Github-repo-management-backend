@@ -28,7 +28,7 @@
                         <i class="fa fa-trash delete-blog" data-store-id={{ each_blog.pk }}></i>
                         <a href="{% url 'blog:update-blog' pk=each_blog.pk %}"><i class="fa fa-edit"></i></a>
                         <a class="button" href="{% url 'blog:create-post' blog=each_blog.slug %}">Add Post</a>
-                        <a class="button" href="{% url 'blog:list-post' %}">View Posts</a>
+                        <a class="button" href="{% url 'blog:detail-blog' slug=each_blog.slug %}">View Posts</a>
                     </td>
                 </tr>
             {% endfor %}
