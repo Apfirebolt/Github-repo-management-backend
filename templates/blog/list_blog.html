@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - Blog List Page{% endblock %}
+{% block custom_styles %}
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/blog.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <div class="blog-list-container">
+
+        <table class="table">
+            <caption class="is-size-3">Blog Categories</caption>
+            <thead>
+                <tr>
+                    <th>Blog Category Name</th>
+                    <th>Blog Category Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for each_blog in all_blogs %}
+                <tr>
+                    <td>{{ each_blog.title }}</td>
+                    <td>{{ each_blog.category }}</td>
+                    <td class="action-column">
+                        <i class="fa fa-trash delete-blog" data-store-id={{ each_blog.pk }}></i>
+                        <a href="{% url 'blog:update-blog' pk=each_blog.pk %}"><i class="fa fa-edit"></i></a>
+                        <a class="button" href="{% url 'blog:create-post' blog=each_blog.slug %}">Add Post</a>
+                        <a class="button" href="{% url 'blog:detail-blog' slug=each_blog.slug %}">View Posts</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+

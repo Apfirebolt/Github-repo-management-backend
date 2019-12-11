@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - Update Blog{% endblock %}
+{% block custom_styles %}
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/blog.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <div class="create-blog-container">
+        <h2>UPDATE BLOG CATEGORY <i class="fa fa-edit"></i></h2>
+        <form method="post" action=""> {% csrf_token %}
+        {% for field in form.visible_fields %}
+          <div class="field">
+            <label for="{{ field.id_for_label }}">{{ field.label }}
+
+            </label>
+            {{ field|add_class:'input' }}
+            {% for error in field.errors %}
+              <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+        <div class="columns is-centered">
+            <input type="submit" value="UPDATE BLOG CATEGORY!" class="button" id="submit-btn" />
+            <i class="fa fa-blog"></i>
+        </div>
+        </form>
+    </div>
+{% endblock %}
+
+

@@ -1,3 +1,31 @@
+/*
+  Importing Google Fonts
+
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  font-family: 'Kanit', sans-serif;
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Kanit|Lato|Nunito|Open+Sans|Oxygen&display=swap');
+
+/* Declaration of SASS variables and fonts */
+
+$light_color: #ffff80;
+$light_green: #9fff80;
+$light_blue: powderblue;
+$custom_black: #242400;
+$dark_red: #98250C;
+
+$kanit: 'Kanit', sans-serif;
+$open_sans: 'Open Sans', sans-serif;
+$nunito: 'Nunito', sans-serif;
+$oxygen: 'Oxygen', sans-serif;
+$lato: 'Lato', sans-serif;
+
+
 .main-container {
     background: url('../images/back.jpg');
     min-height: 100vh;
@@ -103,3 +131,476 @@
     font-size: 2.2rem;
 }
 
+.single-repo-container {
+  width: 60%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #FFF;
+
+
+  .repo-header {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      span {
+        margin-right: 1rem;
+      }
+    }
+
+    .star-container {
+      background: url('../images/star.png');
+      background-size: 160px 120px;
+      color: #242424;
+      font-weight: 600;
+      padding: 1.5rem;
+      background-position: center;
+    }
+  }
+
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 1rem;
+
+    button {
+      margin: 1rem;
+      color: #fff8de;
+      min-width: 120px;
+      font-family: $kanit;
+      transition: all 0.5s ease-out;
+
+      &:hover {
+        color:lightcyan;
+      }
+    }
+  }
+}
+
+#info-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 1.5rem;
+  background-color: #00c4a7;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: none;
+  color: mintcream;
+  font-family: $nunito;
+  font-size: 2rem;
+}
+
+/* Styling Container which contains all saved profiles */
+.all_profile_container {
+  .card {
+    margin: 2rem auto;
+    padding: 0.5rem;
+    width: 50%;
+
+    .card-image {
+      display: flex;
+      justify-content: center;
+      padding: 1rem auto;
+      img {
+        border-radius: 2%;
+      }
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-around;
+
+      a {
+        padding-top: 0.5rem;
+      }
+    }
+
+    .content {
+      padding-top: 1rem;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.all_topic_container {
+  .edit-modal {
+    display: none;
+    padding: 2rem;
+    background-color: #d1fff8;
+    width: 80%;
+    margin: auto;
+
+    #submit-btn {
+      margin-top: 1rem;
+      font-family: $lato, sans-serif;
+      font-size: 1.1rem;
+    }
+    label {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+  table {
+    width: 80%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    font-family: $lato;
+    border-collapse: separate;
+    border-spacing: 20px 0;
+
+    caption {
+      color: mintcream;
+      background-color: darkblue;
+      padding: 0.5rem;
+      font-family: $kanit;
+    }
+
+    thead tr th {
+      color: #00c4a7;
+    }
+
+    thead tr th:nth-of-type(3) {
+      text-align: center !important;
+    }
+
+    td {
+      padding: 1rem 0;
+      button {
+        font-family: $oxygen;
+        float: right;
+
+        &:hover {
+          background-color: #fff6d1 !important;
+          color: #242424 !important;
+          transition: all 0.5s ease-out;
+        }
+      }
+
+      i.fa {
+        margin-left: 1rem;
+        font-size: 1.2rem;
+        color: indianred;
+        margin-top: 0.5rem;
+
+        &:hover {
+          cursor: pointer
+        }
+      }
+    }
+
+    td:nth-of-type(1) {
+      width: 20%;
+    }
+    td:nth-of-type(2) {
+      width: 60%;
+    }
+    td:nth-of-type(3) {
+      width: 20%;
+      text-align: center;
+    }
+  }
+}
+
+/* Styles for creating and updating Blog forms */
+
+.create-blog-container {
+    background-color: #fff;
+    padding: 3rem;
+    margin: 1.5rem auto;
+    width: 70%;
+    color: $custom_black;
+    font-family: $nunito, sans-serif;
+    border-radius: 1.2rem;
+    box-shadow: 2px 2px 2px #FFF;
+    display: none;
+
+    h2 {
+      text-align: center;
+      margin-right: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.5rem auto;
+      label {
+        width: 20%;
+        font-size: 1.2rem;
+      }
+
+      input {
+        width: 70%;
+        color: #3ec46d;
+        font-size: 1rem;
+      }
+
+      textarea {
+        width: 70%;
+        min-height: 200px;
+      }
+
+      button {
+        background-color: #cc0f35;
+      }
+    }
+}
+
+.blog-list-container {
+  table {
+    width: 80%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    font-family: $nunito;
+    border-collapse: separate;
+    border-spacing: 20px 0;
+    table-layout: fixed;
+
+    caption {
+      color: mintcream;
+      background-color: darkblue;
+      padding: 0.5rem;
+      font-family: $kanit;
+    }
+
+    tbody {
+      .action-column {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          margin-right: 0.8rem;
+          font-size: 1.5rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        i.fa-trash {
+          height: 28px !important;
+        }
+      }
+
+      a {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    thead tr th {
+      color: indianred;
+      text-align: center !important;
+      font-size: 1.3rem;
+    }
+
+    td {
+      padding: 1rem 0;
+      text-align: center;
+      button {
+        font-family: $oxygen;
+        &:hover {
+          background-color: $light_blue !important;
+          color: #242424 !important;
+          transition: all 0.5s ease-out;
+        }
+      }
+
+    }
+  }
+}
+
+.blog-post-list-container {
+  position: relative;
+  margin: auto;
+  display: none;
+
+  .each-post {
+    background-color: #FFF;
+    color: $light_blue;
+    font-family: $nunito, sans-serif;
+    width: 70%;
+    margin: 1.5rem auto;
+    position: relative;
+    padding: 2rem;
+    transition: all 1s ease-out;
+
+    .subtitle {
+      width: 50%;
+      border-bottom: 2px solid $light_blue;
+      padding-bottom: 0.5rem;
+    }
+
+    .blog-body {
+      display: flex;
+      justify-content: space-between;
+
+      .add-image {
+        p {
+          margin-bottom: 0.5rem;
+        }
+      }
+      p {
+        margin-top: 1rem;
+        color: #242424;
+        font-weight: 400;
+      }
+
+      img {
+        border-radius: 50%;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+        border-radius: 40%;
+        transition: all 0.5s ease-in-out;
+        }
+      }
+
+    }
+    p {
+      white-space: pre-line;
+      max-width: 55%;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: center;
+
+      .button {
+        margin: 0.5rem;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s linear;
+
+        &:hover {
+          background-color: mintcream !important;
+          transition: all 0.4s linear;
+        }
+
+        i {
+          margin-right: 0.5rem;
+          color: $dark_red;
+        }
+      }
+    }
+  }
+}
+
+.global-modal {
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 40%;
+  background-color: #cc0f35;
+  border-radius: 1rem;
+  color: #fff6d1 !important;
+  margin: auto;
+  padding: 2rem;
+  display: none;
+  z-index: 100;
+
+  p {
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+}
+
+/* Styling Login Form */
+#login_form {
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #0C3398;
+  color: $custom_black;
+
+  i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    color: mintcream !important;
+  }
+}
+
+#register_form {
+  @extend #login_form;
+}
+
+.dashboard-container {
+    display: none;
+
+    .profile-details {
+      width: 70%;
+      display: flex;
+      justify-content: space-around;
+      margin: 1.5rem auto;
+      padding: 1rem;
+      color: #d1fff8;
+      font-size: 1.2rem;
+
+    .user-name {
+      font-family: $lato;
+      font-size: 2.5rem;
+      color: #FFF;
+      text-align: center;
+    }
+
+    p {
+      margin: 1.2rem auto;
+    }
+  }
+}
+
+/* Styles for Thread List */
+
+.thread-list {
+  width: 70%;
+  margin: auto;
+
+  .single-thread {
+    background-color: #fafafa;
+    margin: 2.5rem auto;
+    padding: 1rem;
+
+    .thread-header {
+      display: flex;
+      justify-content: space-between;
+      font: $nunito, sans-serif;
+      font-size: 1.5rem;
+      margin: 1rem auto;
+      font-weight: 500;
+    }
+
+    .thread-body {
+      width: 100%;
+      margin: auto;
+    }
+
+    .thread-footer {
+      p {
+        margin: 1rem auto;
+        font-size: 1rem;
+        font-family: $lato, sans-serif;
+      }
+      button {
+        background-color: $custom_black;
+        color: mintcream;
+      }
+    }
+  }
+}

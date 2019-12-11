@@ -25,7 +25,7 @@ SECRET_KEY = ')^nl#xxp!^47#ng5s%@fvm#1zh#@pftuqhs!=ba4z4(tj8t=fn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,8 +43,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_filters',
     'debug_toolbar',
+    'django_cleanup',
     'accounts',
     'github',
+    'blog',
+    'forum'
 ]
 
 MIDDLEWARE = [
@@ -137,5 +140,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CORS_ORIGIN_WHITELIST = 'http://localhost:3000',
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/accounts'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

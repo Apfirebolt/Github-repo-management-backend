@@ -1,14 +1,75 @@
-{% include 'layout.html' %}
+{% extends 'layout.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Tango Github - Dashboard</title>
+    {% block custom_styles %}
+        <script src={% static 'js/jquery.js' %}></script>
+        <script src={% static 'js/dashboard.js' %}></script>
+    {% endblock %}
 </head>
 <body>
 
 {% block content %}
-<h1 class="primary">Dashboard Page</h1>
+
+    <div class="dashboard-container">
+        <div class="profile-details">
+        <div>
+            <p class="user-name">
+                {{ user_data.username }}
+            </p>
+            <p>{{ user_data.about_me }}</p>
+            <p>{{ user_data.email }}</p>
+        </div>
+
+        {% if user_data.profile_image %}
+            <img src={{ user_data.profile_image.url }} height="200" width="200">
+        {% else %}
+            <p class="is-size-4">No Profile Image Uploaded</p>
+        {% endif %}
+    </div>
+    {% for each_repo in my_saved_repos %}
+        <div class="single-repo-container">
+            <div class="repo-header">
+                <p class="title">
+                    <span>{{ each_repo.repo_name }}</span>
+                    <span class="subtitle">(By {{ each_repo.repo_creator }})</span>
+                    <span class="subtitle">{{ each_repo.repo_created_on }}</span>
+                </p>
+                <div class="star-container">
+                    {{ each_repo.repo_stars }}
+                </div>
+            </div>
+
+            <a href={{ each_repo.repo_url }}>{{ each_repo.repo_url }}</a>
+            <p>Watchers : {{ each_repo.repo_watchers }}</p>
+            <p>Description : {{ each_repo.repo_description }}</p>
+            <p>Language : {{ each_repo.repo_language }}</p>
+            <p>Forked {{ each_repo.repo_forked }} times</p>
+
+            <p>Score : {{ each_repo.repo_score }}</p>
+
+            <div class="footer">
+                {% if each_repo.is_favorited %}
+                <button class="button has-background-warning unfavourite-btn" value={{ each_repo.is_favorited }}
+                        data-store-id={{ each_repo.id }}>
+                Remove from Favourites
+                </button>
+                {% else %}
+                <button class="button has-background-success favourite-btn" value={{ each_repo.is_favorited }}
+                        data-store-id={{ each_repo.id }}>
+                Add To Favourites
+                </button>
+                {% endif %}
+                </button>
+
+                <button class="button has-background-danger delete-btn" data-store-id={{ each_repo.id }}>Delete</button>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 {% endblock %}
 
 </body>

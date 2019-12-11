@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - List Threads{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/login.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <div class="thread-list">
+    {% for each_thread in object_list %}
+        <div class="single-thread">
+            <div class="thread-header">
+                <p>{{ each_thread.content }}</p>
+                <p>{{ each_thread.owner }}</p>
+            </div>
+
+            <div class="thread-body">
+                <video width="530" height="440" controls autoplay>
+                    <source src={{ each_thread.thread_video.url }} type="video/mp4"> </source>
+                 </video>
+            </div>
+
+            <div class="thread-footer">
+                <p>{{ each_thread.content }}</p>
+                <div class="button-container">
+                    <button class="button">Like</button>
+                    <button class="button">Comment</button>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}
+

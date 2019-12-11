@@ -3,6 +3,22 @@
  */
 
 $(document).ready(function() {
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
     let result = $('.repo-container');
     let search_text = $('#repo_name');
     let sort_by_value = $('#sort_by');
@@ -10,6 +26,65 @@ $(document).ready(function() {
     let input_text = '';
     let sort_by_value_text = 'stars';
     let order_by_value_text = 'asc';
+    let current_data = {};
+    let current_index = 0;
+    let items = [];
+    let csrftoken = getCookie('csrftoken');
+
+    // Checking if the request came from Topics Page
+    function load_input() {
+        let loaded_item = window.localStorage.getItem('search_key');
+        if(loaded_item)
+        {
+            search_text.val(loaded_item);
+            input_text = loaded_item;
+            setTimeout(() => {
+                ajaxRequest();
+            }, 1000);
+        }
+    }
+
+    load_input();
+
+    result.on('click', 'a.save_link', function(event) {
+        current_index = event.target.getAttribute('data-store-id');
+        // console.log('Item at current index : ', items[current_index]);
+
+        $("body").scrollTop(0);
+        console.log('Scrolling to top..');
+        current_data.repo_name = items[current_index].name;
+        current_data.repo_creator = items[current_index].owner.login;
+        current_data.repo_language = items[current_index].language ? items[current_index].language : 'Language not specified';
+        current_data.repo_description = items[current_index].description ? items[current_index].description : '';
+        current_data.repo_url = items[current_index].html_url;
+        current_data.repo_forked = items[current_index].forks_count ? items[current_index].forks_count : 0;
+        current_data.repo_watchers = items[current_index].watchers_count ? items[current_index].watchers_count : 0;
+        current_data.repo_score = items[current_index].score ? Math.ceil(items[current_index].score) : 0;
+        current_data.repo_stars = items[current_index].stargazers_count ? items[current_index].stargazers_count : 0;
+        current_data.repo_created_on = items[current_index].created_at;
+
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:8000/hub/api/create',
+          data: current_data,
+          headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function(response) {
+
+              let container = $('.global-modal');
+              container.html(`<p class="is-size-3 has-text-centered">${current_data.repo_name} was added to your favourite repositories.</p>`);
+              container.fadeIn(1000, () => {
+                  container.fadeOut(2000, () => {
+                      container.html('');
+                  });
+              })
+          },
+          error: function(error) {
+              console.log('The request failed : ', error);
+          },
+        });
+    });
 
     search_text.focusout(function(event){
         input_text = event.target.value;
@@ -24,15 +99,13 @@ $(document).ready(function() {
         order_by_value_text = event.target.value;
     });
 
-    $("button.my-btn").click(function(event) {
-        event.preventDefault();
-        result.hide(400);
+    function ajaxRequest() {
         $.ajax({
             type: 'GET',
             url: `https://api.github.com/search/repositories?q=${input_text}&sort=${sort_by_value_text}&order=${order_by_value_text}`,
             success: function(response) {
                 // Clear the current html
-                console.log('Url : ', this.url);
+                items = response.items;
                 result.html('');
 
                 for(let i=0; i<response.items.length; i++)
@@ -55,17 +128,26 @@ $(document).ready(function() {
                             <a href="#" class="card-footer-item">${response.items[i].stargazers_count} Stars</a>
                             <a href="#" class="card-footer-item">${response.items[i].watchers_count} Watchers</a>
                             <a href="#" class="card-footer-item">Score is ${response.items[i].score}</a>
-                            <a href="#" class="card-footer-item">Save</a>
-                            <a href="#" class="card-footer-item">Mark Favorite</a>
+                            <a class="card-footer-item save_link" data-store-id=${i} >Save</a>
                           </footer>
                         </div>
                     `)
+                    window.localStorage.removeItem('search_key');
                 }
             },
             error: function(error) {
                 result.html('<p class="title has-text-white"> Some Error Occurred, cannot load data from the server </p>');
             }
         });
+    }
+
+    $("button.my-btn").click(function(event) {
+        event.preventDefault();
+        let loaded_item = window.localStorage.getItem('search_key');
+        if(loaded_item)
+            input_text = loaded_item;
+        result.hide(400);
+        ajaxRequest();
         result.fadeIn(1500);
     });
 });

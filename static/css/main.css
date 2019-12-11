@@ -1,3 +1,15 @@
+/*
+  Importing Google Fonts
+
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  font-family: 'Kanit', sans-serif;
+
+*/
+@import url("https://fonts.googleapis.com/css?family=Kanit|Lato|Nunito|Open+Sans|Oxygen&display=swap");
+/* Declaration of SASS variables and fonts */
 .main-container {
   background: url("../images/back.jpg");
   min-height: 100vh;
@@ -75,5 +87,330 @@
   letter-spacing: 1px;
   word-spacing: 0.3rem;
   font-size: 2.2rem; }
+
+.single-repo-container {
+  width: 60%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #FFF; }
+  .single-repo-container .repo-header {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .single-repo-container .repo-header .title span {
+      margin-right: 1rem; }
+    .single-repo-container .repo-header .star-container {
+      background: url("../images/star.png");
+      background-size: 160px 120px;
+      color: #242424;
+      font-weight: 600;
+      padding: 1.5rem;
+      background-position: center; }
+  .single-repo-container p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 400; }
+  .single-repo-container .footer {
+    text-align: center;
+    padding: 1rem; }
+    .single-repo-container .footer button {
+      margin: 1rem;
+      color: #fff8de;
+      min-width: 120px;
+      font-family: "Kanit", sans-serif;
+      transition: all 0.5s ease-out; }
+      .single-repo-container .footer button:hover {
+        color: lightcyan; }
+
+#info-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 1.5rem;
+  background-color: #00c4a7;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: none;
+  color: mintcream;
+  font-family: "Nunito", sans-serif;
+  font-size: 2rem; }
+
+/* Styling Container which contains all saved profiles */
+.all_profile_container .card {
+  margin: 2rem auto;
+  padding: 0.5rem;
+  width: 50%; }
+  .all_profile_container .card .card-image {
+    display: flex;
+    justify-content: center;
+    padding: 1rem auto; }
+    .all_profile_container .card .card-image img {
+      border-radius: 2%; }
+  .all_profile_container .card .card-header {
+    display: flex;
+    justify-content: space-around; }
+    .all_profile_container .card .card-header a {
+      padding-top: 0.5rem; }
+  .all_profile_container .card .content {
+    padding-top: 1rem;
+    font-size: 1.3rem; }
+
+.all_topic_container .edit-modal {
+  display: none;
+  padding: 2rem;
+  background-color: #d1fff8;
+  width: 80%;
+  margin: auto; }
+  .all_topic_container .edit-modal #submit-btn {
+    margin-top: 1rem;
+    font-family: "Lato", sans-serif, sans-serif;
+    font-size: 1.1rem; }
+  .all_topic_container .edit-modal label {
+    margin-bottom: 1rem;
+    font-size: 1.5rem; }
+.all_topic_container table {
+  width: 80%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  font-family: "Lato", sans-serif;
+  border-collapse: separate;
+  border-spacing: 20px 0; }
+  .all_topic_container table caption {
+    color: mintcream;
+    background-color: darkblue;
+    padding: 0.5rem;
+    font-family: "Kanit", sans-serif; }
+  .all_topic_container table thead tr th {
+    color: #00c4a7; }
+  .all_topic_container table thead tr th:nth-of-type(3) {
+    text-align: center !important; }
+  .all_topic_container table td {
+    padding: 1rem 0; }
+    .all_topic_container table td button {
+      font-family: "Oxygen", sans-serif;
+      float: right; }
+      .all_topic_container table td button:hover {
+        background-color: #fff6d1 !important;
+        color: #242424 !important;
+        transition: all 0.5s ease-out; }
+    .all_topic_container table td i.fa {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      color: indianred;
+      margin-top: 0.5rem; }
+      .all_topic_container table td i.fa:hover {
+        cursor: pointer; }
+  .all_topic_container table td:nth-of-type(1) {
+    width: 20%; }
+  .all_topic_container table td:nth-of-type(2) {
+    width: 60%; }
+  .all_topic_container table td:nth-of-type(3) {
+    width: 20%;
+    text-align: center; }
+
+/* Styles for creating and updating Blog forms */
+.create-blog-container {
+  background-color: #fff;
+  padding: 3rem;
+  margin: 1.5rem auto;
+  width: 70%;
+  color: #242400;
+  font-family: "Nunito", sans-serif, sans-serif;
+  border-radius: 1.2rem;
+  box-shadow: 2px 2px 2px #FFF;
+  display: none; }
+  .create-blog-container h2 {
+    text-align: center;
+    margin-right: 1rem;
+    font-size: 1.8rem; }
+  .create-blog-container .field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem auto; }
+    .create-blog-container .field label {
+      width: 20%;
+      font-size: 1.2rem; }
+    .create-blog-container .field input {
+      width: 70%;
+      color: #3ec46d;
+      font-size: 1rem; }
+    .create-blog-container .field textarea {
+      width: 70%;
+      min-height: 200px; }
+    .create-blog-container .field button {
+      background-color: #cc0f35; }
+
+.blog-list-container table {
+  width: 80%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  font-family: "Nunito", sans-serif;
+  border-collapse: separate;
+  border-spacing: 20px 0;
+  table-layout: fixed; }
+  .blog-list-container table caption {
+    color: mintcream;
+    background-color: darkblue;
+    padding: 0.5rem;
+    font-family: "Kanit", sans-serif; }
+  .blog-list-container table tbody .action-column {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .blog-list-container table tbody .action-column i {
+      margin-right: 0.8rem;
+      font-size: 1.5rem; }
+      .blog-list-container table tbody .action-column i:hover {
+        cursor: pointer; }
+    .blog-list-container table tbody .action-column i.fa-trash {
+      height: 28px !important; }
+  .blog-list-container table tbody a {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem; }
+  .blog-list-container table thead tr th {
+    color: indianred;
+    text-align: center !important;
+    font-size: 1.3rem; }
+  .blog-list-container table td {
+    padding: 1rem 0;
+    text-align: center; }
+    .blog-list-container table td button {
+      font-family: "Oxygen", sans-serif; }
+      .blog-list-container table td button:hover {
+        background-color: powderblue !important;
+        color: #242424 !important;
+        transition: all 0.5s ease-out; }
+
+.blog-post-list-container {
+  position: relative;
+  margin: auto;
+  display: none; }
+  .blog-post-list-container .each-post {
+    background-color: #FFF;
+    color: powderblue;
+    font-family: "Nunito", sans-serif, sans-serif;
+    width: 70%;
+    margin: 1.5rem auto;
+    position: relative;
+    padding: 2rem;
+    transition: all 1s ease-out; }
+    .blog-post-list-container .each-post .subtitle {
+      width: 50%;
+      border-bottom: 2px solid powderblue;
+      padding-bottom: 0.5rem; }
+    .blog-post-list-container .each-post .blog-body {
+      display: flex;
+      justify-content: space-between; }
+      .blog-post-list-container .each-post .blog-body .add-image p {
+        margin-bottom: 0.5rem; }
+      .blog-post-list-container .each-post .blog-body p {
+        margin-top: 1rem;
+        color: #242424;
+        font-weight: 400; }
+      .blog-post-list-container .each-post .blog-body img {
+        border-radius: 50%;
+        transition: all 0.5s ease-in-out; }
+        .blog-post-list-container .each-post .blog-body img:hover {
+          border-radius: 40%;
+          transition: all 0.5s ease-in-out; }
+    .blog-post-list-container .each-post p {
+      white-space: pre-line;
+      max-width: 55%; }
+    .blog-post-list-container .each-post .blog-footer {
+      display: flex;
+      justify-content: center; }
+      .blog-post-list-container .each-post .blog-footer .button {
+        margin: 0.5rem;
+        min-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s linear; }
+        .blog-post-list-container .each-post .blog-footer .button:hover {
+          background-color: mintcream !important;
+          transition: all 0.4s linear; }
+        .blog-post-list-container .each-post .blog-footer .button i {
+          margin-right: 0.5rem;
+          color: #98250C; }
+
+.global-modal {
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 40%;
+  background-color: #cc0f35;
+  border-radius: 1rem;
+  color: #fff6d1 !important;
+  margin: auto;
+  padding: 2rem;
+  display: none;
+  z-index: 100; }
+  .global-modal p {
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase; }
+
+/* Styling Login Form */
+#login_form, #register_form {
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #0C3398;
+  color: #242400; }
+  #login_form i, #register_form i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    color: mintcream !important; }
+
+.dashboard-container {
+  display: none; }
+  .dashboard-container .profile-details {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    color: #d1fff8;
+    font-size: 1.2rem; }
+    .dashboard-container .profile-details .user-name {
+      font-family: "Lato", sans-serif;
+      font-size: 2.5rem;
+      color: #FFF;
+      text-align: center; }
+    .dashboard-container .profile-details p {
+      margin: 1.2rem auto; }
+
+/* Styles for Thread List */
+.thread-list {
+  width: 70%;
+  margin: auto; }
+  .thread-list .single-thread {
+    background-color: #fafafa;
+    margin: 2.5rem auto;
+    padding: 1rem; }
+    .thread-list .single-thread .thread-header {
+      display: flex;
+      justify-content: space-between;
+      font: "Nunito", sans-serif, sans-serif;
+      font-size: 1.5rem;
+      margin: 1rem auto;
+      font-weight: 500; }
+    .thread-list .single-thread .thread-body {
+      width: 100%;
+      margin: auto; }
+    .thread-list .single-thread .thread-footer p {
+      margin: 1rem auto;
+      font-size: 1rem;
+      font-family: "Lato", sans-serif, sans-serif; }
+    .thread-list .single-thread .thread-footer button {
+      background-color: #242400;
+      color: mintcream; }
 
 /*# sourceMappingURL=main.css.map */

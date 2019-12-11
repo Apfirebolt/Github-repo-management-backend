@@ -7,7 +7,10 @@
         {% block title %}Layout Page {% endblock %}
     </title>
     <link rel="stylesheet" href={% static 'css/bulma.min.css' %}>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href={% static 'css/main.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/main.js' %}></script>
     {% block custom_styles %}
     {% endblock %}
     <style>
@@ -32,13 +35,43 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" href={% url 'accounts:dashboard' %}>
         Home
       </a>
 
-      <a class="navbar-item">
-        Blog
-      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Blog
+        </a>
+
+        <div class="navbar-dropdown">
+            <a class="navbar-item" href={% url 'blog:create' %}>
+                Create Blog
+            </a>
+            <a class="navbar-item" href={% url 'blog:list' %}>
+                List Blog
+            </a>
+        </div>
+      </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Forum
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href={% url 'github:search-user' %}>
+            Search User
+          </a>
+          <a class="navbar-item" href={% url 'forum:list-thread' %}>
+            Thread List
+          </a>
+          <a class="navbar-item" href={% url 'forum:create-thread' %}>
+            Create Thread
+          </a>
+
+        </div>
+      </div>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -55,10 +88,17 @@
           <a class="navbar-item" href={% url 'github:search-topic' %}>
             Search Topics
           </a>
+
           <hr class="navbar-divider">
-          <a class="navbar-item">
+            <a class="navbar-item" href={% url 'github:list-user' %}>
+                Favourite Users
+            </a>
+            <a class="navbar-item" href={% url 'github:saved-topics' %}>
+                Favourite Topics
+            </a>
+            <a class="navbar-item" href={% url 'accounts:settings' pk=request.user.id %}>
             Change Account Settings
-          </a>
+            </a>
         </div>
       </div>
     </div>
@@ -88,6 +128,9 @@
 </nav>
 
     <div class="body-container">
+        <div class="global-modal">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, reiciendis.</p>
+        </div>
         {% block content %}
 
         {% endblock %}
