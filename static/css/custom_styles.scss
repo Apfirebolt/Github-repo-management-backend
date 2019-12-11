@@ -140,8 +140,25 @@ $lato: 'Lato', sans-serif;
 
   .repo-header {
     margin-bottom: 1rem;
-    background-color: darken(#FFF, 12%);
-    padding: 1rem;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      span {
+        margin-right: 1rem;
+      }
+    }
+
+    .star-container {
+      background: url('../images/star.png');
+      background-size: 160px 120px;
+      color: #242424;
+      font-weight: 600;
+      padding: 1.5rem;
+      background-position: center;
+    }
   }
 
   p {
@@ -520,3 +537,4 @@ $lato: 'Lato', sans-serif;
 #register_form {
   @extend #login_form;
 }
+

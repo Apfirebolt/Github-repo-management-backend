@@ -1,11 +1,13 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, FormView, ListView
-from . forms import UserModelForm
+from django.shortcuts import render, render_to_response
+from django.views.generic import TemplateView, FormView, ListView, UpdateView
+from django.template import RequestContext
+from . forms import UserModelForm, SettingsForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from github.models import RepoModel
+from accounts.models import UserModel
 
 
 class RegisterForm(FormView):
@@ -23,6 +25,32 @@ class RegisterForm(FormView):
     def form_invalid(self, form):
         print('Form is invalid!', form.errors)
         return HttpResponseRedirect(reverse('home'))
+
+
+class EditAccountSettings(UpdateView):
+    form_class = SettingsForm
+    template_name = 'accounts/settings.html'
+    success_url = '/'
+    model = UserModel
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.profile_image = form.cleaned_data['profile_image']
+        user.about_me = form.cleaned_data['about_me']
+        user.save()
+        return HttpResponseRedirect(reverse('accounts:login'))
+
+    def form_invalid(self, form):
+        print('Form is invalid!', form.errors)
+        return HttpResponseRedirect(reverse('home'))
+
+    def get_object(self, queryset=None):
+
+        obj = super(EditAccountSettings, self).get_object()
+        if not str(obj.username) == str(self.request.user):
+            raise Http404
+
+        return obj
 
 
 def accounts_login(request):
@@ -54,8 +82,18 @@ class RepoList(LoginRequiredMixin, ListView):
         return queryset
 
 
+def handler404(request, *args, **argv):
+    """ A custom view to handle 404 error pages in Django """
+    response = render_to_response('404.html', {})
+    response.status_code = 404
+    return response
 
 
+def handler500(request, *args, **argv):
+    """ A custom view to handle 500 error pages in Django """
+    response = render_to_response('500.html', {})
+    response.status_code = 500
+    return response
 
 
 

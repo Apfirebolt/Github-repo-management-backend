@@ -13,21 +13,19 @@
 <body>
 <!-- http://localhost:8000/hub/api/delete/1 -->
 {% block content %}
-    <div id="info-container">
-        <p class="has-text-white">This is the message container</p>
-    </div>
-
     {% for each_repo in my_saved_repos %}
         <div class="single-repo-container">
-            <div class="repo-header has-text-centered">
+            <div class="repo-header">
                 <p class="title">
-                    {{ each_repo.repo_name }}
-                    <span class="subtitle has-text-grey">(By {{ each_repo.repo_creator }})</span>
-                    <span class="has-text-danger subtitle">{{ each_repo.repo_created_on }}</span>
+                    <span>{{ each_repo.repo_name }}</span>
+                    <span class="subtitle">(By {{ each_repo.repo_creator }})</span>
+                    <span class="subtitle">{{ each_repo.repo_created_on }}</span>
                 </p>
+                <div class="star-container">
+                    {{ each_repo.repo_stars }}
+                </div>
             </div>
 
-            <p class="is-size-3">Stars : {{ each_repo.repo_stars }}</p>
             <a href={{ each_repo.repo_url }} class="is-size-4">{{ each_repo.repo_url }}</a>
             <p class="is-size-4">Watchers : {{ each_repo.repo_watchers }}</p>
             <p class="is-size-4">Description : {{ each_repo.repo_description }}</p>

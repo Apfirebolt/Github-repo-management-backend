@@ -129,7 +129,6 @@ $(document).ready(function() {
                             <a href="#" class="card-footer-item">${response.items[i].watchers_count} Watchers</a>
                             <a href="#" class="card-footer-item">Score is ${response.items[i].score}</a>
                             <a class="card-footer-item save_link" data-store-id=${i} >Save</a>
-                            <a href="#" class="card-footer-item fav-link">Mark Favorite</a>
                           </footer>
                         </div>
                     `)

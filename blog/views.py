@@ -104,3 +104,7 @@ class DetailBlog(DetailView):
     model = BlogCategory
     template_name = 'blog/detail_blog.html'
 
+
+def test_view(request):
+    return render(request, 'blog/test.html', {'amit': [1, 4, 10, 13, 75]})
+

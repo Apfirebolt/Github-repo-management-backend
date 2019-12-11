@@ -22,6 +22,7 @@ $(document).ready(function() {
     let modal = $('.edit-modal');
     let description = $('#edit_description');
     let submit_btn = $('#submit-btn');
+    let cancel_btn = $('#cancel-btn');
     let current_index = 0;
     let csrftoken = getCookie('csrftoken');
 
@@ -52,9 +53,13 @@ $(document).ready(function() {
         modal.fadeIn(1200);
         modal.children("p").remove();
         current_index = event.target.getAttribute('data-store-id');
-        console.log('Current index and stored value ', current_index, description);
 
     });
+
+    cancel_btn.click((event) => {
+        console.log('Cancel button clicked..');
+        $(this).parent().parent().fadeOut();
+    })
 
     // Search Topic Functionality
     let search_btn = $('.search-btn');

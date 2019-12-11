@@ -1,16 +1,14 @@
 {% extends 'layout.html' %}
 {% load widget_tweaks %}
 {% load static %}
-{% block title %}Django Github - Update Blog{% endblock %}
 {% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
     <script src={% static 'js/jquery.js' %}></script>
-    <script src={% static 'js/blog.js' %}></script>
+    <script src={% static 'js/register.js' %}></script>
 {% endblock %}
 
 {% block content %}
-    <div class="create-blog-container">
-        <h2>UPDATE BLOG CATEGORY <i class="fa fa-edit"></i></h2>
-        <form method="post" action=""> {% csrf_token %}
+    <form method="post" action="" id="register_form" enctype="multipart/form-data"> {% csrf_token %}
         {% for field in form.visible_fields %}
           <div class="field">
             <label for="{{ field.id_for_label }}">{{ field.label }}
@@ -21,12 +19,14 @@
               <span class="help-block">{{ error }}</span>
             {% endfor %}
           </div>
-        {% endfor %}
-        <div class="columns is-centered">
-            <input type="submit" value="UPDATE BLOG CATEGORY!" class="button" id="submit-btn" />
-            <i class="fa fa-blog"></i>
-        </div>
-        </form>
+    {% endfor %}
+    <div class="columns is-centered">
+        <input type="submit" value="SAVE SETTINGS" class="button" id="submit-btn" />
+    </div>
+    </form>
+
+    <div class="error-container">
+
     </div>
 {% endblock %}
 

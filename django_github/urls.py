@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('test', TemplateView.as_view(template_name='test.html'), name='test'),
@@ -30,3 +31,6 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'accounts.views.handler404'
+handler500 = 'accounts.views.handler500'

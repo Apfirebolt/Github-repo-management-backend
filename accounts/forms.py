@@ -37,3 +37,11 @@ class UserModelForm(forms.ModelForm):
         return cd['confirm_password']
 
 
+class SettingsForm(forms.ModelForm):
+
+    class Meta:
+        model = UserModel
+        fields = ['username', 'email', 'first_name', 'last_name', 'about_me', 'profile_image']
+
+
+

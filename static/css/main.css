@@ -96,8 +96,19 @@
   background-color: #FFF; }
   .single-repo-container .repo-header {
     margin-bottom: 1rem;
-    background-color: #e0e0e0;
-    padding: 1rem; }
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .single-repo-container .repo-header .title span {
+      margin-right: 1rem; }
+    .single-repo-container .repo-header .star-container {
+      background: url("../images/star.png");
+      background-size: 160px 120px;
+      color: #242424;
+      font-weight: 600;
+      padding: 1.5rem;
+      background-position: center; }
   .single-repo-container p {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem; }

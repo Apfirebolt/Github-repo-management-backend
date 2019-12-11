@@ -7,7 +7,7 @@ from django.utils.text import slugify
 
 class BlogCategory(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE)
-    title = models.CharField(max_length=500)
+    title = models.CharField(max_length=400)
     category = models.CharField(max_length=200)
 
     slug = models.CharField(max_length=500, editable=False)
