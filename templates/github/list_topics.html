@@ -16,13 +16,6 @@
 
 {% block content %}
     <div class="all_topic_container">
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="has-text-white"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
         <div class="edit-modal">
             <div>

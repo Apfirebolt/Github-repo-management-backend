@@ -39,9 +39,39 @@
         Home
       </a>
 
-      <a class="navbar-item">
-        Blog
-      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Blog
+        </a>
+
+        <div class="navbar-dropdown">
+            <a class="navbar-item" href={% url 'blog:create' %}>
+                Create Blog
+            </a>
+            <a class="navbar-item" href={% url 'blog:list' %}>
+                List Blog
+            </a>
+        </div>
+      </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Forum
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href={% url 'github:search-user' %}>
+            Search User
+          </a>
+          <a class="navbar-item" href={% url 'github:search-repo' %}>
+            Search Repositories
+          </a>
+          <a class="navbar-item" href={% url 'github:search-topic' %}>
+            Search Topics
+          </a>
+
+        </div>
+      </div>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -66,16 +96,8 @@
             <a class="navbar-item" href={% url 'github:saved-topics' %}>
                 Favourite Topics
             </a>
-          <a class="navbar-item" href={% url 'accounts:settings' pk=request.user.id %}>
+            <a class="navbar-item" href={% url 'accounts:settings' pk=request.user.id %}>
             Change Account Settings
-          </a>
-
-         <hr class="navbar-divider">
-            <a class="navbar-item" href={% url 'blog:create' %}>
-                Create Blog
-            </a>
-            <a class="navbar-item" href={% url 'blog:list' %}>
-                List Blog
             </a>
         </div>
       </div>

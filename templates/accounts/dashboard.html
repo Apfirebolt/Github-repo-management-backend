@@ -24,7 +24,11 @@
             <p>{{ user_data.email }}</p>
         </div>
 
-        <img src={{ user_data.profile_image.url }} height="200" width="200">
+        {% if user_data.profile_image %}
+            <img src={{ user_data.profile_image.url }} height="200" width="200">
+        {% else %}
+            <p class="is-size-4">No Profile Image Uploaded</p>
+        {% endif %}
     </div>
     {% for each_repo in my_saved_repos %}
         <div class="single-repo-container">
@@ -39,10 +43,10 @@
                 </div>
             </div>
 
-            <a href={{ each_repo.repo_url }} class="is-size-4">{{ each_repo.repo_url }}</a>
-            <p class="is-size-4">Watchers : {{ each_repo.repo_watchers }}</p>
-            <p class="is-size-4">Description : {{ each_repo.repo_description }}</p>
-            <p class="is-size-4">Language : {{ each_repo.repo_language }}</p>
+            <a href={{ each_repo.repo_url }}>{{ each_repo.repo_url }}</a>
+            <p>Watchers : {{ each_repo.repo_watchers }}</p>
+            <p>Description : {{ each_repo.repo_description }}</p>
+            <p>Language : {{ each_repo.repo_language }}</p>
             <p>Forked {{ each_repo.repo_forked }} times</p>
 
             <p>Score : {{ each_repo.repo_score }}</p>
