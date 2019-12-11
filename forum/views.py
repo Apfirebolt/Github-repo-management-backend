@@ -5,6 +5,7 @@ from forum.forms import ThreadForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.text import slugify
 from django.shortcuts import reverse
+from forum.utilities import handle_uploaded_file
 
 
 def forum_home(request):
@@ -21,6 +22,7 @@ class CreateThread(FormView):
         forum_obj.owner = self.request.user
         forum_obj.slug = slugify(forum_obj.title)
 
+        handle_uploaded_file(self.request.FILES['thread_video'])
         forum_obj.save()
         return HttpResponseRedirect(reverse('blog:list'))
 
