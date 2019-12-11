@@ -387,4 +387,30 @@
     .dashboard-container .profile-details p {
       margin: 1.2rem auto; }
 
+/* Styles for Thread List */
+.thread-list {
+  width: 70%;
+  margin: auto; }
+  .thread-list .single-thread {
+    background-color: #fafafa;
+    margin: 2.5rem auto;
+    padding: 1rem; }
+    .thread-list .single-thread .thread-header {
+      display: flex;
+      justify-content: space-between;
+      font: "Nunito", sans-serif, sans-serif;
+      font-size: 1.5rem;
+      margin: 1rem auto;
+      font-weight: 500; }
+    .thread-list .single-thread .thread-body {
+      width: 100%;
+      margin: auto; }
+    .thread-list .single-thread .thread-footer p {
+      margin: 1rem auto;
+      font-size: 1rem;
+      font-family: "Lato", sans-serif, sans-serif; }
+    .thread-list .single-thread .thread-footer button {
+      background-color: #242400;
+      color: mintcream; }
+
 /*# sourceMappingURL=main.css.map */

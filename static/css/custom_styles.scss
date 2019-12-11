@@ -565,3 +565,42 @@ $lato: 'Lato', sans-serif;
     }
   }
 }
+
+/* Styles for Thread List */
+
+.thread-list {
+  width: 70%;
+  margin: auto;
+
+  .single-thread {
+    background-color: #fafafa;
+    margin: 2.5rem auto;
+    padding: 1rem;
+
+    .thread-header {
+      display: flex;
+      justify-content: space-between;
+      font: $nunito, sans-serif;
+      font-size: 1.5rem;
+      margin: 1rem auto;
+      font-weight: 500;
+    }
+
+    .thread-body {
+      width: 100%;
+      margin: auto;
+    }
+
+    .thread-footer {
+      p {
+        margin: 1rem auto;
+        font-size: 1rem;
+        font-family: $lato, sans-serif;
+      }
+      button {
+        background-color: $custom_black;
+        color: mintcream;
+      }
+    }
+  }
+}

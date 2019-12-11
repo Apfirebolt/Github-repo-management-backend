@@ -9,16 +9,30 @@
 {% endblock %}
 
 {% block content %}
-    <h2>List Thread Page</h2>
+    <div class="thread-list">
+    {% for each_thread in object_list %}
+        <div class="single-thread">
+            <div class="thread-header">
+                <p>{{ each_thread.content }}</p>
+                <p>{{ each_thread.owner }}</p>
+            </div>
 
-    {% for each_object in object_list %}
-        <p class="is-size-3 has-text-white has-text-centered">{{ each_object.title }}</p>
-        <p class="is-size-6 has-text-success">{{ each_object.content }}</p>
-        <p>{{ each_object.thread_video.url }}</p>
+            <div class="thread-body">
+                <video width="530" height="440" controls autoplay>
+                    <source src={{ each_thread.thread_video.url }} type="video/mp4"> </source>
+                 </video>
+            </div>
 
-        <video width="530" height="440" controls autoplay>
-            <source src={{ each_object.thread_video.url }} type="video/mp4"> </source>
-        </video>
+            <div class="thread-footer">
+                <p>{{ each_thread.content }}</p>
+                <div class="button-container">
+                    <button class="button">Like</button>
+                    <button class="button">Comment</button>
+                </div>
+            </div>
+        </div>
+
     {% endfor %}
+    </div>
 {% endblock %}
 
