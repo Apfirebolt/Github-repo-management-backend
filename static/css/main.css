@@ -89,11 +89,19 @@
   font-size: 2.2rem; }
 
 .single-repo-container {
-  width: 60%;
   margin: 1.5rem auto;
   padding: 1rem;
   border-radius: 1rem;
   background-color: #FFF; }
+  @media only screen and (max-width: 600px) {
+    .single-repo-container {
+      width: 90%; } }
+  @media only screen and (min-width: 1100px) {
+    .single-repo-container {
+      width: 80%; } }
+  @media only screen and (min-width: 1400px) {
+    .single-repo-container {
+      width: 60%; } }
   .single-repo-container .repo-header {
     margin-bottom: 1rem;
     padding: 0.8rem 1.5rem;

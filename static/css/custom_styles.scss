@@ -10,6 +10,7 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Kanit|Lato|Nunito|Open+Sans|Oxygen&display=swap');
+@import "mixins";
 
 /* Declaration of SASS variables and fonts */
 
@@ -132,11 +133,22 @@ $lato: 'Lato', sans-serif;
 }
 
 .single-repo-container {
-  width: 60%;
   margin: 1.5rem auto;
   padding: 1rem;
   border-radius: 1rem;
   background-color: #FFF;
+
+  @include smallScreen {
+    width: 90%;
+  }
+
+  @include mediumScreen {
+    width: 80%;
+  }
+
+  @include largeScreen {
+    width: 60%;
+  }
 
 
   .repo-header {

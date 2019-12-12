@@ -20,6 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
               'profile_image', 'about_me',)
 
 
+
     # Create passwords for users
     def validate_password(self, value):
         return make_password(value)
