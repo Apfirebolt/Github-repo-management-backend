@@ -10,6 +10,14 @@
 */
 @import url("https://fonts.googleapis.com/css?family=Kanit|Lato|Nunito|Open+Sans|Oxygen&display=swap");
 /* Declaration of SASS variables and fonts */
+:root {
+  --level-one: translateZ(3rem);
+  --level-two: translateZ(6rem);
+  --level-three: translateZ(9rem);
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --clr: #b7c9e5; }
+
 .main-container {
   background: url("../images/back.jpg");
   min-height: 100vh;
@@ -435,5 +443,20 @@
     min-height: 300px;
     margin-top: 1rem;
     margin-bottom: 1rem; }
+    .forum-user-container .item-container .card {
+      margin: 0; }
+
+.search-container {
+  opacity: 0;
+  width: 60%;
+  padding: 1rem;
+  color: #242400;
+  font-weight: 500;
+  font-size: 1.2rem;
+  font-family: "Nunito", sans-serif;
+  margin: 1.5rem auto;
+  background-color: #fafafa;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px #FFF; }
 
 /*# sourceMappingURL=main.css.map */

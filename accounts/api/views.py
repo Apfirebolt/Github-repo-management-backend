@@ -11,6 +11,7 @@ from rest_framework.authtoken import views
 from rest_framework.authentication import BaseAuthentication, SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
+from django.db.models import Q
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -19,11 +20,23 @@ class CreateUserView(generics.CreateAPIView):
 
 class ListUserView(generics.ListAPIView):
     serializer_class = UserSerializer
-    queryset = UserModel.objects.all()
-    filter_backends = (DjangoFilterBackend, )
     # permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
     filter_fields = ('username', 'about_me', 'first_name',)
+
+    def get_queryset(self):
+        queryset = UserModel.objects.all()
+        search_user = self.request.query_params.get('username')
+        search_email = self.request.query_params.get('search_email')
+
+        if search_user:
+            queryset = queryset.filter(username__icontains=search_user)
+        elif search_email:
+            queryset = queryset.filter(email__icontains=search_email)
+        else:
+            queryset = Q(username__icontains=search_user) & Q(email__icontains=search_email)
+
+        return queryset
 
 
 class UpdateUserView(generics.RetrieveUpdateDestroyAPIView):

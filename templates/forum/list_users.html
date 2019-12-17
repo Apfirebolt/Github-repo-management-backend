@@ -5,25 +5,61 @@
 {% block custom_styles %}
     <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
     <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/forumUsers.js' %}></script>
 {% endblock %}
 
 {% block content %}
+    <div class="search-container">
+        <p class="has-text-centered is-size-3">User Search {{ page_obj }}</p>
+        <div class="field">
+          <label for="search_name">Enter Username to Search</label>
+          <div class="control">
+            <input class="input is-primary" name="search_name" id="search_name" type="text" placeholder="Enter Username to search for Users" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="search_email">Enter Email to Search Users</label>
+          <div class="control">
+            <input class="input is-primary" name="search_email" id="search_email" type="text" placeholder="Enter Email to search for Users" />
+          </div>
+        </div>
+
+        <button class="button" id="search-btn">Search Users</button>
+    </div>
+
     <div class="forum-user-container">
         {% for each_user in all_users %}
             <div class="item-container">
-                <p class="is-size-4">{{ each_user.username }}</p>
-                <p>{{ each_user.about_me }}</p>
 
-                {% if each_user.profile_image %}
-                    <img height="120" width="120" alt="Image Not Available" src={{ each_user.profile_image.url }}>
-                {% endif %}
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img alt="Placeholder image" src={{ each_user.profile_image.url }}>
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img alt="Placeholder image" src={{ each_user.profile_image.url }}>
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">{{ each_user.username }}</p>
+                        <p class="subtitle is-6">{{ each_user.email }}</p>
+                      </div>
+                    </div>
 
-                <div class="button-container">
-                    <button class="button">Follow</button>
-                    <button class="button is-dark">Add Friend</button>
-                    <button class="button is-link">View Profile</button>
+                    <div class="content">
+                        <button class="button">Follow</button>
+                        <button class="button is-dark">Add Friend</button>
+                        <button class="button is-link">View Profile</button>
+                    </div>
+                  </div>
                 </div>
             </div>
+
         {% endfor %}
     </div>
 {% endblock %}

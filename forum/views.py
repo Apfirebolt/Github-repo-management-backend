@@ -41,6 +41,13 @@ class ListForumUsers(ListView):
     model = UserModel
     template_name = 'forum/list_users.html'
     context_object_name = 'all_users'
+    paginate_by = 20
+
+    def get_queryset(self):
+        queryset = UserModel.objects.exclude(username=self.request.user)
+        return queryset
+
+
 
 
 
