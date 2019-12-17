@@ -19,11 +19,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password',
               'profile_image', 'about_me',)
 
+    def create(self, validated_data):
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
 
-
-    # Create passwords for users
-    def validate_password(self, value):
-        return make_password(value)
 
     def validate_first_name(self, value):
         return value.upper()

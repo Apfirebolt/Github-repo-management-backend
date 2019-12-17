@@ -9,7 +9,35 @@
 {% endblock %}
 
 {% block content %}
-    <p class="is-size-4 has-text-white">Test Page 1</p>
+    <p class="is-size-4 has-text-white">Test Page 1 - Testing the Register </p>
+
+    <form method="post" id="login_form"> {% csrf_token %}
+
+    <div class="field">
+      <i class="fa fa-user"></i><label for="username">Enter Your Username</label>
+      <div class="control">
+        <input class="input is-primary" name="username" id="username" type="text" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="field">
+      <i class="fa fa-user"></i><label for="email">Enter Your Email</label>
+      <div class="control">
+        <input class="input is-primary" name="email" id="email" type="text" placeholder="Please Enter Your Email">
+      </div>
+    </div>
+
+    <div class="field">
+      <i class="fa fa-key"></i><label for="username">Enter Your Password</label>
+      <div class="control">
+        <input class="input is-primary" name="password" id="password" type="password" placeholder="Primary input">
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+        <input type="submit" value="REGISTER" class="button" id="submit-btn" />
+    </div>
+    </form>
 {% endblock %}
 
 

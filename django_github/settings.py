@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'django_github.urls'
@@ -143,4 +143,6 @@ CORS_ORIGIN_WHITELIST = 'http://localhost:3000',
 LOGIN_REDIRECT_URL = '/accounts'
 LOGOUT_REDIRECT_URL = 'accounts:login'
 
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+AUTO_LOGOUT_DELAY = 1

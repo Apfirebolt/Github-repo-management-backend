@@ -45,7 +45,7 @@ class EditAccountSettings(UpdateView):
         return HttpResponseRedirect(reverse('home'))
 
     def get_object(self, queryset=None):
-
+        """ To check if the user is the owner of the object """
         obj = super(EditAccountSettings, self).get_object()
         if not str(obj.username) == str(self.request.user):
             raise Http404

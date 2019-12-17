@@ -16,16 +16,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
-    def perform_create(self, serializer):
-        if serializer.is_valid():
-            print('valid data')
-        else:
-            print('Invalid data passed..')
-
-        print('The data is : ', serializer.validated_data)
-        serializer.validated_data['password'] = make_password(serializer.validated_data.get('password'))
-        serializer.save()
-
 
 class ListUserView(generics.ListAPIView):
     serializer_class = UserSerializer
