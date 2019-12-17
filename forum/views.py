@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.text import slugify
 from django.shortcuts import reverse
 from forum.utilities import handle_uploaded_file
+from accounts.models import UserModel
 
 
 def forum_home(request):
@@ -34,3 +35,12 @@ class CreateThread(FormView):
 class ThreadList(ListView):
     model = ForumThread
     template_name = 'forum/list_thread.html'
+
+
+class ListForumUsers(ListView):
+    model = UserModel
+    template_name = 'forum/list_users.html'
+    context_object_name = 'all_users'
+
+
+

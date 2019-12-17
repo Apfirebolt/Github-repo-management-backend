@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <p class="is-size-4 has-text-white">Test Page 1 - Testing the Register </p>
+    <p class="is-size-4 has-text-white">Test Page 1 - Testing the Register {{ request.user.last_login }} </p>
 
     <form method="post" id="login_form"> {% csrf_token %}
 

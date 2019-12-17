@@ -7,6 +7,7 @@ class UserModel(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_pics', default='1.png', blank=True)
     about_me = models.TextField(max_length=500, blank=True)
 
+
     class Meta:
         ordering = ['-id']
 

@@ -616,3 +616,21 @@ $lato: 'Lato', sans-serif;
     }
   }
 }
+
+/* Styles for forum user display */
+.forum-user-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem;
+
+  .item-container {
+    width: 26%;
+    background-color: #fff6d1;
+    color: #0C3398;
+    height: auto;
+    min-height: 300px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

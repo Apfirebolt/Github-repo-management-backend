@@ -421,4 +421,19 @@
       background-color: #242400;
       color: mintcream; }
 
+/* Styles for forum user display */
+.forum-user-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem; }
+  .forum-user-container .item-container {
+    width: 26%;
+    background-color: #fff6d1;
+    color: #0C3398;
+    height: auto;
+    min-height: 300px;
+    margin-top: 1rem;
+    margin-bottom: 1rem; }
+
 /*# sourceMappingURL=main.css.map */
