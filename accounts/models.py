@@ -13,3 +13,11 @@ class UserModel(AbstractUser):
 
     def __str__(self):
         return str(self.username)
+
+
+class UserFollowing(models.Model):
+    user = models.ForeignKey(UserModel, related_name='following', on_delete=models.CASCADE)
+    following = models.ForeignKey(UserModel, related_name='followed_by', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user) + ' Follows ' + str(self.following)

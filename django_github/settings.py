@@ -149,3 +149,10 @@ LOGOUT_REDIRECT_URL = 'accounts:login'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 AUTO_LOGOUT_DELAY = 1
+
+# Rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler'
+}
