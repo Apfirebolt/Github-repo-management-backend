@@ -41,7 +41,7 @@ class FollowSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         print('Inside the create method : ', self.context['request'].user, validated_data)
         follow_obj = super(FollowSerializer, self).create(validated_data)
-        follow_obj.user = UserModel.objects.get(pk=19)
+        follow_obj.user = UserModel.objects.get(pk=self.context['request'].user.id)
         follow_obj.following_since = timezone.now()
         follow_obj.save()
         return follow_obj

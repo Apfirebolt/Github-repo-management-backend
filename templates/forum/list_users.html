@@ -52,7 +52,11 @@
                     </div>
 
                     <div class="content">
-                        <button class="button follow-btn" data-store-id={{ each_user.id }}>Follow</button>
+                        {% if each_user.id in all_following_id %}
+                        <button class="button unfollow-btn is-danger">Unfollow</button>
+                        {% else %}
+                            <button class="button follow-btn" data-store-id={{ each_user.id }}>Follow</button>
+                        {% endif %}
                         <button class="button is-dark">Add Friend</button>
                         <button class="button is-link">View</button>
                     </div>

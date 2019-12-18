@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.text import slugify
 from django.shortcuts import reverse
 from forum.utilities import handle_uploaded_file
-from accounts.models import UserModel
+from accounts.models import UserModel, UserFollowing, FriendRequests
 
 
 def forum_home(request):
@@ -43,9 +43,21 @@ class ListForumUsers(ListView):
     context_object_name = 'all_users'
     paginate_by = 20
 
+    def get_follow_users(self):
+        follow_qs = UserFollowing.objects.filter(user_id=self.request.user.id)
+        return follow_qs
+
     def get_queryset(self):
         queryset = UserModel.objects.exclude(username=self.request.user)
         return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ListForumUsers, self).get_context_data()
+        context['all_follow'] = self.get_follow_users()
+        new_data = list(context['all_follow'])
+        all_following_id = [data.following.id for data in list(context['all_follow'])]
+        context['all_following_id'] = all_following_id
+        return context
 
 
 
