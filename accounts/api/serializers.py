@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from accounts.models import UserModel
+from accounts.models import UserModel,UserFollowing, FriendRequests
 from rest_framework.validators import UniqueValidator
-from django.contrib.auth.hashers import make_password
+from django.utils import timezone
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -25,6 +25,32 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-
     def validate_first_name(self, value):
         return value.upper()
+
+
+class FollowSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserFollowing
+        fields = ('user', 'following', 'following_since',)
+        extra_kwargs = {'following_since': {'read_only': True},
+                        'user': {'read_only': True, 'required': False},
+                        }
+
+    def create(self, validated_data):
+        print('Inside the create method : ', self.context['request'].user, validated_data)
+        follow_obj = super(FollowSerializer, self).create(validated_data)
+        follow_obj.user = UserModel.objects.get(pk=19)
+        follow_obj.following_since = timezone.now()
+        follow_obj.save()
+        return follow_obj
+
+
+class FriendSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FriendRequests
+        fields = ('user_from', 'user_to', '',)
+
+

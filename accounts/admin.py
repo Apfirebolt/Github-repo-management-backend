@@ -14,7 +14,7 @@ class FriendRequestManager(ModelAdmin):
 
 
 class FollowingModel(ModelAdmin):
-    list_display = ('user', 'following',)
+    list_display = ('user', 'following', 'following_since',)
 
 
 admin.site.register(UserModel, UserAdminManager)

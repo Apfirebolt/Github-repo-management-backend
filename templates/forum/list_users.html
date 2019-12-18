@@ -31,7 +31,7 @@
     <div class="forum-user-container">
         {% for each_user in all_users %}
             <div class="item-container">
-
+                <p>{{ each_user.following_set.all }}</p>
                 <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
@@ -52,9 +52,9 @@
                     </div>
 
                     <div class="content">
-                        <button class="button">Follow</button>
+                        <button class="button follow-btn" data-store-id={{ each_user.id }}>Follow</button>
                         <button class="button is-dark">Add Friend</button>
-                        <button class="button is-link">View Profile</button>
+                        <button class="button is-link">View</button>
                     </div>
                   </div>
                 </div>

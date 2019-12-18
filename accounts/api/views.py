@@ -1,6 +1,6 @@
 from rest_framework import generics
-from . serializers import UserSerializer
-from accounts.models import UserModel
+from . serializers import UserSerializer, FollowSerializer, FriendSerializer
+from accounts.models import UserModel, FriendRequests, UserFollowing
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
 from django.conf import settings
@@ -55,3 +55,29 @@ class UpdateUserView(generics.RetrieveUpdateDestroyAPIView):
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
+
+
+class FriendRequestView(generics.CreateAPIView):
+    serializer_class = FriendSerializer
+
+
+class FriendRequestListView(generics.ListAPIView):
+    serializer_class = FriendSerializer
+
+    def get_queryset(self):
+        qs = FriendRequests.objects.all()
+        return qs
+
+
+class UserFollowView(generics.CreateAPIView):
+    serializer_class = FollowSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsUserAuthenticated]
+
+
+class UserFollowListView(generics.ListAPIView):
+    serializer_class = FollowSerializer
+
+    def get_queryset(self):
+        qs = UserFollowing.objects.all()
+        return qs

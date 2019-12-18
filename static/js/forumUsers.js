@@ -5,6 +5,22 @@
 $(document).ready(function() {
    console.log('Jquery loaded on the forum users page..');
 
+   function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
    let username = $('#search_name');
    let email = $('#search_email');
    let search_btn = $('#search-btn');
@@ -12,17 +28,40 @@ $(document).ready(function() {
    let container = $('.search-container');
    let username_text = '';
    let email_text = '';
+   let current_user = -1;
+   let csrftoken = getCookie('csrftoken');
 
    username.on('keyup', function(event) {
        username_text = event.target.value;
-       console.log('Something typed..', username_text);
    });
 
    email.on('keyup', function(event) {
        email_text = event.target.value;
-       console.log('Something typed..', email_text);
    })
 
+   parent_container.on('click', 'button.follow-btn', function(event) {
+       current_user = event.target.getAttribute('data-store-id');
+       console.log('Follow button clicked!!', current_user, csrftoken);
+
+       $.ajax({
+          type: "POST",
+          url: 'http://localhost:8000/accounts/api/follow',
+          data: {
+            following: current_user,
+          },
+           headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function() {
+              console.log('This was a success!');
+              event.target.classList.add("is-danger");
+              $(event.target).text('Unfollow');
+          },
+          error: function() {
+              console.log('Some error occurred, request failed to execute');
+          }
+       })
+   });
 
    search_btn.on('click', function () {
        $.ajax({
@@ -59,9 +98,9 @@ $(document).ready(function() {
                                 </div>
             
                                 <div class="content">
-                                    <button class="button">Follow</button>
-                                    <button class="button is-dark">Add Friend</button>
-                                    <button class="button is-link">View Profile</button>
+                                    <button class="button follow-btn" data-store-id=${res[i].id}>Follow</button>
+                                    <button class="button is-dark add-btn" data-store-id=${res[i].id}>Add Friend</button>
+                                    <button class="button is-link" data-store-id=${res[i].id}>View</button>
                                 </div>
                               </div>
                             </div>
@@ -78,6 +117,6 @@ $(document).ready(function() {
 
    container.animate({
        "opacity": '1',
-   });
+   }, 1200);
 
 });
