@@ -1,5 +1,23 @@
 from django.contrib import admin
-from . models import UserModel
+from . models import UserModel, FriendRequests, UserFollowing
+from django.contrib.admin import ModelAdmin
 
 
-admin.site.register(UserModel)
+class UserAdminManager(ModelAdmin):
+    list_display = ('username', 'email', 'is_staff', 'last_login',)
+    list_filter = ('is_staff',)
+
+
+class FriendRequestManager(ModelAdmin):
+    list_display = ('user_from', 'user_to', 'accepted',)
+    list_filter = ('accepted',)
+
+
+class FollowingModel(ModelAdmin):
+    list_display = ('user', 'following',)
+
+
+admin.site.register(UserModel, UserAdminManager)
+admin.site.register(FriendRequests, FriendRequestManager)
+admin.site.register(UserFollowing, FollowingModel)
+

@@ -12,11 +12,8 @@ from rest_framework.authentication import BaseAuthentication, SessionAuthenticat
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
-from . exceptions import UnauthorizedException
-from rest_framework.views import exception_handler
 from django.http import HttpResponseForbidden
 from . permission import IsUserAuthenticated
-from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
 
 
@@ -30,25 +27,18 @@ class ListUserView(generics.ListAPIView):
     authentication_classes = [SessionAuthentication]
     filter_fields = ('username', 'about_me', 'first_name',)
 
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            request.user.is_authenticated
-            return super(ListUserView, self).dispatch(request, *args, **kwargs)
-        except:
-            raise PermissionDenied('Something gone terribly wrong')
-
     def get_queryset(self):
         queryset = UserModel.objects.all()
         search_user = self.request.query_params.get('username')
-        search_email = self.request.query_params.get('search_email')
+        search_email = self.request.query_params.get('email')
 
         if search_user:
             queryset = queryset.filter(username__icontains=search_user)
         elif search_email:
             queryset = queryset.filter(email__icontains=search_email)
+        elif search_user and search_email:
+            queryset = queryset.filter(Q(username__icontains=search_user) & Q(email__icontains=search_email))
 
-        # res = {"code": 400, "message": "Bad Requset"}
-        # return Response(data=json.dumps(res), status=status.HTTP_200_OK)
         return queryset
 
 
