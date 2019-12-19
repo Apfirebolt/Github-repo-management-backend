@@ -126,6 +126,24 @@ class UserUnfollowView(APIView):
         return Response(content, status=status.HTTP_204_NO_CONTENT)
 
 
+class CancelFriendView(APIView):
+    serializer_class = FollowSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsUserAuthenticated]
+
+    def delete(self, request, friend_id):
+        current_user = self.request.user
+        content = {'message': 'You have successfully cancelled friend request to this user!'}
+
+        try:
+            obj = FriendRequests.objects.get(Q(user_to_id=friend_id) & Q(user_from_id=current_user))
+            obj.delete()
+        except ObjectDoesNotExist:
+            print('The object does not exists', friend_id, current_user)
+
+        return Response(content, status=status.HTTP_204_NO_CONTENT)
+
+
 class UserFollowListView(generics.ListAPIView):
     serializer_class = FollowSerializer
 

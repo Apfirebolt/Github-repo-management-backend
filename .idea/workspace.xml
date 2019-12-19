@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2a302803-6d49-4948-acd9-51eec0faea44" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/api/serializers.py" afterPath="$PROJECT_DIR$/accounts/api/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/api/urls.py" afterPath="$PROJECT_DIR$/accounts/api/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/api/views.py" afterPath="$PROJECT_DIR$/accounts/api/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/models.py" afterPath="$PROJECT_DIR$/accounts/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forum/views.py" afterPath="$PROJECT_DIR$/forum/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/forumUsers.js" afterPath="$PROJECT_DIR$/static/js/forumUsers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/forum/list_users.html" afterPath="$PROJECT_DIR$/templates/forum/list_users.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/accounts/api/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="841">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -59,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/accounts/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="52" column="23" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="52" selection-end-column="23" />
+            <state relative-caret-position="175">
+              <caret line="133" column="41" lean-forward="true" selection-start-line="133" selection-start-column="41" selection-end-line="133" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -72,8 +69,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/accounts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1725">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-1575">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -81,25 +78,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forumUsers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/accounts/api/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="12" column="89" lean-forward="false" selection-start-line="12" selection-start-column="89" selection-end-line="12" selection-end-column="89" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forumUsers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/forumUsers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="78" column="28" lean-forward="true" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
+            <state relative-caret-position="-31">
+              <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
               <folding>
-                <marker date="1576762507997" expanded="true" signature="1764:3373" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="1764:3611" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="1803:3373" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="1850:2052" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="1905:2023" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2101:3373" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2145:2679" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2196:2415" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2256:2382" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2469:2648" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2726:3373" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="2937:3043" ph="..." />
-                <marker date="1576762507997" expanded="true" signature="3253:3369" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="1764:3373" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="1764:3611" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="1803:3373" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="1850:2052" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="1905:2023" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2101:3373" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2145:2679" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2196:2415" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2256:2382" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2469:2648" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2726:3373" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="2937:3043" ph="..." />
+                <marker date="1576763501982" expanded="true" signature="3253:3369" ph="..." />
               </folding>
             </state>
           </provider>
@@ -108,8 +115,8 @@
       <file leaf-file-name="list_users.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/forum/list_users.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="60" column="57" lean-forward="true" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="74" />
+            <state relative-caret-position="153">
+              <caret line="60" column="57" lean-forward="false" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -204,13 +211,13 @@
         <option value="$PROJECT_DIR$/blog/templatetags/__init__.py" />
         <option value="$PROJECT_DIR$/blog/templatetags/custom_blog_filters.py" />
         <option value="$PROJECT_DIR$/templates/blog/list_blog.html" />
-        <option value="$PROJECT_DIR$/accounts/api/urls.py" />
         <option value="$PROJECT_DIR$/accounts/models.py" />
         <option value="$PROJECT_DIR$/accounts/api/serializers.py" />
-        <option value="$PROJECT_DIR$/accounts/api/views.py" />
         <option value="$PROJECT_DIR$/forum/views.py" />
         <option value="$PROJECT_DIR$/templates/forum/list_users.html" />
+        <option value="$PROJECT_DIR$/accounts/api/urls.py" />
         <option value="$PROJECT_DIR$/static/js/forumUsers.js" />
+        <option value="$PROJECT_DIR$/accounts/api/views.py" />
       </list>
     </option>
   </component>
@@ -336,6 +343,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="forum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_github" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accounts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -970,14 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templatetags/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -989,7 +1020,7 @@
     <entry file="file://$PROJECT_DIR$/accounts/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="841">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -999,24 +1030,6 @@
         <state relative-caret-position="423">
           <caret line="30" column="124" lean-forward="false" selection-start-line="30" selection-start-column="124" selection-end-line="30" selection-end-column="124" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="52" column="23" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="52" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1725">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1030,33 +1043,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1575">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/forum/list_users.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="60" column="57" lean-forward="true" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="74" />
+        <state relative-caret-position="153">
+          <caret line="60" column="57" lean-forward="false" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="12" column="89" lean-forward="false" selection-start-line="12" selection-start-column="89" selection-end-line="12" selection-end-column="89" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/forumUsers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="78" column="28" lean-forward="true" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
+        <state relative-caret-position="-31">
+          <caret line="205" column="22" lean-forward="true" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
           <folding>
-            <marker date="1576762507997" expanded="true" signature="1764:3373" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="1764:3611" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="1803:3373" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="1850:2052" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="1905:2023" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2101:3373" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2145:2679" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2196:2415" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2256:2382" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2469:2648" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2726:3373" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="2937:3043" ph="..." />
-            <marker date="1576762507997" expanded="true" signature="3253:3369" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="1764:3373" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="1764:3611" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="1803:3373" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="1850:2052" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="1905:2023" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2101:3373" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2145:2679" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2196:2415" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2256:2382" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2469:2648" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2726:3373" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="2937:3043" ph="..." />
+            <marker date="1576763501982" expanded="true" signature="3253:3369" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="133" column="41" lean-forward="true" selection-start-line="133" selection-start-column="41" selection-end-line="133" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -190,6 +190,36 @@ $(document).ready(function() {
        })
    });
 
+    // Cancel Friend Request Functionality
+    parent_container.on('click', 'button.cancel-friend-btn', function(event) {
+       current_user = event.target.getAttribute('data-store-id');
+       console.log('Cancel Friend clicked!!', current_user, csrftoken);
+
+       $.ajax({
+          type: "DELETE",
+          url: 'http://localhost:8000/accounts/api/cancel_friend/' + current_user,
+
+          headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function() {
+              $.ajax({
+                type: "GET",
+                url: 'http://localhost:8000/accounts/api/list',
+                success: function(res) {
+                    successFunction(res);
+                },
+                error: function(error) {
+                    console.log('The request failed : ', error);
+                },
+            });
+          },
+          error: function() {
+              console.log('Some error occurred, request failed to execute');
+          }
+       })
+   });
+
    search_btn.on('click', function () {
        $.ajax({
           type: "GET",

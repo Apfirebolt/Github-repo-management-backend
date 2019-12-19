@@ -10,6 +10,7 @@ urlpatterns = [
     path('follow', views.UserFollowView.as_view(), name='user-follow'),
     path('un_follow/<int:follow_id>', views.UserUnfollowView.as_view(), name='user-unfollow'),
     path('friend', views.FriendRequestView.as_view(), name='user-friend'),
+    path('cancel_friend/<int:friend_id>', views.CancelFriendView.as_view(), name='cancel-user-friend'),
     path('friend_all', views.FriendRequestListView.as_view(), name='user-friend-all'),
     path('follow_all', views.UserFollowListView.as_view(), name='user-follow-all'),
 ]
