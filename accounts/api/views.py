@@ -48,15 +48,24 @@ class ListUserView(generics.ListAPIView):
         queryset = UserFollowing.objects.filter(user_id=self.request.user.id)
         return queryset
 
+    def get_queryset_friend(self):
+        queryset = FriendRequests.objects.filter(user_from_id=self.request.user.id)
+        return queryset
+
     def list(self, request, *args, **kwargs):
         user_data = UserSerializer(self.get_queryset_user(), many=True)
         follow_data = self.get_queryset_follow()
+        friend_data = self.get_queryset_friend()
 
         follow_data_array = [each_data.following_id for each_data in list(follow_data)]
+        friend_data_array = [each_data.user_to_id for each_data in list(friend_data)]
+
+        print('Friend data array is : ', friend_data_array)
 
         return Response({
           'user_data': user_data.data,
-          'follow_data_array': follow_data_array
+          'follow_data_array': follow_data_array,
+          'friend_data_array': friend_data_array
         })
 
 
@@ -77,10 +86,14 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class FriendRequestView(generics.CreateAPIView):
     serializer_class = FriendSerializer
+    permission_classes = [IsUserAuthenticated]
+    authentication_classes = [SessionAuthentication]
 
 
 class FriendRequestListView(generics.ListAPIView):
     serializer_class = FriendSerializer
+    permission_classes = [IsUserAuthenticated]
+    authentication_classes = [SessionAuthentication]
 
     def get_queryset(self):
         qs = FriendRequests.objects.all()

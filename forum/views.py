@@ -47,6 +47,9 @@ class ListForumUsers(ListView):
         follow_qs = UserFollowing.objects.filter(user_id=self.request.user.id)
         return follow_qs
 
+    def get_queryset_friend(self):
+        friend_qs = FriendRequests.objects.filter(user_from_id=self.request.user.id)
+        return friend_qs
 
     def get_queryset(self):
         queryset = UserModel.objects.exclude(username=self.request.user)
@@ -55,9 +58,14 @@ class ListForumUsers(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ListForumUsers, self).get_context_data()
         context['all_follow'] = self.get_follow_users()
-        new_data = list(context['all_follow'])
+        context['all_friend'] = self.get_queryset_friend()
+
         all_following_id = [data.following.id for data in list(context['all_follow'])]
+        all_friend_id = [data.user_to_id for data in list(context['all_friend'])]
+
         context['all_following_id'] = all_following_id
+        context['all_friend_id'] = all_friend_id
+
         return context
 
 

@@ -38,8 +38,12 @@ $(document).ready(function() {
       let content = '';
       let res = response.user_data;
       let follow_array = response.follow_data_array;
+      let friend_array = response.friend_data_array;
+
       let follow_class_names = ['button', 'follow-btn'];
       let unfollow_class_names = ['button', 'unfollow-btn', 'is-danger'];
+      let friend_class_names = ['button', 'is-dark', 'add-friend-btn'];
+      let cancel_friend_class = ['button', 'is-warning', 'cancel-friend-btn'];
 
       for(let i=0; i<res.length; i++)
       {
@@ -68,7 +72,9 @@ $(document).ready(function() {
                             <button class="${follow_array.indexOf(res[i].id) != -1 ? unfollow_class_names.join(' ') : 
                                 follow_class_names.join(' ') }" data-store-id=${res[i].id}>
                                 ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
-                            <button class="button is-dark add-btn" data-store-id=${res[i].id}>Add Friend</button>
+                            <button class="${friend_array.indexOf(res[i].id) != -1 ? cancel_friend_class.join(' ') : 
+                                friend_class_names.join(' ') }" data-store-id=${res[i].id}>
+                                ${friend_array.indexOf(res[i].id) != -1 ? 'Cancel Request' : 'Add Friend'}</button>   
                             <button class="button is-link" data-store-id=${res[i].id}>View</button>
                             
                         </div>
@@ -134,7 +140,49 @@ $(document).ready(function() {
                 'X-CSRFToken': csrftoken
           },
           success: function() {
-              console.log('Delete message was a success!');
+              $.ajax({
+                type: "GET",
+                url: 'http://localhost:8000/accounts/api/list',
+                success: function(res) {
+                    successFunction(res);
+                },
+                error: function(error) {
+                    console.log('The request failed : ', error);
+                },
+            });
+          },
+          error: function() {
+              console.log('Some error occurred, request failed to execute');
+          }
+       })
+   });
+
+   // Add Friend Functionality
+    parent_container.on('click', 'button.add-friend-btn', function(event) {
+       current_user = event.target.getAttribute('data-store-id');
+       console.log('Add Friend button clicked!!', current_user, csrftoken);
+
+       $.ajax({
+          type: "POST",
+          url: 'http://localhost:8000/accounts/api/friend',
+          data: {
+            user_to: current_user,
+            user_from: 1
+          },
+           headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function() {
+              $.ajax({
+                type: "GET",
+                url: 'http://localhost:8000/accounts/api/list',
+                success: function(res) {
+                    successFunction(res);
+                },
+                error: function(error) {
+                    console.log('The request failed : ', error);
+                },
+            });
           },
           error: function() {
               console.log('Some error occurred, request failed to execute');
