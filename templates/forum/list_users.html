@@ -53,7 +53,7 @@
 
                     <div class="content">
                         {% if each_user.id in all_following_id %}
-                        <button class="button unfollow-btn is-danger">Unfollow</button>
+                        <button class="button unfollow-btn is-danger" data-store-id={{ each_user.id }}>Unfollow</button>
                         {% else %}
                             <button class="button follow-btn" data-store-id={{ each_user.id }}>Follow</button>
                         {% endif %}

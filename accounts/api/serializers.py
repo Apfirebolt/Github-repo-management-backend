@@ -33,13 +33,13 @@ class FollowSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserFollowing
-        fields = ('user', 'following', 'following_since',)
+        fields = ('id', 'user', 'following', 'following_since',)
         extra_kwargs = {'following_since': {'read_only': True},
                         'user': {'read_only': True, 'required': False},
+                        'id': {'read_only': True}
                         }
 
     def create(self, validated_data):
-        print('Inside the create method : ', self.context['request'].user, validated_data)
         follow_obj = super(FollowSerializer, self).create(validated_data)
         follow_obj.user = UserModel.objects.get(pk=self.context['request'].user.id)
         follow_obj.following_since = timezone.now()

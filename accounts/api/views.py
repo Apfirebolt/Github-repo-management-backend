@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.views import APIView
 from . serializers import UserSerializer, FollowSerializer, FriendSerializer
 from accounts.models import UserModel, FriendRequests, UserFollowing
 from django.contrib.auth.hashers import make_password
@@ -15,6 +16,8 @@ from django.db.models import Q
 from django.http import HttpResponseForbidden
 from . permission import IsUserAuthenticated
 from rest_framework.exceptions import PermissionDenied
+from rest_framework import status
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -88,6 +91,26 @@ class UserFollowView(generics.CreateAPIView):
     serializer_class = FollowSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsUserAuthenticated]
+
+
+class UserUnfollowView(APIView):
+
+    serializer_class = FollowSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsUserAuthenticated]
+
+    def delete(self, request, follow_id):
+        current_user = self.request.user.id
+        following_user = self.request.query_params
+        content = {'message': 'You have successfully unfollowed this user!'}
+
+        try:
+            obj = UserFollowing.objects.get(Q(user_id=current_user) & Q(following_id=follow_id))
+            obj.delete()
+        except ObjectDoesNotExist:
+            print('The object does not exists')
+
+        return Response(content, status=status.HTTP_204_NO_CONTENT)
 
 
 class UserFollowListView(generics.ListAPIView):

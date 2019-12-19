@@ -31,6 +31,55 @@ $(document).ready(function() {
    let current_user = -1;
    let csrftoken = getCookie('csrftoken');
 
+   // Function to get API data
+   function successFunction(response) {
+
+      console.log('So this was success', response);
+      let content = '';
+      let res = response.user_data;
+      let follow_array = response.follow_data_array;
+      let follow_class_names = ['button', 'follow-btn'];
+      let unfollow_class_names = ['button', 'unfollow-btn', 'is-danger'];
+
+      for(let i=0; i<res.length; i++)
+      {
+          content += `
+                <div class="item-container">
+                    <div class="card">
+                      <div class="card-image">
+                        <figure class="image is-4by3">
+                          <img alt="Placeholder image" src=${res[i].profile_image}>
+                        </figure>
+                      </div>
+                      <div class="card-content">
+                        <div class="media">
+                          <div class="media-left">
+                            <figure class="image is-48x48">
+                              <img alt="Placeholder image" src=${res[i].profile_image}>
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <p class="title is-4">${res[i].username}</p>
+                            <p class="subtitle is-6">${res[i].email}</p>
+                          </div>
+                        </div>
+
+                        <div class="content">
+                            <button class="${follow_array.indexOf(res[i].id) != -1 ? unfollow_class_names.join(' ') : 
+                                follow_class_names.join(' ') }" data-store-id=${res[i].id}>
+                                ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
+                            <button class="button is-dark add-btn" data-store-id=${res[i].id}>Add Friend</button>
+                            <button class="button is-link" data-store-id=${res[i].id}>View</button>
+                            
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                `;
+      }
+      parent_container.html(content);
+   }
+
    username.on('keyup', function(event) {
        username_text = event.target.value;
    });
@@ -53,9 +102,39 @@ $(document).ready(function() {
                 'X-CSRFToken': csrftoken
           },
           success: function() {
-              console.log('This was a success!');
-              event.target.classList.add("is-danger");
-              $(event.target).text('Unfollow');
+              $.ajax({
+                type: "GET",
+                url: 'http://localhost:8000/accounts/api/list',
+                success: function(res) {
+                    successFunction(res);
+                },
+                error: function(error) {
+                    console.log('The request failed : ', error);
+                },
+            });
+          },
+          error: function() {
+              console.log('Some error occurred, request failed to execute');
+          }
+       })
+   });
+
+   // Unfollow button functionality
+    parent_container.on('click', 'button.unfollow-btn', function(event) {
+       current_user = event.target.getAttribute('data-store-id');
+       console.log('Not follow button clicked!!', current_user, csrftoken);
+
+       $.ajax({
+          type: "DELETE",
+          url: 'http://localhost:8000/accounts/api/un_follow/' + current_user,
+          data: {
+            following: current_user,
+          },
+           headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function() {
+              console.log('Delete message was a success!');
           },
           error: function() {
               console.log('Some error occurred, request failed to execute');
@@ -71,61 +150,15 @@ $(document).ready(function() {
             username: username_text,
             email: email_text
           },
-          success: function(response) {
-              console.log('So this was success', response);
-              let content = '';
-              let res = response.user_data;
-              let follow_array = response.follow_data_array;
-              let follow_class_names = ['button', 'follow-btn'];
-              let unfollow_class_names = ['button', 'unfollow-btn', 'is-danger'];
-
-              console.log(typeof follow_array[0]);
-              for(let i=0; i<res.length; i++)
-              {
-                  content += `
-                        <div class="item-container">
-                            <div class="card">
-                              <div class="card-image">
-                                <figure class="image is-4by3">
-                                  <img alt="Placeholder image" src=${res[i].profile_image}>
-                                </figure>
-                              </div>
-                              <div class="card-content">
-                                <div class="media">
-                                  <div class="media-left">
-                                    <figure class="image is-48x48">
-                                      <img alt="Placeholder image" src=${res[i].profile_image}>
-                                    </figure>
-                                  </div>
-                                  <div class="media-content">
-                                    <p class="title is-4">${res[i].username}</p>
-                                    <p class="subtitle is-6">${res[i].email}</p>
-                                  </div>
-                                </div>
-
-                                <div class="content">
-                                    <button class="${follow_array.indexOf(res[i].id) != -1 ? unfollow_class_names.join(' ') : 
-                                        follow_class_names.join(' ') }" data-store-id=${res[i].id}>
-                                        ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
-                                    <button class="button is-dark add-btn" data-store-id=${res[i].id}>Add Friend</button>
-                                    <button class="button is-link" data-store-id=${res[i].id}>View</button>
-                                    
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        `;
-              }
-              parent_container.html(content);
+          success: function(res) {
+            successFunction(res);
           },
           error: function(error) {
               console.log('The request failed : ', error);
           },
         });
    });
-
    container.animate({
        "opacity": '1',
    }, 1200);
-
 });
