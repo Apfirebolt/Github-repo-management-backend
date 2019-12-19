@@ -2,6 +2,7 @@
 {% load widget_tweaks %}
 {% load static %}
 {% block title %}Django Github - Blog List Page{% endblock %}
+{% load custom_blog_filters %}
 {% block custom_styles %}
     <script src={% static 'js/jquery.js' %}></script>
     <script src={% static 'js/blog.js' %}></script>
@@ -22,7 +23,7 @@
             <tbody>
             {% for each_blog in all_blogs %}
                 <tr>
-                    <td>{{ each_blog.title }}</td>
+                    <td>{{ each_blog.title|capitalText }}</td>
                     <td>{{ each_blog.category }}</td>
                     <td class="action-column">
                         <i class="fa fa-trash delete-blog" data-store-id={{ each_blog.pk }}></i>

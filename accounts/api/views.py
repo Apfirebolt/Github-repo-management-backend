@@ -27,7 +27,7 @@ class ListUserView(generics.ListAPIView):
     authentication_classes = [SessionAuthentication]
     filter_fields = ('username', 'about_me', 'first_name',)
 
-    def get_queryset(self):
+    def get_queryset_user(self):
         queryset = UserModel.objects.all()
         search_user = self.request.query_params.get('username')
         search_email = self.request.query_params.get('email')
@@ -40,6 +40,21 @@ class ListUserView(generics.ListAPIView):
             queryset = queryset.filter(Q(username__icontains=search_user) & Q(email__icontains=search_email))
 
         return queryset
+
+    def get_queryset_follow(self):
+        queryset = UserFollowing.objects.filter(user_id=self.request.user.id)
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        user_data = UserSerializer(self.get_queryset_user(), many=True)
+        follow_data = self.get_queryset_follow()
+
+        follow_data_array = [each_data.following_id for each_data in list(follow_data)]
+
+        return Response({
+          'user_data': user_data.data,
+          'follow_data_array': follow_data_array
+        })
 
 
 class UpdateUserView(generics.RetrieveUpdateDestroyAPIView):

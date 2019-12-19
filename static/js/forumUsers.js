@@ -71,9 +71,15 @@ $(document).ready(function() {
             username: username_text,
             email: email_text
           },
-          success: function(res) {
-              console.log('So this was success', res[0]);
+          success: function(response) {
+              console.log('So this was success', response);
               let content = '';
+              let res = response.user_data;
+              let follow_array = response.follow_data_array;
+              let follow_class_names = ['button', 'follow-btn'];
+              let unfollow_class_names = ['button', 'unfollow-btn', 'is-danger'];
+
+              console.log(typeof follow_array[0]);
               for(let i=0; i<res.length; i++)
               {
                   content += `
@@ -96,11 +102,14 @@ $(document).ready(function() {
                                     <p class="subtitle is-6">${res[i].email}</p>
                                   </div>
                                 </div>
-            
+
                                 <div class="content">
-                                    <button class="button follow-btn" data-store-id=${res[i].id}>Follow</button>
+                                    <button class="${follow_array.indexOf(res[i].id) != -1 ? unfollow_class_names.join(' ') : 
+                                        follow_class_names.join(' ') }" data-store-id=${res[i].id}>
+                                        ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
                                     <button class="button is-dark add-btn" data-store-id=${res[i].id}>Add Friend</button>
                                     <button class="button is-link" data-store-id=${res[i].id}>View</button>
+                                    
                                 </div>
                               </div>
                             </div>

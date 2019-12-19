@@ -47,6 +47,7 @@ class ListForumUsers(ListView):
         follow_qs = UserFollowing.objects.filter(user_id=self.request.user.id)
         return follow_qs
 
+
     def get_queryset(self):
         queryset = UserModel.objects.exclude(username=self.request.user)
         return queryset

@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from github.models import RepoModel
 from accounts.models import UserModel
+from . mixins import ContextDataMixin
 
 
 class RegisterForm(FormView):
@@ -27,7 +28,7 @@ class RegisterForm(FormView):
         return HttpResponseRedirect(reverse('home'))
 
 
-class EditAccountSettings(UpdateView):
+class EditAccountSettings(ContextDataMixin, UpdateView):
     form_class = SettingsForm
     template_name = 'accounts/settings.html'
     success_url = '/'
