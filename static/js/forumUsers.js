@@ -39,11 +39,13 @@ $(document).ready(function() {
       let res = response.user_data;
       let follow_array = response.follow_data_array;
       let friend_array = response.friend_data_array;
+      let accepted_friends = response.friend_accepted_array;
 
       let follow_class_names = ['button', 'follow-btn'];
       let unfollow_class_names = ['button', 'unfollow-btn', 'is-danger'];
       let friend_class_names = ['button', 'is-dark', 'add-friend-btn'];
       let cancel_friend_class = ['button', 'is-warning', 'cancel-friend-btn'];
+      let accepted_friend_class = ['button', 'is-success', 'remove-friend-btn'];
 
       for(let i=0; i<res.length; i++)
       {
@@ -74,7 +76,10 @@ $(document).ready(function() {
                                 ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
                             <button class="${friend_array.indexOf(res[i].id) != -1 ? cancel_friend_class.join(' ') : 
                                 friend_class_names.join(' ') }" data-store-id=${res[i].id}>
-                                ${friend_array.indexOf(res[i].id) != -1 ? 'Cancel Request' : 'Add Friend'}</button>   
+                                ${friend_array.indexOf(res[i].id) != -1 ? 'Cancel Request' : 'Add Friend'}</button>
+                            <button class="${accepted_friends.indexOf(res[i].id) != -1 ? accepted_friend_class.join(' ') : 
+                                friend_class_names.join(' ') }" data-store-id=${res[i].id}>
+                                ${accepted_friends.indexOf(res[i].id) != -1 ? 'Remove Friend' : 'Cancel Request'}</button> 
                             <button class="button is-link" data-store-id=${res[i].id}>View</button>
                             
                         </div>

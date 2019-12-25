@@ -49,23 +49,31 @@ class ListUserView(generics.ListAPIView):
         return queryset
 
     def get_queryset_friend(self):
-        queryset = FriendRequests.objects.filter(user_from_id=self.request.user.id)
+        queryset = FriendRequests.objects.filter(Q(user_from_id=self.request.user.id) & Q(accepted=False))
+        return queryset
+
+    def get_queryset_friend_accepted(self):
+        queryset = FriendRequests.objects.filter(Q(user_from_id=self.request.user.id) & Q(accepted=True))
         return queryset
 
     def list(self, request, *args, **kwargs):
         user_data = UserSerializer(self.get_queryset_user(), many=True)
         follow_data = self.get_queryset_follow()
         friend_data = self.get_queryset_friend()
+        friend_accepted = self.get_queryset_friend_accepted()
 
         follow_data_array = [each_data.following_id for each_data in list(follow_data)]
         friend_data_array = [each_data.user_to_id for each_data in list(friend_data)]
+        friend_accepted = [each_data.user_to_id for each_data in list(friend_accepted)]
 
-        print('Friend data array is : ', friend_data_array)
+        print('Friend data array is : ', friend_accepted)
+        print('Friend not accepted array is : ', friend_data_array)
 
         return Response({
           'user_data': user_data.data,
           'follow_data_array': follow_data_array,
-          'friend_data_array': friend_data_array
+          'friend_data_array': friend_data_array,
+          'friend_accepted_array': friend_accepted
         })
 
 
