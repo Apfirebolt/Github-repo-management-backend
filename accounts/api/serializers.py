@@ -51,11 +51,12 @@ class FriendSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FriendRequests
-        fields = ('id', 'user_from', 'user_to',)
+        fields = ('id', 'user_from', 'user_to', 'accepted', )
 
     extra_kwargs = {
                     'user_from': {'read_only': True, 'required': False},
-                    'id': {'read_only': True}
+                    'id': {'read_only': True},
+                    'accepted': {'read_only': True}
                     }
 
     def create(self, validated_data):
@@ -63,3 +64,9 @@ class FriendSerializer(serializers.ModelSerializer):
         friend_obj.user_from = UserModel.objects.get(pk=self.context['request'].user.id)
         friend_obj.save()
         return friend_obj
+
+    def update(self, instance, validated_data):
+        instance = super(FriendSerializer, self).update(instance, validated_data)
+        return instance
+
+

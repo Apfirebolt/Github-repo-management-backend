@@ -35,6 +35,8 @@ class FriendRequests(models.Model):
     class Meta:
         unique_together = [['user_from', 'user_to']]
 
+    def pre_save(self, request):
+        self.user_from = request.user
 
     def __str__(self):
-        return str(self.user_from) + ' - ' + str(self.following) + ' - ' + str(self.accepted)
+        return str(self.user_from) + ' - ' + str(self.user_to) + ' - ' + str(self.accepted)

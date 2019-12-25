@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from django.views.generic import TemplateView, FormView, ListView, UpdateView
+from django.views.generic import TemplateView, FormView, ListView, UpdateView, View
 from django.template import RequestContext
 from . forms import UserModelForm, SettingsForm
 from django.contrib.auth import authenticate, login, logout
@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from github.models import RepoModel
-from accounts.models import UserModel
+from accounts.models import UserModel, FriendRequests, UserFollowing
 from . mixins import ContextDataMixin
 
 
@@ -86,6 +86,18 @@ class RepoList(LoginRequiredMixin, ListView):
         context = super(RepoList, self).get_context_data(**kwargs)
         context['user_data'] = UserModel.objects.get(pk=self.request.user.id)
         return context
+
+
+class SocialList(LoginRequiredMixin, View):
+
+    def get(self, request):
+        follow_users = UserFollowing.objects.filter(user=self.request.user)
+        friend_users = FriendRequests.objects.filter(user_from=self.request.user)
+        context_data = {}
+        context_data['follow_users'] = follow_users
+        context_data['friend_users'] = friend_users
+
+        return render(request, 'accounts/social.html', context_data)
 
 
 def handler404(request, *args, **argv):

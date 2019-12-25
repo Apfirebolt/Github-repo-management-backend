@@ -13,7 +13,7 @@ from rest_framework.authentication import BaseAuthentication, SessionAuthenticat
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, Http404
 from . permission import IsUserAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import status
@@ -31,7 +31,7 @@ class ListUserView(generics.ListAPIView):
     filter_fields = ('username', 'about_me', 'first_name',)
 
     def get_queryset_user(self):
-        queryset = UserModel.objects.all()
+        queryset = UserModel.objects.exclude(username=self.request.user)
         search_user = self.request.query_params.get('username')
         search_email = self.request.query_params.get('email')
 
@@ -100,6 +100,41 @@ class FriendRequestListView(generics.ListAPIView):
         return qs
 
 
+class UpdateFriendRequest(APIView):
+    serializer_class = FriendSerializer
+    permission_classes = [IsUserAuthenticated]
+    authentication_classes = [SessionAuthentication]
+
+    def get_object(self, request, friend_id):
+        try:
+            current_user = self.request.user.id
+            return FriendRequests.objects.get(Q(user_from_id=current_user) & Q(user_to_id=friend_id))
+
+        except FriendRequests.DoesNotExist:
+            raise Http404
+
+    def put(self, request, friend_id):
+        friend = self.get_object(request, friend_id)
+
+        serializer = FriendSerializer(friend, data=request.data)
+        if serializer.is_valid():
+
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, friend_id):
+        current_obj = self.get_object(request, friend_id)
+        content = {'message': 'You have cancelled friend request from this user!'}
+
+        try:
+            current_obj.delete()
+        except ObjectDoesNotExist:
+            print('The object does not exists')
+
+        return Response(content, status=status.HTTP_204_NO_CONTENT)
+
+
 class UserFollowView(generics.CreateAPIView):
     serializer_class = FollowSerializer
     authentication_classes = [SessionAuthentication]
@@ -114,7 +149,6 @@ class UserUnfollowView(APIView):
 
     def delete(self, request, follow_id):
         current_user = self.request.user.id
-        following_user = self.request.query_params
         content = {'message': 'You have successfully unfollowed this user!'}
 
         try:

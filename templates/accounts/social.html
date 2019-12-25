@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Django Github - Friends and Following{% endblock %}
+{% block custom_styles %}
+    <link rel="stylesheet" href={% static 'accounts/css/styles.css' %}>
+    <script src={% static 'js/jquery.js' %}></script>
+    <script src={% static 'js/social.js' %}></script>
+{% endblock %}
+
+{% block content %}
+    <div id="social_container">
+        <h1 class="is-size-4 has-text-white">Social</h1>
+
+        {% for each_user in follow_users %}
+            <div class="container">
+                <h3 class="text-center text-primary">{{ each_user.following.username }}</h3>
+                <img alt="Image not available" height="300" width="300" src={{ each_user.following.profile_image.url}} />
+            </div>
+        {% endfor %}
+
+        <h1 class="is-size-3 has-text-white">Friend Requests</h1>
+
+        {% for each_user in friend_users %}
+            <div class="container">
+                <h3 class="text-center text-primary">{{ each_user.user_to.username }}</h3>
+                <img alt="Image not available" height="300" width="300" src={{ each_user.user_to.profile_image.url}} />
+                <button class="button is-success accept_request" data-store-id={{ each_user.user_to.id }}>Accept Request</button>
+                <button class="button is-danger cancel_request" data-store-id={{ each_user.user_to.id }}>Cancel Request</button>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

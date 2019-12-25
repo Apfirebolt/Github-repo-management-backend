@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path('', views.RepoList.as_view(), name='dashboard'),
+    path('social', views.SocialList.as_view(), name='social'),
     path('api/', include(('accounts.api.urls', 'accounts.api'), namespace='accounts-api')),
     path('register/', views.RegisterForm.as_view(), name='register'),
     path('settings/<int:pk>', views.EditAccountSettings.as_view(), name='settings'),
