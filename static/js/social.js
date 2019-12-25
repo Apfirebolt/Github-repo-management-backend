@@ -32,7 +32,6 @@ $(document).ready(() => {
           url: 'http://localhost:8000/accounts/api/add_friend/' + current_id,
           data: {
             user_to: current_id,
-            user_from: 1,
             accepted: true
           },
           headers: {

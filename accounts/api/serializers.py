@@ -48,13 +48,13 @@ class FollowSerializer(serializers.ModelSerializer):
 
 
 class FriendSerializer(serializers.ModelSerializer):
+    user_from = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = FriendRequests
         fields = ('id', 'user_from', 'user_to', 'accepted', )
 
     extra_kwargs = {
-                    'user_from': {'read_only': True, 'required': False},
                     'id': {'read_only': True},
                     'accepted': {'read_only': True}
                     }
@@ -65,8 +65,6 @@ class FriendSerializer(serializers.ModelSerializer):
         friend_obj.save()
         return friend_obj
 
-    def update(self, instance, validated_data):
-        instance = super(FriendSerializer, self).update(instance, validated_data)
-        return instance
+
 
 
