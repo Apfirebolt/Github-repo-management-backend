@@ -66,9 +66,6 @@ class ListUserView(generics.ListAPIView):
         friend_data_array = [each_data.user_to_id for each_data in list(friend_data)]
         friend_accepted = [each_data.user_to_id for each_data in list(friend_accepted)]
 
-        print('Friend data array is : ', friend_accepted)
-        print('Friend not accepted array is : ', friend_data_array)
-
         return Response({
           'user_data': user_data.data,
           'follow_data_array': follow_data_array,

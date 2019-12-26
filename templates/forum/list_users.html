@@ -57,12 +57,16 @@
                         {% else %}
                             <button class="button follow-btn" data-store-id={{ each_user.id }}>Follow</button>
                         {% endif %}
-                        {% if each_user.id in all_friend_id %}
+                        {% if each_user.id in all_friend_id and each_user.id not in all_accepted_id %}
                         <button class="button is-warning cancel-friend-btn" data-store-id={{ each_user.id }}>
                             Cancel Request</button>
-                        {% else %}
+                        {% elif each_user.id not in all_accepted_id and each_user.id not in all_friend_id %}
                         <button class="button is-dark add-friend-btn" data-store-id={{ each_user.id }}>
                             Add Friend</button>
+                        {% endif %}
+                        {% if each_user.id in all_accepted_id %}
+                            <button class="button is-success remove-friend-btn" data-store-id={{ each_user.id }}>
+                                Remove Friend</button>
                         {% endif %}
                         <button class="button is-link">View</button>
                     </div>

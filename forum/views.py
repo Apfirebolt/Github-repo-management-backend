@@ -7,6 +7,7 @@ from django.utils.text import slugify
 from django.shortcuts import reverse
 from forum.utilities import handle_uploaded_file
 from accounts.models import UserModel, UserFollowing, FriendRequests
+from django.db.models import Q
 
 
 def forum_home(request):
@@ -51,6 +52,10 @@ class ListForumUsers(ListView):
         friend_qs = FriendRequests.objects.filter(user_from_id=self.request.user.id)
         return friend_qs
 
+    def get_queryset_friend_accepted(self):
+        queryset = FriendRequests.objects.filter(Q(user_from_id=self.request.user.id) & Q(accepted=True))
+        return queryset
+
     def get_queryset(self):
         queryset = UserModel.objects.exclude(username=self.request.user)
         return queryset
@@ -59,12 +64,17 @@ class ListForumUsers(ListView):
         context = super(ListForumUsers, self).get_context_data()
         context['all_follow'] = self.get_follow_users()
         context['all_friend'] = self.get_queryset_friend()
+        context['all_accepted'] = self.get_queryset_friend_accepted()
 
         all_following_id = [data.following.id for data in list(context['all_follow'])]
         all_friend_id = [data.user_to_id for data in list(context['all_friend'])]
+        all_accepted_id = [data.user_to_id for data in list(context['all_accepted'])]
 
         context['all_following_id'] = all_following_id
         context['all_friend_id'] = all_friend_id
+        context['all_accepted_id'] = all_accepted_id
+
+        print('All accepted context is : ', context['all_accepted_id'])
 
         return context
 
