@@ -65,6 +65,21 @@ class FriendSerializer(serializers.ModelSerializer):
         friend_obj.save()
         return friend_obj
 
+    # def update(self, instance, validated_data):
+    #     print('Update method called.. ', validated_data)
+    #     instance.user_ = UserModel.objects.get(pk=self.context['request'].user.id)
+    #     return super(FriendSerializer, self).update(instance, validated_data)
 
 
+class FriendUpdateSerializer(serializers.ModelSerializer):
+    user_to = serializers.PrimaryKeyRelatedField(read_only=True, required=False)
+
+    class Meta:
+        model = FriendRequests
+        fields = ('id', 'user_from', 'user_to', 'accepted',)
+
+    extra_kwargs = {
+        'id': {'read_only': True},
+        'accepted': {'read_only': True}
+    }
 

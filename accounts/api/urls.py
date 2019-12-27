@@ -14,4 +14,5 @@ urlpatterns = [
     path('add_friend/<int:friend_id>', views.UpdateFriendRequest.as_view(), name='update-friend'),
     path('friend_all', views.FriendRequestListView.as_view(), name='user-friend-all'),
     path('follow_all', views.UserFollowListView.as_view(), name='user-follow-all'),
+    path('update_friend/<int:pk>', views.FriendUpdateRequest.as_view(), name='update-friend-request'),
 ]

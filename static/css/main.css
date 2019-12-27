@@ -443,6 +443,9 @@
     min-height: 300px;
     margin-top: 1rem;
     margin-bottom: 1rem; }
+    .forum-user-container .item-container .remove-friend-btn {
+      background-color: coral;
+      color: #FFF; }
     .forum-user-container .item-container .card {
       margin: 0; }
 

@@ -10,7 +10,7 @@
 
 {% block content %}
     <div id="social_container">
-        <h1 class="is-size-4 has-text-white">Social</h1>
+        <h1 class="is-size-5 has-text-white">Social</h1>
 
         {% for each_user in follow_users %}
             <div class="container">
@@ -23,10 +23,10 @@
 
         {% for each_user in friend_users %}
             <div class="container">
-                <h3 class="text-center text-primary">{{ each_user.user_to.username }}</h3>
-                <img alt="Image not available" height="300" width="300" src={{ each_user.user_to.profile_image.url}} />
-                <button class="button is-success accept_request" data-store-id={{ each_user.user_to.id }}>Accept Request</button>
-                <button class="button is-danger cancel_request" data-store-id={{ each_user.user_to.id }}>Cancel Request</button>
+                <h3 class="text-center text-primary is-size-4 has-text-white">{{ each_user.user_from.username }}</h3>
+                <img alt="Image not available" height="300" width="300" src={{ each_user.user_from.profile_image.url}} />
+                <button class="button is-success accept_request" data-store-id={{ each_user.user_from.id }}>Accept Request</button>
+                <button class="button is-danger cancel_request" data-store-id={{ each_user.user_from.id }}>Cancel Request</button>
             </div>
         {% endfor %}
     </div>

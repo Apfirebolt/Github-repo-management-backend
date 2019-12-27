@@ -1,6 +1,6 @@
 from rest_framework import generics
 from rest_framework.views import APIView
-from . serializers import UserSerializer, FollowSerializer, FriendSerializer
+from . serializers import UserSerializer, FollowSerializer, FriendSerializer, FriendUpdateSerializer
 from accounts.models import UserModel, FriendRequests, UserFollowing
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
@@ -106,14 +106,14 @@ class FriendRequestListView(generics.ListAPIView):
 
 
 class UpdateFriendRequest(APIView):
-    serializer_class = FriendSerializer
+    serializer_class = FriendUpdateSerializer
     permission_classes = [IsUserAuthenticated]
     authentication_classes = [SessionAuthentication]
 
     def get_object(self, request, friend_id):
         try:
             current_user = self.request.user.id
-            return FriendRequests.objects.get(Q(user_from_id=current_user) & Q(user_to_id=friend_id))
+            return FriendRequests.objects.get(Q(user_to_id=current_user) & Q(user_from_id=friend_id))
 
         except FriendRequests.DoesNotExist:
             raise Http404
@@ -121,7 +121,7 @@ class UpdateFriendRequest(APIView):
     def put(self, request, friend_id):
         friend = self.get_object(request, friend_id)
 
-        serializer = FriendSerializer(friend, data=request.data)
+        serializer = FriendUpdateSerializer(friend, data=request.data)
         if serializer.is_valid():
 
             serializer.save()
@@ -138,6 +138,15 @@ class UpdateFriendRequest(APIView):
             print('The object does not exists')
 
         return Response(content, status=status.HTTP_204_NO_CONTENT)
+
+
+class FriendUpdateRequest(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = FriendUpdateSerializer
+    permission_classes = [IsUserAuthenticated]
+    authentication_classes = [SessionAuthentication]
+
+    def get_queryset(self):
+        return FriendRequests.objects.all()
 
 
 class UserFollowView(generics.CreateAPIView):

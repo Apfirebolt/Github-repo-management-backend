@@ -25,15 +25,16 @@ $(document).ready(() => {
 
    parent_container.on('click', 'button.accept_request', function(event) {
        current_id = event.target.getAttribute('data-store-id');
-       console.log('Accept request button clicked..', current_id);
+       let payload = {
+           user_from: current_id,
+           accepted: true
+       }
+       console.log('Accept request button clicked..', current_id, payload);
 
        $.ajax({
           type: "PUT",
           url: 'http://localhost:8000/accounts/api/add_friend/' + current_id,
-          data: {
-            user_to: current_id,
-            accepted: true
-          },
+          data: payload,
           headers: {
                 'X-CSRFToken': csrftoken
           },

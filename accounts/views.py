@@ -9,6 +9,7 @@ from django.urls import reverse
 from github.models import RepoModel
 from accounts.models import UserModel, FriendRequests, UserFollowing
 from . mixins import ContextDataMixin
+from django.db.models import Q
 
 
 class RegisterForm(FormView):
@@ -92,7 +93,7 @@ class SocialList(LoginRequiredMixin, View):
 
     def get(self, request):
         follow_users = UserFollowing.objects.filter(user=self.request.user)
-        friend_users = FriendRequests.objects.filter(user_from=self.request.user)
+        friend_users = FriendRequests.objects.filter(Q(user_to=self.request.user) & Q(accepted=False))
         context_data = {}
         context_data['follow_users'] = follow_users
         context_data['friend_users'] = friend_users

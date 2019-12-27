@@ -43,9 +43,6 @@ $(document).ready(function() {
 
       let follow_class_names = ['button', 'follow-btn'];
       let unfollow_class_names = ['button', 'unfollow-btn', 'is-danger'];
-      let friend_class_names = ['button', 'is-dark', 'add-friend-btn'];
-      let cancel_friend_class = ['button', 'is-warning', 'cancel-friend-btn'];
-      let accepted_friend_class = ['button', 'is-success', 'remove-friend-btn'];
 
       for(let i=0; i<res.length; i++)
       {
@@ -72,16 +69,18 @@ $(document).ready(function() {
 
                         <div class="content">
                             <button class="${follow_array.indexOf(res[i].id) != -1 ? unfollow_class_names.join(' ') : 
-                                follow_class_names.join(' ') }" data-store-id=${res[i].id}>
-                                ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
-                            <button class="${friend_array.indexOf(res[i].id) != -1 ? cancel_friend_class.join(' ') : 
-                                friend_class_names.join(' ') }" data-store-id=${res[i].id}>
-                                ${friend_array.indexOf(res[i].id) != -1 ? 'Cancel Request' : 'Add Friend'}</button>
-                            <button class="${accepted_friends.indexOf(res[i].id) != -1 ? accepted_friend_class.join(' ') : 
-                                friend_class_names.join(' ') }" data-store-id=${res[i].id}>
-                                ${accepted_friends.indexOf(res[i].id) != -1 ? 'Remove Friend' : 'Cancel Request'}</button> 
+                            follow_class_names.join(' ') }" data-store-id=${res[i].id}>
+                            ${follow_array.indexOf(res[i].id) != -1 ? 'Unfollow' : 'Follow'}</button>
+                            ${accepted_friends.indexOf(res[i].id) == -1 && friend_array.indexOf(res[i].id) == -1 ?
+                                `<button class="button is-dark add-friend-btn" data-store-id=${res[i].id}>Add Friend</button>` : ''
+                            }
+                            ${accepted_friends.indexOf(res[i].id) == -1 && friend_array.indexOf(res[i].id) != -1 ?
+                                `<button class="button is-warning cancel-friend-btn" data-store-id=${res[i].id}>Cancel Request</button>` : ''
+                            }
+                            ${accepted_friends.indexOf(res[i].id) != -1 && friend_array.indexOf(res[i].id) == -1 ?
+                                `<button class="button remove-friend-btn" data-store-id=${res[i].id}>Remove Friend</button>` : ''
+                            }
                             <button class="button is-link" data-store-id=${res[i].id}>View</button>
-                            
                         </div>
                       </div>
                     </div>
@@ -165,7 +164,7 @@ $(document).ready(function() {
    // Add Friend Functionality
     parent_container.on('click', 'button.add-friend-btn', function(event) {
        current_user = event.target.getAttribute('data-store-id');
-       console.log('Add Friend button clicked!!', current_user, csrftoken);
+       console.log('Add Friend button clicked!!', current_user);
 
        $.ajax({
           type: "POST",
@@ -195,10 +194,40 @@ $(document).ready(function() {
        })
    });
 
+    // Remove friend functionality
+    parent_container.on('click', 'button.remove-friend-btn', function(event) {
+       current_user = event.target.getAttribute('data-store-id');
+       console.log('Remove Friend button clicked!!', current_user);
+
+      $.ajax({
+          type: "DELETE",
+          url: 'http://localhost:8000/accounts/api/cancel_friend/' + current_user,
+
+          headers: {
+                'X-CSRFToken': csrftoken
+          },
+          success: function() {
+              $.ajax({
+                type: "GET",
+                url: 'http://localhost:8000/accounts/api/list',
+                success: function(res) {
+                    successFunction(res);
+                },
+                error: function(error) {
+                    console.log('The request failed : ', error);
+                },
+            });
+          },
+          error: function() {
+              console.log('Some error occurred, request failed to execute');
+          }
+       })
+   });
+
     // Cancel Friend Request Functionality
     parent_container.on('click', 'button.cancel-friend-btn', function(event) {
        current_user = event.target.getAttribute('data-store-id');
-       console.log('Cancel Friend clicked!!', current_user, csrftoken);
+       console.log('Cancel Friend clicked!!', current_user);
 
        $.ajax({
           type: "DELETE",
