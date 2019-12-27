@@ -667,3 +667,63 @@ $lato: 'Lato', sans-serif;
   border-radius: 2px;
   box-shadow: 2px 2px 3px #FFF;
 }
+
+#social_container {
+  .description {
+    background-color: #FFF;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    box-shadow: 2px 2px 3px grey;
+    margin: 0.5rem;
+  }
+
+  width: 80%;
+  margin: 1rem auto;
+  background-color: #FFF;
+  color: #242424;
+  padding: 2rem;
+  font-family: $open_sans;
+
+  h3 {
+    text-align: center;
+    color: #cc0f35;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .follow_container {
+    @include social_container_mixin;
+    background-color: #e3ecfa;
+
+
+    .follow_item {
+      width: 30%;
+      margin-bottom: 1rem;
+    }
+
+    .follow_image {
+        text-align: center;
+      }
+  }
+
+  .friend_container {
+    @include social_container_mixin;
+    background-color: azure;
+  }
+
+  .section_title {
+      text-align: center;
+      color: #00b89c;
+      font-size: 2rem;
+      font-family: $nunito;
+      margin: 1rem auto;
+    }
+
+  .follow_image {
+    img {
+      height: 300px;
+      width: 300px;
+      border-radius: 1rem;
+    }
+  }
+}

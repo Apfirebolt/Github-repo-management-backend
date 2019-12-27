@@ -10,12 +10,9 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken import views
 from rest_framework.authentication import BaseAuthentication, SessionAuthentication, TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
-from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 from django.http import HttpResponseForbidden, Http404
 from . permission import IsUserAuthenticated
-from rest_framework.exceptions import PermissionDenied
 from rest_framework import status
 from django.core.exceptions import ObjectDoesNotExist
 
