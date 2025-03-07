@@ -59,9 +59,7 @@ INSTALLED_APPS = [
 
     # Add the movie app to the list of installed apps
     'accounts',
-    'blog',
-    'github',
-    'forum'
+    'github'
 ]
 
 MIDDLEWARE = [
@@ -134,8 +132,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Docs settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Movies API',
-    'DESCRIPTION': 'API created for movies using Kaggle dataset',
+    'TITLE': 'Github Repo Management',
+    'DESCRIPTION': 'Back-end app to store and manage Github repositories',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': True,
     # OTHER SETTINGS

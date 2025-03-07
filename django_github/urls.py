@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,18 +23,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('test', TemplateView.as_view(template_name='test.html'), name='test'),
     path('admin/', admin.site.urls),
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
-    path('hub/', include(('github.urls', 'github'), namespace='github')),
-    path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
-    path('forum/', include(('forum.urls', 'forum'), namespace='forum')),
-
-    path('1', TemplateView.as_view(template_name='test/test1.html'), name='t1'),
-    path('2', TemplateView.as_view(template_name='test/test2.html'), name='t2'),
-    path('3', TemplateView.as_view(template_name='test/test3.html'), name='t3'),
-    path('4', TemplateView.as_view(template_name='test/test4.html'), name='t4'),
-    path('5', TemplateView.as_view(template_name='test/test5.html'), name='t5'),
+    path('github/', include(('github.urls', 'github'), namespace='github')),
+    path('api-schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('api-docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

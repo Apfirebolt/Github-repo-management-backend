@@ -16,17 +16,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password',
-              'profile_image', 'about_me',)
+        fields = ('id', 'username', 'email', 'password')
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
-
-    def validate_first_name(self, value):
-        return value.upper()
 
 
 class FollowSerializer(serializers.ModelSerializer):
@@ -51,6 +47,6 @@ class FriendSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FriendRequests
-        fields = ('user_from', 'user_to', '',)
+        fields = ('user_from', 'user_to',)
 
 

@@ -25,7 +25,7 @@ class ListUserView(generics.ListAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsUserAuthenticated]
     authentication_classes = [SessionAuthentication]
-    filter_fields = ('username', 'about_me', 'first_name',)
+    filter_fields = ('username', 'email',)
 
     def get_queryset(self):
         queryset = CustomUser.objects.all()
