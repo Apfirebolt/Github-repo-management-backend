@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponse
-from github.models import RepoUserModel, RepoTopicModel
+from github.models import RepoUserModel
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -27,13 +27,3 @@ class RepoUserListView(LoginRequiredMixin, ListView):
         queryset = RepoUserModel.objects.filter(owner=self.request.user)
         return queryset
 
-
-class RepoTopicListView(LoginRequiredMixin, ListView):
-    model = RepoTopicModel
-    template_name = 'github/list_topics.html'
-    context_object_name = 'saved_topics'
-
-    def get_queryset(self):
-        queryset = RepoTopicModel.objects.filter(owner=self.request.user)
-        messages.add_message(self.request, messages.INFO, 'Hello world.')
-        return queryset

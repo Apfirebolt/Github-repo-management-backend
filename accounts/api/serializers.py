@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from accounts.models import UserModel,UserFollowing, FriendRequests
+from accounts.models import CustomUser,UserFollowing, FriendRequests
 from rest_framework.validators import UniqueValidator
 from django.utils import timezone
 
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    email = serializers.EmailField(validators=[UniqueValidator(queryset=UserModel.objects.all())])
-    username = serializers.CharField(validators=[UniqueValidator(queryset=UserModel.objects.all())])
+    email = serializers.EmailField(validators=[UniqueValidator(queryset=CustomUser.objects.all())])
+    username = serializers.CharField(validators=[UniqueValidator(queryset=CustomUser.objects.all())])
     password = serializers.CharField(
           write_only=True,
           required=True,
@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
           style={'input_type': 'password', 'placeholder': 'Password'})
 
     class Meta:
-        model = UserModel
+        model = CustomUser
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password',
               'profile_image', 'about_me',)
 
@@ -41,7 +41,7 @@ class FollowSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         print('Inside the create method : ', self.context['request'].user, validated_data)
         follow_obj = super(FollowSerializer, self).create(validated_data)
-        follow_obj.user = UserModel.objects.get(pk=19)
+        follow_obj.user = CustomUser.objects.get(pk=19)
         follow_obj.following_since = timezone.now()
         follow_obj.save()
         return follow_obj

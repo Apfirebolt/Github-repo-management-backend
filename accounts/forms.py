@@ -1,5 +1,5 @@
 from django import forms
-from . models import UserModel
+from . models import CustomUser
 
 
 class UserModelForm(forms.ModelForm):
@@ -11,14 +11,6 @@ class UserModelForm(forms.ModelForm):
                                widget=forms.TextInput(
                                  attrs={'placeholder': 'Pick a unique email!', 'class': 'form-control'}
                                ))
-    first_name = forms.CharField(label='Your First Name is!',
-                               widget=forms.TextInput(
-                                 attrs={'placeholder': 'Enter your first name!', 'class': 'form-control'}
-                               ))
-    last_name = forms.CharField(label='Your last name is!',
-                               widget=forms.TextInput(
-                                 attrs={'placeholder': 'Enter your last name!', 'class': 'form-control'}
-                               ))
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput
                                )
@@ -27,8 +19,8 @@ class UserModelForm(forms.ModelForm):
                                            )
 
     class Meta:
-        model = UserModel
-        fields = ['username', 'email', 'first_name', 'last_name', 'password']
+        model = CustomUser
+        fields = ['username', 'email', 'password']
 
     def clean_confirm_password(self):
         cd = self.cleaned_data
@@ -40,8 +32,8 @@ class UserModelForm(forms.ModelForm):
 class SettingsForm(forms.ModelForm):
 
     class Meta:
-        model = UserModel
-        fields = ['username', 'email', 'first_name', 'last_name', 'about_me', 'profile_image']
+        model = CustomUser
+        fields = ['username', 'email',]
 
 
 

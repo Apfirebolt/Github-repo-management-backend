@@ -1,6 +1,6 @@
 from rest_framework import generics
 from . serializers import UserSerializer, FollowSerializer, FriendSerializer
-from accounts.models import UserModel, FriendRequests, UserFollowing
+from accounts.models import CustomUser, FriendRequests, UserFollowing
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
 from django.conf import settings
@@ -28,7 +28,7 @@ class ListUserView(generics.ListAPIView):
     filter_fields = ('username', 'about_me', 'first_name',)
 
     def get_queryset(self):
-        queryset = UserModel.objects.all()
+        queryset = CustomUser.objects.all()
         search_user = self.request.query_params.get('username')
         search_email = self.request.query_params.get('email')
 
@@ -44,7 +44,7 @@ class ListUserView(generics.ListAPIView):
 
 class UpdateUserView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
-    queryset = UserModel.objects.all()
+    queryset = CustomUser.objects.all()
 
     def perform_update(self, serializer):
         serializer.validated_data['password'] = make_password(serializer.validated_data.get('password'))

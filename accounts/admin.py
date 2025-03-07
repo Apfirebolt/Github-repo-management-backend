@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import UserModel, FriendRequests, UserFollowing
+from . models import CustomUser, FriendRequests, UserFollowing
 from django.contrib.admin import ModelAdmin
 
 
@@ -17,7 +17,7 @@ class FollowingModel(ModelAdmin):
     list_display = ('user', 'following', 'following_since',)
 
 
-admin.site.register(UserModel, UserAdminManager)
+admin.site.register(CustomUser, UserAdminManager)
 admin.site.register(FriendRequests, FriendRequestManager)
 admin.site.register(UserFollowing, FollowingModel)
 

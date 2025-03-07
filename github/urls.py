@@ -9,5 +9,4 @@ urlpatterns = [
     path('search_repo', views.search_repo, name='search-repo'),
     path('search_topic', views.search_topic, name='search-topic'),
     path('saved_users', views.RepoUserListView.as_view(), name='list-user'),
-    path('saved_topics', views.RepoTopicListView.as_view(), name='saved-topics')
 ]

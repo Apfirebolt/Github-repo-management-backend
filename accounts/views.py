@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.views.generic import TemplateView, FormView, ListView, UpdateView
 from django.template import RequestContext
 from . forms import UserModelForm, SettingsForm
@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from github.models import RepoModel
-from accounts.models import UserModel
+from accounts.models import CustomUser
 
 
 class RegisterForm(FormView):
@@ -31,7 +31,7 @@ class EditAccountSettings(UpdateView):
     form_class = SettingsForm
     template_name = 'accounts/settings.html'
     success_url = '/'
-    model = UserModel
+    model = CustomUser
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -86,19 +86,6 @@ class RepoList(LoginRequiredMixin, ListView):
         context['user_data'] = UserModel.objects.get(pk=self.request.user.id)
         return context
 
-
-def handler404(request, *args, **argv):
-    """ A custom view to handle 404 error pages in Django """
-    response = render_to_response('404.html', {})
-    response.status_code = 404
-    return response
-
-
-def handler500(request, *args, **argv):
-    """ A custom view to handle 500 error pages in Django """
-    response = render_to_response('500.html', {})
-    response.status_code = 500
-    return response
 
 
 
