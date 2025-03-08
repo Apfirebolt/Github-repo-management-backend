@@ -43,6 +43,7 @@ class RepoUserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = RepoUserModel
         fields = (
+            "id",
             "owner",
             "user_name",
             "user_url",
