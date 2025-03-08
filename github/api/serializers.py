@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from github.models import RepoModel, RepoUserModel
-from rest_framework.validators import UniqueValidator
 
 
 class RepoSerializer(serializers.ModelSerializer):

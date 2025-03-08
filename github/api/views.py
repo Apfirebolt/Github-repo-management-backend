@@ -1,10 +1,5 @@
 from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.authentication import (
-    BaseAuthentication,
-    SessionAuthentication,
-    TokenAuthentication,
-)
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import RepoSerializer, RepoStarSerializer, RepoUserModelSerializer, DeleteRepoSerializer
@@ -40,8 +35,8 @@ class RepoCreateView(generics.CreateAPIView):
 
 class RepoListView(generics.ListAPIView):
     serializer_class = RepoSerializer
-    queryset = RepoModel.objects.all()
     filter_backends = (DjangoFilterBackend,)
+    queryset = RepoModel.objects.all()
     permission_classes = [IsAuthenticated]
     filter_fields = (
         "repo_language",
@@ -49,19 +44,8 @@ class RepoListView(generics.ListAPIView):
         "repo_description",
     )
 
-
-class RepoUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = RepoSerializer
-    queryset = RepoModel.objects.all()
-    permission_classes = [IsAuthenticated]
-
-    def delete(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(
-            {"message": "Repository deleted successfully"},
-            status=204
-        )
+    def get_queryset(self):
+        return super().get_queryset().filter(owner=self.request.user)
 
 
 class RepoDeleteView(generics.DestroyAPIView):
@@ -73,10 +57,13 @@ class RepoDeleteView(generics.DestroyAPIView):
 class RepoStarView(generics.UpdateAPIView):
     serializer_class = RepoStarSerializer
     queryset = RepoModel.objects.all()
+    permission_classes = [IsAuthenticated]
 
 
 class RepoUserModelCreate(generics.CreateAPIView):
     serializer_class = RepoUserModelSerializer
+    queryset = RepoUserModel.objects.all()
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.validated_data["owner"] = self.request.user
@@ -86,3 +73,4 @@ class RepoUserModelCreate(generics.CreateAPIView):
 class RepoUserListView(generics.ListAPIView):
     serializer_class = RepoUserModelSerializer
     queryset = RepoUserModel.objects.all()
+    permission_classes = [IsAuthenticated]
