@@ -1,22 +1,50 @@
 from rest_framework import serializers
 from accounts.models import CustomUser,UserFollowing, FriendRequests
 from rest_framework.validators import UniqueValidator
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.utils import timezone
+from rest_framework_simplejwt.tokens import RefreshToken
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    default_error_messages = {
+        'no_active_account': ('No account exists with these credentials, check password and email')
+    }
+
+    def validate(self, attrs):
+        
+        data = super(CustomTokenObtainPairSerializer, self).validate(attrs)
+        # Custom data 
+        data['username'] = self.user.username
+        data['email'] = self.user.email
+        data['id'] = self.user.id
+        data['is_admin'] = self.user.is_superuser
+        return data
 
 
 class UserSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
-    email = serializers.EmailField(validators=[UniqueValidator(queryset=CustomUser.objects.all())])
-    username = serializers.CharField(validators=[UniqueValidator(queryset=CustomUser.objects.all())])
     password = serializers.CharField(
-          write_only=True,
-          required=True,
-          help_text='Leave empty if no change needed',
-          style={'input_type': 'password', 'placeholder': 'Password'})
+        write_only=True,
+        required=True,
+        help_text='Leave empty if no change needed',
+        min_length=8,
+        style={'input_type': 'password', 'placeholder': 'Password'}
+    )
+    access = serializers.SerializerMethodField()
+    refresh = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'email', 'password')
+        fields = ('username', 'email', 'id', 'is_staff', 'password', 'access', 'refresh',)
+    
+    def get_refresh(self, user):
+        refresh = RefreshToken.for_user(user)
+        return str(refresh)
+
+    def get_access(self, user):
+        refresh = RefreshToken.for_user(user)
+        access = str(refresh.access_token),
+        return access
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
@@ -35,7 +63,6 @@ class FollowSerializer(serializers.ModelSerializer):
                         }
 
     def create(self, validated_data):
-        print('Inside the create method : ', self.context['request'].user, validated_data)
         follow_obj = super(FollowSerializer, self).create(validated_data)
         follow_obj.user = CustomUser.objects.get(pk=19)
         follow_obj.following_since = timezone.now()
