@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from celery.schedules import crontab
 from datetime import timedelta
 from dotenv import load_dotenv
 
@@ -55,7 +56,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'drf_spectacular',
     'django_filters',
-    'django_summernote',
+    'django_celery_beat',
+    'django_redis',
 
     # Add the movie app to the list of installed apps
     'accounts',
@@ -162,7 +164,24 @@ SIMPLE_JWT = {
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
 }
 
+# Celery settings
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'  # Or 'amqp://guest:guest@localhost:5672//' for RabbitMQ
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' # Same as Broker or another redis instance
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC' # Or your desired timezone.
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler' # Required for django celery beat.
 
+from celery.schedules import crontab
+
+# This task would run every minute and print the usernames in a text file.
+CELERY_BEAT_SCHEDULE = {
+    'add-every-minute': {
+        'task': 'github.tasks.github_task',
+        'schedule': crontab(minute='*/1'),
+    },
+}
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
