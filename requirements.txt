@@ -1,7 +1,7 @@
 asgiref==3.8.1
 attrs==24.3.0
 bleach==6.2.0
-Django==5.1.4
+Django==5.1.7
 django-cors-headers==4.6.0
 django-filter==24.3
 django-summernote==0.8.20.0
